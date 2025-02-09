@@ -15,12 +15,18 @@ try {
         ]
     );
 } catch (PDOException $e) {
-    // Tratamento de erro seguro
-    if (DEBUG_MODE) {
-        die("Erro na conexão com o banco de dados: " . $e->getMessage());
-    } else {
-        die("Erro na conexão com o banco de dados. Contate o administrador.");
+    // Registra erro no log se estiver em produção
+    if (!DEBUG_MODE) {
+        error_log("Erro de conexão com o banco: " . $e->getMessage());
     }
+
+    // Exibe erro seguro
+    $errorMessage = DEBUG_MODE ? "Erro na conexão com o banco de dados: " . $e->getMessage()
+        : "Erro na conexão com o banco de dados. Contate o administrador.";
+
+    // Redireciona para uma página de erro personalizada
+    header("Location: /error.php?msg=" . urlencode($errorMessage));
+    exit;
 }
 
 ?>

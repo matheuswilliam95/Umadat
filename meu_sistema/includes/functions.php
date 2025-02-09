@@ -96,6 +96,7 @@ function getUserRole($userId)
     return $result ? $result['role'] : null;
 }
 
+
 // Retorna as informações do usuário
 function getUserProfile($userId)
 {
@@ -143,4 +144,60 @@ function getPublicEvents()
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
-?> // Fim do código.
+
+// Obtém detalhes de um evento específico
+function getEventDetails($eventId)
+{
+    $sql = "SELECT * FROM eventos WHERE id = ? AND tipo = 'publico'";
+    return fetchSingleRow($sql, [$eventId]);
+}
+
+// Obtém eventos relacionados com base na mesma congregação
+function getRelatedEvents($eventId)
+{
+    $sql = "SELECT e.id, e.titulo FROM eventos e JOIN eventos_hierarquia eh ON e.id = eh.evento_id WHERE eh.hierarquia_id = (SELECT hierarquia_id FROM eventos_hierarquia WHERE evento_id = ?) AND e.id != ? LIMIT 5";
+    return fetchAllRows($sql, [$eventId, $eventId]);
+}
+
+
+// Obtém a lista de inscritos em um evento
+function getEventRegistrations($eventId)
+{
+    $sql = "SELECT u.nome, u.email, u.telefone, i.data_inscricao FROM inscricoes i JOIN usuarios u ON i.usuario_id = u.id WHERE i.evento_id = ?";
+    return fetchAllRows($sql, [$eventId]);
+}
+
+
+// Verifica se o usuário é administrador
+function checkAdmin()
+{
+    if (!isset($_SESSION['user_id']) || getUserRole($_SESSION['user_id']) !== 'super_admin') {
+        die("Acesso negado.");
+    }
+}
+
+// Exclui um evento e suas inscrições associadas
+function deleteEvent($eventId)
+{
+    global $pdo;
+
+    try {
+        $pdo->beginTransaction();
+
+        // Excluir inscrições associadas
+        $sql = "DELETE FROM inscricoes WHERE evento_id = ?";
+        executeQuery($sql, [$eventId]);
+
+        // Excluir o evento
+        $sql = "DELETE FROM eventos WHERE id = ?";
+        executeQuery($sql, [$eventId]);
+
+        $pdo->commit();
+        return true;
+    } catch (Exception $e) {
+        $pdo->rollBack();
+        return false;
+    }
+}
+
+?>
