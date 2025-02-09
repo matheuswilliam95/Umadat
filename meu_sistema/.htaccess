@@ -1,0 +1,30 @@
+RewriteEngine On
+
+# Redirecionamento para HTTPS
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Bloqueio de acesso a diretórios sensíveis
+<FilesMatch "(config\.php|db\.php|auth\.php|functions\.php)">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
+
+# Bloqueio de execução de arquivos PHP em diretórios como uploads
+<Directory "/uploads">
+    <Files "*.php">
+        Order Deny,Allow
+        Deny from all
+    </Files>
+</Directory>
+
+# Impedir listagem de diretórios
+Options -Indexes
+
+# Página de erro 404 personalizada
+ErrorDocument 404 /404.php
+
+# Reescrita de URL amigável
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
