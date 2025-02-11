@@ -200,4 +200,30 @@ function deleteEvent($eventId)
     }
 }
 
+// Registra um novo usuário
+function registerUser($data)
+{
+    global $pdo;
+
+    // Verifica se o e-mail já está cadastrado
+    if (fetchSingleRow("SELECT id FROM usuarios WHERE email = ?", [$data['email']])) {
+        return false;
+    }
+
+    $hashedPassword = password_hash($data['senha'], PASSWORD_DEFAULT);
+    $sql = "INSERT INTO usuarios (nome, email, senha, telefone, documento_identificacao, status, congregacao_id, conjunto_id) VALUES (?, ?, ?, ?, ?, 'ativo', ?, ?)";
+    $params = [$data['nome'], $data['email'], $hashedPassword, $data['telefone'], $data['documento'], $data['congregacao'], $data['conjunto']];
+
+    return executeQuery($sql, $params);
+}
+
+function getCongregacoes()
+{
+    global $pdo;
+    $stmt = $pdo->query("SELECT id, nome FROM congregacoes ORDER BY nome ASC");
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+
+
 ?>

@@ -1,22 +1,9 @@
 RewriteEngine On
+RewriteBase /umadat/files/pages/login/
 
-# Redirecionamento para HTTPS
+# Redirecionamento HTTPS
 RewriteCond %{HTTPS} !=on
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
-# Bloqueio de acesso a diretórios sensíveis
-<FilesMatch "(config\.php|db\.php|auth\.php|functions\.php)">
-    Order Deny,Allow
-    Deny from all
-</FilesMatch>
-
-# Bloqueio de execução de arquivos PHP em diretórios como uploads
-<Directory "/uploads">
-    <Files "*.php">
-        Order Deny,Allow
-        Deny from all
-    </Files>
-</Directory>
 
 # Impedir listagem de diretórios
 Options -Indexes

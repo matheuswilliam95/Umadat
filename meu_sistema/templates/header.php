@@ -1,9 +1,8 @@
 <?php
-require_once __DIR__ . '/config.php';
-require_once __DIR__ . '/includes/functions.php';
-
-define('SITE_NAME', $config['system']['site_name']);
+require_once __DIR__ . '/../includes/config.php';
+require_once __DIR__ . '/../includes/functions.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
