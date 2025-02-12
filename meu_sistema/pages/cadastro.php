@@ -41,8 +41,8 @@ $congregacoes = getCongregacoes();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro - <?php echo SITE_NAME; ?></title>
-    <link rel="stylesheet" href="/public/css/style.css">
-    <script defer src="/public/js/cadastro.js"></script>
+    <link rel="stylesheet" href="/umadat/files/public/css/style.css">
+
 </head>
 
 <body>
@@ -88,7 +88,7 @@ $congregacoes = getCongregacoes();
             <button type="submit">Cadastrar</button>
         </form>
     </div>
-    <script defer src="/public/js/cadastro.js"></script>
+    <script defer src="/umadat/files/public/js/cadastro.js"></script>
 </body>
 
 </html>

@@ -40,8 +40,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - <?php echo SITE_NAME; ?></title>
-    <link rel="stylesheet" href="/public/css/style.css">
-    <script defer src="/public/js/main.js"></script>
+    <script defer src="<?php echo PASTA_BASE; ?>public/js/main.js"></script>
+    <link rel="stylesheet" href="<?php echo PASTA_BASE; ?>public/css/style.css">
+
 </head>
 
 <body>

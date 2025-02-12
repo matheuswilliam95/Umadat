@@ -16,6 +16,7 @@ define('DB_NAME', $config['database']['name']);
 define('DB_USER', $config['database']['user']);
 define('DB_PASS', $config['database']['pass']);
 define('SITE_NAME', $config['system']['site_name']);
+define('PASTA_BASE', $config['system']['pasta_base']);
 
 // Caminho base do sistema
 define('BASE_URL', $config['system']['base_url']);
