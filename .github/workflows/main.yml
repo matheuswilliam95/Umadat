@@ -25,4 +25,4 @@ jobs:
           server: ${{ secrets.ftp_gestao_host }}
           username: ${{ secrets.ftp_gestao_user }}
           password: ${{ secrets.ftp_gestao_password }}
-          server-dir: public_html/umadat/
+          server-dir: public_html/umadat/ 
