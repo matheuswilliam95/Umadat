@@ -4,7 +4,9 @@ require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../includes/functions.php';
 
 header('Content-Type: application/json');
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 if (!isAuthenticated()) {
     echo json_encode(["success" => false, "message" => "Acesso negado."]);

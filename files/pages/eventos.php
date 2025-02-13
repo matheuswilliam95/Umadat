@@ -3,6 +3,10 @@ require_once __DIR__ . '/../includes/config.php';
 require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../includes/functions.php';
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 $eventos = getPublicEvents();
 ?>
 <!DOCTYPE html>
