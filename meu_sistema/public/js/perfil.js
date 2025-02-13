@@ -19,24 +19,34 @@ async function loadUserProfile() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ action: "getProfile" })
     });
-    const data = await response.json();
-    if (data.success) {
-        document.getElementById("nome").value = data.user.nome;
-        document.getElementById("telefone").value = data.user.telefone;
-        document.getElementById("congregacao").value = data.user.congregacao;
+
+    const text = await response.text(); // Lê como texto ao invés de JSON'
+    console.log(text); // Exibe no console para análise
+
+    try {
+        const data = JSON.parse(text); // Converte para JSON
+        if (data.success) {
+            document.getElementById("nome").value = data.user.nome;
+            document.getElementById("telefone").value = data.user.telefone;
+            document.getElementById("congregacao").value = data.user.congregacao;
+        }
+    } catch (error) {
+        console.error("Erro ao converter JSON:", error);
     }
 }
+
 
 async function updateUserProfile() {
     const nome = document.getElementById("nome").value;
     const telefone = document.getElementById("telefone").value;
     const congregacao = document.getElementById("congregacao").value;
+    const conjunto = document.getElementById("conjunto").value;
     const csrfToken = document.querySelector("input[name='csrf_token']").value;
 
     const response = await fetch("fetchPerfil.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ action: "updateProfile", nome, telefone, congregacao, csrf_token: csrfToken })
+        body: JSON.stringify({ action: "updateProfile", nome, telefone, congregacao, conjunto, csrf_token: csrfToken })
     });
     const data = await response.json();
     alert(data.message);
@@ -94,3 +104,4 @@ async function cancelEvent(eventId) {
         alert(data.message);
     }
 }
+

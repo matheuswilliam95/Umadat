@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/../includes/config.php';
 require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../includes/functions.php';
 
@@ -12,8 +12,8 @@ $eventos = getPublicEvents();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eventos - <?php echo SITE_NAME; ?></title>
-    <link rel="stylesheet" href="/public/css/style.css">
-    <script defer src="/public/js/eventos.js"></script>
+    <link rel="stylesheet" href="<?php echo PASTA_BASE; ?>public/css/style.css">
+    <script defer src="<?php echo PASTA_BASE; ?>public/js/eventos.js"></script>
 </head>
 
 <body>

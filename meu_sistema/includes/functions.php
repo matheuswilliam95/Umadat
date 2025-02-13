@@ -10,6 +10,11 @@ function sanitizeInput($input)
     return htmlspecialchars(strip_tags(trim($input)), ENT_QUOTES, 'UTF-8');
 }
 
+function isAuthenticated()
+{
+    return isset($_SESSION['user_id']);
+}
+
 // Gera um token CSRF para proteger formulários
 function generateCSRFToken()
 {
@@ -100,9 +105,24 @@ function getUserRole($userId)
 // Retorna as informações do usuário
 function getUserProfile($userId)
 {
-    $sql = "SELECT nome, telefone, (SELECT nome FROM hierarquia WHERE id = (SELECT hierarquia_id FROM usuarios_hierarquia WHERE usuario_id = ? LIMIT 1)) AS congregacao FROM usuarios WHERE id = ?";
-    return fetchSingleRow($sql, [$userId, $userId]);
+    $sql = "SELECT u.nome, u.telefone, 
+                   c.nome AS congregacao, 
+                   co.nome AS conjunto
+            FROM usuarios u
+            LEFT JOIN congregacoes c ON u.congregacao_id = c.id
+            LEFT JOIN conjuntos co ON u.conjunto_id = co.id
+            WHERE u.id = ? 
+            LIMIT 1";
+
+    $user = fetchSingleRow($sql, [$userId]);
+
+    // Evita erro de htmlspecialchars()
+    $user['congregacao'] = $user['congregacao'] ?? '';
+    $user['conjunto'] = $user['conjunto'] ?? '';
+
+    return $user;
 }
+
 
 // Atualiza informações do perfil do usuário
 function updateUserProfile($userId, $data)

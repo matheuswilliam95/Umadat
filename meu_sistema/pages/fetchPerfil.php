@@ -1,7 +1,6 @@
 <?php
-require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/../includes/config.php';
 require_once __DIR__ . '/../includes/db.php';
-require_once __DIR__ . '/../includes/auth.php';
 require_once __DIR__ . '/../includes/functions.php';
 
 header('Content-Type: application/json');
@@ -21,7 +20,7 @@ switch ($action) {
         $user = getUserProfile($userId);
         echo json_encode(["success" => true, "user" => $user]);
         break;
-    
+
     case "updateProfile":
         if (!verifyCSRFToken($input['csrf_token'])) {
             echo json_encode(["success" => false, "message" => "Token CSRF inválido."]);
@@ -34,7 +33,7 @@ switch ($action) {
         ]);
         echo json_encode(["success" => $updated, "message" => $updated ? "Perfil atualizado com sucesso." : "Erro ao atualizar perfil."]);
         break;
-    
+
     case "changePassword":
         if (!verifyCSRFToken($input['csrf_token'])) {
             echo json_encode(["success" => false, "message" => "Token CSRF inválido."]);
@@ -43,18 +42,18 @@ switch ($action) {
         $changed = changeUserPassword($userId, $input['currentPassword'], $input['newPassword']);
         echo json_encode(["success" => $changed, "message" => $changed ? "Senha alterada com sucesso." : "Erro ao alterar senha."]);
         break;
-    
+
     case "getUserEvents":
         $events = getUserEvents($userId);
         echo json_encode(["success" => true, "events" => $events]);
         break;
-    
+
     case "cancelEvent":
         $eventId = intval($input['eventId']);
         $canceled = cancelEventRegistration($userId, $eventId);
         echo json_encode(["success" => $canceled, "message" => $canceled ? "Inscrição cancelada com sucesso." : "Erro ao cancelar inscrição."]);
         break;
-    
+
     default:
         echo json_encode(["success" => false, "message" => "Ação inválida."]);
         break;
