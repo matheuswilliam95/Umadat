@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/../includes/config.php';
 ?>
 <footer class="mobile-footer">
     <div class="footer-links">
