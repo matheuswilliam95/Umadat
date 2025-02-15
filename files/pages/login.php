@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <!DOCTYPE html>
-<html lang="pt-BR"> 
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -47,12 +47,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
     <div class="main_container">
-        <div class="container container_login"> 
+        <div class="container container_login">
             <h2>Login</h2>
             <?php if (!empty($erro)): ?>
-            <p class="error-message">
-                <?php echo htmlspecialchars($erro); ?>
-            </p>
+                <p class="error-message">
+                    <?php echo htmlspecialchars($erro); ?>
+                </p>
             <?php endif; ?>
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
 
@@ -71,4 +71,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </body>
 <footer>
     <?php include __DIR__ . '/../templates/footer.php'; ?>
+</footer>
+
 </html>
