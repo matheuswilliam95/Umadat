@@ -89,14 +89,17 @@ function formatDate($date)
     return date("d/m/Y H:i", strtotime($date));
 }
 
-
-function getUserRole($user_id)
-{
-    global $db;
-    $stmt = $db->prepare("SELECT role FROM usuarios WHERE id = :id");
-    $stmt->execute(['id' => $user_id]);
-    return $stmt->fetchColumn();
+// Retorna o papel de um usuário no sistema
+if (!function_exists('getUserRole')) {
+    function getUserRole($user_id)
+    {
+        global $db;
+        $stmt = $db->prepare("SELECT role FROM usuarios WHERE id = :id");
+        $stmt->execute(['id' => $user_id]);
+        return $stmt->fetchColumn();
+    }
 }
+
 
 
 // Retorna as informações do usuário
