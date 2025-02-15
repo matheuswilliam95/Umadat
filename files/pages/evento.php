@@ -33,30 +33,41 @@ $relatedEvents = getRelatedEvents($eventId);
 </head>
 
 <body>
-    <div class="evento-container">
-        <h2><?php echo htmlspecialchars($evento['titulo']); ?></h2>
-        <p><strong>Descrição:</strong> <?php echo nl2br(htmlspecialchars($evento['descricao'])); ?></p>
-        <p><strong>Data:</strong> <?php echo formatDate($evento['data_inicio']); ?> -
-            <?php echo formatDate($evento['data_fim']); ?></p>
-        <p><strong>Horário:</strong>
-            <?php echo $evento['horario_inicio'] ? date('H:i', strtotime($evento['horario_inicio'])) : 'N/A'; ?> às
-            <?php echo $evento['horario_fim'] ? date('H:i', strtotime($evento['horario_fim'])) : 'N/A'; ?></p>
-        <p><strong>Local:</strong> <?php echo htmlspecialchars($evento['local'] ?? 'N/A'); ?></p>
-        <p><strong>Valor:</strong>
-            <?php echo $evento['valor'] ? 'R$ ' . number_format($evento['valor'], 2, ',', '.') : 'Gratuito'; ?></p>
-        <p><strong>Responsável:</strong> <?php echo htmlspecialchars($evento['responsavel_nome'] ?? 'N/A'); ?></p>
+    <div class="main_container">
+        <div class="container">
 
-        <?php if ($evento['data_limite_inscricao'] >= date('Y-m-d')): ?>
-            <button id="inscricao-btn" data-evento-id="<?php echo $evento['id']; ?>">Inscreva-se</button>
-        <?php endif; ?>
 
-        <h3>Eventos Relacionados</h3>
-        <ul>
-            <?php foreach ($relatedEvents as $relEvent): ?>
-                <li><a href="evento.php?id=<?php echo $relEvent['id']; ?>">
-                        <?php echo htmlspecialchars($relEvent['titulo']); ?> </a></li>
-            <?php endforeach; ?>
-        </ul>
+            <div class="evento-container">
+                <h2><?php echo htmlspecialchars($evento['titulo']); ?></h2>
+                <p><strong>Descrição:</strong> <?php echo nl2br(htmlspecialchars($evento['descricao'])); ?></p>
+                <p><strong>Data:</strong> <?php echo formatDate($evento['data_inicio']); ?> -
+                    <?php echo formatDate($evento['data_fim']); ?>
+                </p>
+                <p><strong>Horário:</strong>
+                    <?php echo $evento['horario_inicio'] ? date('H:i', strtotime($evento['horario_inicio'])) : 'N/A'; ?>
+                    às
+                    <?php echo $evento['horario_fim'] ? date('H:i', strtotime($evento['horario_fim'])) : 'N/A'; ?>
+                </p>
+                <p><strong>Local:</strong> <?php echo htmlspecialchars($evento['local'] ?? 'N/A'); ?></p>
+                <p><strong>Valor:</strong>
+                    <?php echo $evento['valor'] ? 'R$ ' . number_format($evento['valor'], 2, ',', '.') : 'Gratuito'; ?>
+                </p>
+                <p><strong>Responsável:</strong> <?php echo htmlspecialchars($evento['responsavel_nome'] ?? 'N/A'); ?>
+                </p>
+
+                <?php if ($evento['data_limite_inscricao'] >= date('Y-m-d')): ?>
+                    <button id="inscricao-btn" data-evento-id="<?php echo $evento['id']; ?>">Inscreva-se</button>
+                <?php endif; ?>
+
+                <h3>Eventos Relacionados</h3>
+                <ul>
+                    <?php foreach ($relatedEvents as $relEvent): ?>
+                        <li><a href="evento.php?id=<?php echo $relEvent['id']; ?>">
+                                <?php echo htmlspecialchars($relEvent['titulo']); ?> </a></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        </div>
     </div>
 </body>
 
