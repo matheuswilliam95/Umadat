@@ -11,8 +11,6 @@ require_once __DIR__ . '/../includes/functions.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Rede social para igrejas - conecte-se com sua comunidade cristã">
     <title><?php echo SITE_NAME; ?></title>
-    <link rel="stylesheet" href="<?php echo PASTA_BASE; ?>public/css/style.css?v=<?php echo time(); ?>">
-    <script defer src="<?php echo PASTA_BASE; ?>public/js/main.js"></script>
 </head>
 
 
@@ -36,7 +34,15 @@ require_once __DIR__ . '/../includes/functions.php';
             <a href="<?php echo BASE_URL; ?>perfil.php" class="icon-profile">👤</a>
         </div>
     </nav>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const menuToggle = document.getElementById("menu-toggle");
+            const menu = document.getElementById("menu");
+            menuToggle.addEventListener("click", function () {
+                menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+            });
+        });
+    </script>
 </header>
-
 
 </html>
