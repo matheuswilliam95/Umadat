@@ -254,6 +254,10 @@ h4 {
         width: 90%;
     }
 
+    .eventos-container {
+        padding: 10px;
+    }
+
     .evento-imagem img {
         width: 100%;
         height: 100%;
@@ -267,7 +271,7 @@ h4 {
     }
 
     .evento-item {
-        width: 100%;
+        width: 90%;
     }
 
     .eventos-lista {
@@ -276,6 +280,7 @@ h4 {
         display: flex;
         flex-direction: column;
         gap: 15px;
+        align-items: center;
     }
 
     .evento-item {
