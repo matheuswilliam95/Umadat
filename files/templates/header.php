@@ -15,11 +15,12 @@ require_once __DIR__ . '/../includes/functions.php';
     <script defer src="<?php echo PASTA_BASE; ?>public/js/main.js"></script>
 </head>
 
+
 <header class="mobile-header">
     <div class="logo">
         <a href="<?php echo BASE_URL; ?>">
-            <img src="/public/img/logo.png" alt="Logo da Igreja"
-                onerror="this.src='/public/images/logo_placeholder.png';">
+            <img src="<?php echo PASTA_BASE . 'public/img/logo.png'; ?>" alt="Logo da Igreja"
+                onerror="this.src='<?php echo PASTA_BASE . 'public/img/logo_placeholder.png'; ?>';">
         </a>
     </div>
     <nav class="mobile-nav">
@@ -36,5 +37,6 @@ require_once __DIR__ . '/../includes/functions.php';
         </div>
     </nav>
 </header>
+
 
 </html>
