@@ -93,6 +93,9 @@ function createEvent($eventData)
                     <label>Sobre o Evento</label>
                     <input type="text" name="local" id="local" placeholder="Local do Evento">
                     <input type="number" name="valor" id="valor" step="0.01" placeholder="Valor do Evento">
+
+
+                    <label>Organizador</label>
                     <input type="text" name="responsavel_nome" id="responsavel_nome"
                         placeholder="Organizador do Evento">
                     <input type="text" name="responsavel_contato" id="responsavel_contato"
