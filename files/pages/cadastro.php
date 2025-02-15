@@ -41,54 +41,55 @@ $congregacoes = getCongregacoes();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro - <?php echo SITE_NAME; ?></title>
-    <link rel="stylesheet" href="/umadat/files/public/css/style.css">
-
+    <link rel="stylesheet" href="<?php echo PASTA_BASE; ?>public/css/style.css?v=<?php echo time(); ?>">
+    <script defer src="<?php echo PASTA_BASE; ?>public/js/main.js"></script>
 </head>
 
 <body>
-    <div class="cadastro-container">
-        <h2>Cadastro de Novo Usuário</h2>
-        <?php if (isset($error)): ?>
-            <p class="error-message"> <?php echo $error; ?> </p>
-        <?php endif; ?>
-        <form action="cadastro.php" method="POST">
-            <input type="hidden" name="csrf_token" value="<?php echo generateCSRFToken(); ?>">
-            <label for="nome">Nome Completo:</label>
-            <input type="text" name="nome" id="nome" required>
+    <div class="main_container">
+        <div class="container">
+            <div class="cadastro_container">
+                <h2>Criar uma nova conta</h2>
+                <h4>É rápido e fácil.</h4>
+                <?php if (isset($error)): ?>
+                    <p class="error-message">
+                        <?php echo $error; ?>
+                    </p>
+                <?php endif; ?>
+                <form action="cadastro.php" method="POST">
+                    <input type="hidden" name="csrf_token" value="<?php echo generateCSRFToken(); ?>">
+                    <input type="text" name="nome" id="nome" placeholder="Nome Completo" required>
 
-            <label for="email">E-mail:</label>
-            <input type="email" name="email" id="email" required>
+                    <input type="email" name="email" id="email" placeholder="Email" required>
+                    <input type="text" name="telefone" id="telefone" placeholder="Celular">
+                    <input type="text" name="documento" id="documento" placeholder="Identidade (opcional para viagens)">
+                    <input type="password" name="senha" id="senha" placeholder=" Nova Senha" required>
+                    <input type="password" name="confirmar_senha" id="confirmar_senha" placeholder="Repita a Senha"
+                        required>
+                    <select name="congregacao" id="cadastro_congregacao" required>
+                        <option value="" disabled selected>Selecione uma Congregação</option>
+                        <?php foreach ($congregacoes as $congregacao): ?>
+                            <option value="<?php echo $congregacao['id']; ?>">
+                                <?php echo htmlspecialchars($congregacao['nome']); ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
 
-            <label for="telefone">Telefone (opcional):</label>
-            <input type="text" name="telefone" id="telefone">
 
-            <label for="documento">Documento de Identificação:</label>
-            <input type="text" name="documento" id="documento" required>
+                    <select name="conjunto" id="cadastro_conjunto" aria-placeholder="Grupo ou Conjunto" required>
+                        <option value="">Selecione uma congregação primeiro</option>
+                    </select>
 
-            <label for="senha">Senha:</label>
-            <input type="password" name="senha" id="senha" required>
-
-            <label for="confirmar_senha">Confirmar Senha:</label>
-            <input type="password" name="confirmar_senha" id="confirmar_senha" required>
-
-            <label for="congregacao">Congregação:</label>
-            <select name="congregacao" id="congregacao" required>
-                <option value="">Selecione...</option>
-                <?php foreach ($congregacoes as $congregacao): ?>
-                    <option value="<?php echo $congregacao['id']; ?>"> <?php echo htmlspecialchars($congregacao['nome']); ?>
-                    </option>
-                <?php endforeach; ?>
-            </select>
-
-            <label for="conjunto">Conjunto:</label>
-            <select name="conjunto" id="conjunto" required>
-                <option value="">Selecione uma congregação primeiro</option>
-            </select>
-
-            <button type="submit">Cadastrar</button>
-        </form>
+                    <button type="submit">Cadastrar</button>
+                </form>
+            </div>
+        </div>
     </div>
     <script defer src="/umadat/files/public/js/cadastro.js"></script>
 </body>
+<footer>
+    <?php include __DIR__ . '/../templates/footer.php'; ?>
+</footer>
+
 
 </html>
