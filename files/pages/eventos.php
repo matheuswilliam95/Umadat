@@ -10,7 +10,7 @@ if (session_status() === PHP_SESSION_NONE) {
 $eventos = getPublicEvents();
 ?>
 <!DOCTYPE html>
-<html lang="pt-BR"> 
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -40,7 +40,7 @@ $eventos = getPublicEvents();
             <?php foreach ($eventos as $evento): ?>
                 <li class="evento-item">
                     <div class="evento-imagem">
-                        <img src="<?php echo htmlspecialchars($evento['imagem_capa'] ?? '/public/uploads/default_evento.jpg'); ?>"
+                        <img src="<?php echo PASTA_BASE . htmlspecialchars($evento['imagem_capa'] ?? '/public/uploads/default_evento.jpg'); ?>"
                             alt="<?php echo htmlspecialchars($evento['titulo']); ?>">
 
                     </div>
