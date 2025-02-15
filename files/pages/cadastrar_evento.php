@@ -77,25 +77,25 @@ function createEvent($eventData)
                     <p class="error-message"> <?php echo $error; ?> </p>
                 <?php endif; ?>
                 <form action="cadastrar_evento.php" method="POST">
-                    <label>Descrição do Evento</label>
+                    <label class="cadastro_evento">Descrição do Evento</label>
                     <input type="hidden" name="csrf_token" value="<?php echo generateCSRFToken(); ?>">
                     <input type="text" name="titulo" id="titulo" required placeholder="Título do Evento">
                     <textarea name="descricao" id="descricao" placeholder="Descrição" required></textarea>
 
 
-                    <label>Início do Evento</label>
+                    <label class="cadastro_evento">Início do Evento</label>
                     <input type="date" name="data_inicio" id="data_inicio" placeholder="Data de Início" required>
                     <input type="time" name="horario_inicio" id="horario_inicio" placeholder="Horário de Início">
                     <label>Término do Evento</label>
                     <input type="date" name="data_fim" id="data_fim" placeholder="Data de Fim" required>
                     <input type="time" name="horario_fim" id="horario_fim" placeholder="Horário de Fim">
 
-                    <label>Sobre o Evento</label>
+                    <label class="cadastro_evento">Sobre o Evento</label>
                     <input type="text" name="local" id="local" placeholder="Local do Evento">
                     <input type="number" name="valor" id="valor" step="0.01" placeholder="Valor do Evento">
 
 
-                    <label>Organizador</label>
+                    <label class="cadastro_evento">Organizador</label>
                     <input type="text" name="responsavel_nome" id="responsavel_nome"
                         placeholder="Organizador do Evento">
                     <input type="text" name="responsavel_contato" id="responsavel_contato"
@@ -105,7 +105,7 @@ function createEvent($eventData)
                         <option value="restrito">Restrito</option>
                     </select>
 
-                    <label>Data limite para Inscrição</label>
+                    <label class="cadastro_evento">Data limite para Inscrição</label>
                     <input type="date" name="data_limite_inscricao" id="data_limite_inscricao"
                         placeholder="Data Limite para Inscrição">
                     <button type="submit">Cadastrar Evento</button>
