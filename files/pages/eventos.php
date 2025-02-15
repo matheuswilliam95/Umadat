@@ -40,24 +40,8 @@ $eventos = getPublicEvents();
             <?php foreach ($eventos as $evento): ?>
                 <li class="evento-item">
                     <div class="evento-imagem">
-                        <?php
-                        // Caminho da imagem informada no banco de dados
-                        $imagem = isset($evento['imagem_capa']) && !empty($evento['imagem_capa'])
-                            ? PASTA_BASE . htmlspecialchars($evento['imagem_capa'])
-                            : '';
-
-                        // Caminho absoluto no servidor para verificar a existência do arquivo
-                        $caminho_absoluto = $_SERVER['DOCUMENT_ROOT'] . str_replace(PASTA_BASE, '/', $imagem);
-
-                        // Se a imagem não for informada ou não existir, usar a imagem padrão
-                        if (!$imagem || !file_exists($caminho_absoluto)) {
-                            $imagem = PASTA_BASE . 'public/img/default_evento.jpg';
-                        }
-                        ?>
-
-                        <img src="<?php echo $imagem; ?>" alt="<?php echo htmlspecialchars($evento['titulo']); ?>">
-
-
+                        <img src="<?php echo PASTA_BASE . htmlspecialchars($evento['imagem_capa'] ??  PASTA_BASE . 'public/img/default_evento.jpg'); ?>"
+                            alt="<?php echo htmlspecialchars($evento['titulo']); ?>">
 
                     </div>
                     <div class="evento-descricao">
