@@ -32,6 +32,10 @@ $relatedEvents = getRelatedEvents($eventId);
     <script defer src="<?php echo PASTA_BASE; ?>public/js/evento.js"></script>
 </head>
 
+<header>
+    <?php include __DIR__ . '/../templates/header.php'; ?>
+</header>
+
 <body>
     <div class="main_container">
         <div class="container">
@@ -70,5 +74,8 @@ $relatedEvents = getRelatedEvents($eventId);
         </div>
     </div>
 </body>
+<footer>
+    <?php include __DIR__ . '/../templates/footer.php'; ?>
+</footer>
 
 </html>
