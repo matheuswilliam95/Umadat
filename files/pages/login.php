@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="main_container">
         <div class="container container_login">
-            <h2>Login</h2>
+            <h2>Entre e Participe!</h2>
             <?php if (!empty($erro)): ?>
                 <p class="error-message">
                     <?php echo htmlspecialchars($erro); ?>
@@ -64,7 +64,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </form>
             <div class="login_links">
                 <a class="link_login" href="recuperar_senha.php">Esqueceu a senha?</a>
-                <a class="link_login" href="cadastro.php">Criar uma conta</a>
+                <a class="criar_conta_BT" href="cadastro.php">
+                    Criar uma conta
+                </a>
             </div>
         </div>
     </div>
