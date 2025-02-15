@@ -52,7 +52,7 @@ $congregacoes = getCongregacoes();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro - <?php echo SITE_NAME; ?></title>
     <link rel="stylesheet" href="<?php echo PASTA_BASE; ?>public/css/style.css?v=<?php echo time(); ?>">
-    <script defer src="<?php echo PASTA_BASE; ?>public/js/main.js"></script>
+    <script defer src="<?php echo PASTA_BASE; ?>public/js/main.js?v=<?php echo time(); ?>"></script>
 </head>
 
 <body>
