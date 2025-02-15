@@ -50,6 +50,15 @@ function createEvent($eventData)
     $stmt = $db->prepare($sql);
     return $stmt->execute($eventData);
 }
+
+function getUserRole($user_id)
+{
+    global $db;
+    $stmt = $db->prepare("SELECT role FROM usuarios WHERE id = :id");
+    $stmt->execute(['id' => $user_id]);
+    return $stmt->fetchColumn();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
