@@ -33,6 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Criar evento no banco
         if (createEvent(compact('titulo', 'descricao', 'data_inicio', 'horario_inicio', 'data_fim', 'horario_fim', 'local', 'valor', 'data_limite_inscricao', 'responsavel_nome', 'responsavel_contato', 'tipo', 'criado_por'))) {
+            $evento_id = $pdo->lastInsertId(); // Obtém o ID do evento recém-criado
+
             $caminho_imagem = rtrim(PASTA_BASE, '/') . "/public/uploads/$evento_id/capa.jpg";
             $upload_dir = rtrim(PASTA_BASE, '/') . "/public/uploads/$evento_id/";
 
