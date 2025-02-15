@@ -46,23 +46,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <div class="login-container">
-        <h2>Login</h2>
-        <?php if (!empty($erro)): ?>
-            <p class="error-message"><?php echo htmlspecialchars($erro); ?></p>
-        <?php endif; ?>
-        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
-            <label for="email">E-mail:</label>
-            <input type="email" name="email" id="email" required>
+    <div class="main_container">
+        
+        <div class="container">
+            <div class="login-container">
+                <h2>Login</h2>
+                <?php if (!empty($erro)): ?>
+                    <p class="error-message"><?php echo htmlspecialchars($erro); ?></p>
+                <?php endif; ?>
+                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
+                    <label for="email">E-mail:</label>
+                    <input type="email" name="email" id="email" required>
 
-            <label for="senha">Senha:</label>
-            <input type="password" name="senha" id="senha" required>
+                    <label for="senha">Senha:</label>
+                    <input type="password" name="senha" id="senha" required>
 
-            <button type="submit" class="login-btn">Entrar</button>
-        </form>
-        <div class="login-links">
-            <a href="recuperar_senha.php">Esqueceu a senha?</a>
-            <a href="cadastro.php">Criar uma conta</a>
+                    <button type="submit" class="login-btn">Entrar</button>
+                </form>
+                <div class="login-links">
+                    <a href="recuperar_senha.php">Esqueceu a senha?</a>
+                    <a href="cadastro.php">Criar uma conta</a>
+                </div>
+            </div>
         </div>
     </div>
 </body>
