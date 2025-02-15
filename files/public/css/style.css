@@ -142,7 +142,8 @@ form {
     color: #969696;
 }
 
-.footer_links a {
+.footer_links a,
+.footer_copy {
     color: #969696;
 }
 
