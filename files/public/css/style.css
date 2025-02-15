@@ -448,7 +448,7 @@ header {
         margin-bottom: 10px;
     }
 
-    footer {
+    .mobile_footer {
         box-sizing: border-box;
     }
 }
