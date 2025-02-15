@@ -40,8 +40,9 @@ $eventos = getPublicEvents();
             <?php foreach ($eventos as $evento): ?>
                 <li class="evento-item">
                     <div class="evento-imagem">
-                        <img src="<?php echo htmlspecialchars($evento['imagem']); ?>"
+                        <img src="<?php echo htmlspecialchars($evento['imagem_capa'] ?? '/public/uploads/default_evento.jpg'); ?>"
                             alt="<?php echo htmlspecialchars($evento['titulo']); ?>">
+
                     </div>
                     <div class="evento-descricao">
                         <h3><?php echo htmlspecialchars($evento['titulo']); ?></h3>
