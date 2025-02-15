@@ -16,8 +16,8 @@ $eventos = getPublicEvents();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eventos - <?php echo SITE_NAME; ?></title>
-    <link rel="stylesheet" href="<?php echo PASTA_BASE; ?>public/css/style.css">
-    <script defer src="<?php echo PASTA_BASE; ?>public/js/eventos.js"></script>
+    <script defer src="<?php echo PASTA_BASE; ?>public/js/main.js"></script>
+    <link rel="stylesheet" href="<?php echo PASTA_BASE; ?>public/css/style.css?v=<?php echo time(); ?>">
 </head>
 
 <body>
