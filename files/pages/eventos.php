@@ -31,7 +31,7 @@ $eventos = getPublicEvents();
             <h2>Eventos Públicos</h2>
             <form id="filtro-form">
                 <input type="text" name="titulo" placeholder="Buscar por nome do evento">
-                <input type="date" name="data_inicio">
+                <input type="date" name="data_inicio" placeholder="Data de início">
                 <select name="tipo">
                     <option value="">Todos os tipos</option>
                     <option value="campo">Campo</option>
