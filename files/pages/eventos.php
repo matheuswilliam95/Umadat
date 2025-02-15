@@ -40,20 +40,7 @@ $eventos = getPublicEvents();
             <?php foreach ($eventos as $evento): ?>
                 <li class="evento-item">
                     <div class="evento-imagem">
-                        <?php
-                        // Define a imagem padrão
-                        $defaultImage = PASTA_BASE . 'public/img/default_evento.jpg';
-
-                        // Obtém a imagem cadastrada e monta o caminho completo
-                        $imagemCapa = PASTA_BASE . ($evento['imagem_capa'] ?? '');
-                        $imagemCapaFinal = $defaultImage; // Define como padrão inicialmente
-                    
-                        // Verifica se o caminho da imagem é válido
-                        if (!empty($evento['imagem_capa']) && @getimagesize($imagemCapa)) {
-                            $imagemCapaFinal = $imagemCapa;
-                        }
-                        ?>
-                        <img src="<?php echo htmlspecialchars($imagemCapaFinal); ?>"
+                        <img src="<?php echo PASTA_BASE . htmlspecialchars($evento['imagem_capa'] ??  PASTA_BASE . 'public/img/default_evento.jpg'); ?>"
                             alt="<?php echo htmlspecialchars($evento['titulo']); ?>">
 
                     </div>
