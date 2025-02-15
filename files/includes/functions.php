@@ -89,12 +89,13 @@ function formatDate($date)
     return date("d/m/Y H:i", strtotime($date));
 }
 
-// Retorna o papel de um usuário no sistema
-function getUserRole($userId)
+
+function getUserRole($user_id)
 {
-    $sql = "SELECT role FROM usuarios WHERE id = ?";
-    $result = fetchSingleRow($sql, [$userId]);
-    return $result ? $result['role'] : null;
+    global $db;
+    $stmt = $db->prepare("SELECT role FROM usuarios WHERE id = :id");
+    $stmt->execute(['id' => $user_id]);
+    return $stmt->fetchColumn();
 }
 
 
