@@ -44,24 +44,13 @@ $eventos = getPublicEvents();
                         // Define a imagem padrão
                         $defaultImage = PASTA_BASE . 'public/img/default_evento.jpg';
 
-                        // Obtém a imagem cadastrada (pode vir vazia ou nula)
-                        $imagemCapa = $evento['imagem_capa'] ?? '';
-                        $imagemCapaFinal = $defaultImage; // Valor padrão
+                        // Obtém a imagem cadastrada e monta o caminho completo
+                        $imagemCapa = PASTA_BASE . ($evento['imagem_capa'] ?? '');
+                        $imagemCapaFinal = $defaultImage; // Define como padrão inicialmente
                     
-                        if (!empty($imagemCapa)) {
-                            // Verifica se o valor é uma URL completa
-                            if (preg_match('/^https?:\/\//', $imagemCapa)) {
-                                // Tenta obter informações da imagem via URL
-                                if (@getimagesize($imagemCapa)) {
-                                    $imagemCapaFinal = $imagemCapa;
-                                }
-                            } else {
-                                // Caso seja um caminho relativo, monta o caminho completo
-                                $caminhoImagem = PASTA_BASE . $imagemCapa;
-                                if (file_exists($caminhoImagem)) {
-                                    $imagemCapaFinal = $caminhoImagem;
-                                }
-                            }
+                        // Verifica se o caminho da imagem é válido
+                        if (!empty($evento['imagem_capa']) && @getimagesize($imagemCapa)) {
+                            $imagemCapaFinal = $imagemCapa;
                         }
                         ?>
                         <img src="<?php echo htmlspecialchars($imagemCapaFinal); ?>"

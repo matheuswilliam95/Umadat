@@ -153,6 +153,12 @@ form {
     color: #24869e;
 }
 
+@media screen and (max-width: 600px) {
+    .desktop_footer {
+        position: relative;
+    }
+}
+
 /*  --------------------------------- Cadastro --------------------------- */
 .cadastro_container {
     width: 400px;
