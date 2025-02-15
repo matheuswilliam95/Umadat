@@ -18,8 +18,8 @@ require_once __DIR__ . '/../includes/functions.php';
 <header class="mobile-header">
     <div class="logo">
         <a href="<?php echo BASE_URL; ?>">
-            <img src="/public/images/logo.png" alt="Logo da Igreja"
-                onerror="this.src='/public/images/placeholder-logo.png';">
+            <img src="/public/img/logo.png" alt="Logo da Igreja"
+                onerror="this.src='/public/images/logo_placeholder.png';">
         </a>
     </div>
     <nav class="mobile-nav">
