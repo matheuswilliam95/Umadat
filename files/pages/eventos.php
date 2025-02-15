@@ -18,15 +18,37 @@ $eventos = getPublicEvents();
     <title>Eventos - <?php echo SITE_NAME; ?></title>
     <script defer src="<?php echo PASTA_BASE; ?>public/js/main.js"></script>
     <link rel="stylesheet" href="<?php echo PASTA_BASE; ?>public/css/style.css?v=<?php echo time(); ?>">
-</head>
+    <style>
+        /* Estilos básicos para o slider e a galeria */
+        .evento-slider {
+            display: flex;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
 
+        .evento-slide {
+            flex: 0 0 100%;
+            box-sizing: border-box;
+            padding: 10px;
+        }
+
+        .galeria-container {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+        }
+
+        .galeria-container img {
+            max-height: 150px;
+        }
+    </style>
+</head>
 <header>
     <?php include __DIR__ . '/../templates/header.php'; ?>
 </header>
 
 <body>
     <div class="main_container">
-
         <div class="eventos-container">
             <h2>Eventos Públicos</h2>
             <form id="filtro-form">
@@ -46,25 +68,49 @@ $eventos = getPublicEvents();
                 <?php foreach ($eventos as $evento): ?>
                     <li class="evento-item">
                         <div class="evento-slider">
-                            <!-- Primeira parte: Capa + Botão -->
+                            <!-- Slide 1: Capa + Botão -->
                             <div class="evento-slide">
                                 <div class="evento-imagem">
-                                    <img src="<?php echo PASTA_BASE . htmlspecialchars($evento['imagem_capa'] ?? PASTA_BASE . 'public/img/default_evento.jpg'); ?>"
+                                    <img src="<?php echo PASTA_BASE . htmlspecialchars($evento['imagem_capa'] ?? (PASTA_BASE . 'public/img/default_evento.jpg')); ?>"
                                         alt="<?php echo htmlspecialchars($evento['titulo']); ?>">
                                 </div>
                                 <a href="evento.php?id=<?php echo $evento['id']; ?>" class="detalhes-btn">Ver Detalhes</a>
                             </div>
 
-                            <!-- Segunda parte: Detalhes do evento -->
+                            <!-- Slide 2: Detalhes do Evento -->
                             <div class="evento-slide">
                                 <div class="evento-descricao">
                                     <h3><?php echo htmlspecialchars($evento['titulo']); ?></h3>
                                     <p><strong>Data:</strong> <?php echo formatDate($evento['data_inicio']); ?></p>
-                                    <p><strong>Horário:</strong>
+                                    <p>
+                                        <strong>Horário:</strong>
                                         <?php echo $evento['horario_inicio'] ? date('H:i', strtotime($evento['horario_inicio'])) : 'N/A'; ?>
                                     </p>
                                     <p><strong>Local:</strong> <?php echo htmlspecialchars($evento['local'] ?? 'N/A'); ?>
                                     </p>
+                                </div>
+                            </div>
+
+                            <!-- Slide 3: Galeria de Fotos -->
+                            <div class="evento-slide">
+                                <div class="evento-galeria">
+                                    <h3>Galeria de Fotos</h3>
+                                    <?php
+                                    // Consulta as imagens associadas a este evento
+                                    $stmt = $pdo->prepare("SELECT caminho_imagem FROM evento_imagens WHERE evento_id = ?");
+                                    $stmt->execute([$evento['id']]);
+                                    $imagens = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                                    ?>
+                                    <?php if (count($imagens) > 0): ?>
+                                        <div class="galeria-container">
+                                            <?php foreach ($imagens as $imagem): ?>
+                                                <img src="<?php echo PASTA_BASE . 'public/uploads/' . $evento['id'] . '/' . htmlspecialchars($imagem['caminho_imagem']); ?>"
+                                                    alt="Imagem do evento <?php echo htmlspecialchars($evento['titulo']); ?>">
+                                            <?php endforeach; ?>
+                                        </div>
+                                    <?php else: ?>
+                                        <p>Nenhuma foto disponível.</p>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
@@ -74,24 +120,25 @@ $eventos = getPublicEvents();
         </div>
     </div>
     <script>
+        // Lógica do slider para múltiplos slides (capa, detalhes e galeria)
         document.querySelectorAll('.evento-slider').forEach(slider => {
+            const slides = slider.querySelectorAll('.evento-slide');
+            let currentIndex = 0;
             let startX = 0;
-            let moved = false;
 
             slider.addEventListener('touchstart', (e) => {
                 startX = e.touches[0].clientX;
             });
 
-            slider.addEventListener('touchmove', (e) => {
-                let diff = e.touches[0].clientX - startX;
-                moved = Math.abs(diff) > 50;
-            });
-
-            slider.addEventListener('touchend', () => {
-                if (moved) {
-                    slider.style.transform =
-                        slider.style.transform === 'translateX(-100%)' ? 'translateX(0)' : 'translateX(-100%)';
+            slider.addEventListener('touchend', (e) => {
+                const endX = e.changedTouches[0].clientX;
+                const diff = endX - startX;
+                if (diff < -50 && currentIndex < slides.length - 1) {
+                    currentIndex++;
+                } else if (diff > 50 && currentIndex > 0) {
+                    currentIndex--;
                 }
+                slider.style.transform = `translateX(-${currentIndex * 100}%)`;
             });
         });
     </script>
