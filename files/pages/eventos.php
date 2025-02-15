@@ -41,28 +41,30 @@ $eventos = getPublicEvents();
                 <li class="evento-item">
                     <div class="evento-imagem">
                         <?php
-                        // Caminho da imagem padrão
-                        $imagem_padrao = PASTA_BASE . 'public/img/default_evento.jpg';
+                        // Define a imagem padrão
+                        $defaultImage = PASTA_BASE . 'public/img/default_evento.jpg';
 
-                        // Verifica se há uma imagem definida
-                        $imagem_capa = !empty($evento['imagem_capa']) ? PASTA_BASE . $evento['imagem_capa'] : $imagem_padrao;
-
-                        // Verifica se a função já existe antes de declará-la
-                        if (!function_exists('imagemValida')) {
-                            function imagemValida($url)
-                            {
-                                $headers = @get_headers($url);
-                                return $headers && strpos($headers[0], '200') !== false && strpos($headers[0], 'image') !== false;
+                        // Obtém a imagem cadastrada (pode vir vazia ou nula)
+                        $imagemCapa = $evento['imagem_capa'] ?? '';
+                        $imagemCapaFinal = $defaultImage; // Valor padrão
+                    
+                        if (!empty($imagemCapa)) {
+                            // Verifica se o valor é uma URL completa
+                            if (preg_match('/^https?:\/\//', $imagemCapa)) {
+                                // Tenta obter informações da imagem via URL
+                                if (@getimagesize($imagemCapa)) {
+                                    $imagemCapaFinal = $imagemCapa;
+                                }
+                            } else {
+                                // Caso seja um caminho relativo, monta o caminho completo
+                                $caminhoImagem = PASTA_BASE . $imagemCapa;
+                                if (file_exists($caminhoImagem)) {
+                                    $imagemCapaFinal = $caminhoImagem;
+                                }
                             }
                         }
-
-                        // Se a imagem definida não for válida, usa a imagem padrão
-                        if (!imagemValida($imagem_capa)) {
-                            $imagem_capa = $imagem_padrao;
-                        }
                         ?>
-
-                        <img src="<?php echo htmlspecialchars($imagem_capa); ?>"
+                        <img src="<?php echo htmlspecialchars($imagemCapaFinal); ?>"
                             alt="<?php echo htmlspecialchars($evento['titulo']); ?>">
 
                     </div>
