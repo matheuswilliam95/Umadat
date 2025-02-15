@@ -96,5 +96,8 @@ $eventos = getPublicEvents();
         });
     </script>
 </body>
+<footer>
+    <?php include __DIR__ . '/../templates/footer.php'; ?>
+</footer>
 
 </html>
