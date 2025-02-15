@@ -40,8 +40,11 @@ $eventos = getPublicEvents();
             <?php foreach ($eventos as $evento): ?>
                 <li class="evento-item">
                     <div class="evento-imagem">
-                        <img src="<?php echo PASTA_BASE . htmlspecialchars($evento['imagem_capa'] ??  PASTA_BASE . 'public/img/default_evento.jpg'); ?>"
-                            alt="<?php echo htmlspecialchars($evento['titulo']); ?>">
+                        <img src="<?php
+                        $imagem = PASTA_BASE . ($evento['imagem_capa'] ?? 'public/img/default_evento.jpg');
+                        echo file_exists($_SERVER['DOCUMENT_ROOT'] . str_replace(PASTA_BASE, '/', $imagem)) ? $imagem : PASTA_BASE . 'public/img/default_evento.jpg';
+                        ?>" alt="<?php echo htmlspecialchars($evento['titulo']); ?>">
+
 
                     </div>
                     <div class="evento-descricao">
