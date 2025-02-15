@@ -101,3 +101,7 @@ form {
     flex-direction: column;
     width: 100%;
 }
+
+.container_login{
+    max-width: 400px;
+}

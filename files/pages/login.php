@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
     <div class="main_container">
-        <div class="container">
+        <div class="container container_login"> 
             <h2>Login</h2>
             <?php if (!empty($erro)): ?>
             <p class="error-message">
