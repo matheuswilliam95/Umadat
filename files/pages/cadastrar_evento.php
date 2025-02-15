@@ -77,13 +77,19 @@ function createEvent($eventData)
                     <p class="error-message"> <?php echo $error; ?> </p>
                 <?php endif; ?>
                 <form action="cadastrar_evento.php" method="POST">
+                    <label>Descrição do Evento</label>
                     <input type="hidden" name="csrf_token" value="<?php echo generateCSRFToken(); ?>">
                     <input type="text" name="titulo" id="titulo" required placeholder="Título do Evento">
                     <textarea name="descricao" id="descricao" placeholder="Descrição" required></textarea>
+
+
+                    <label>Início do Evento</label>
                     <input type="date" name="data_inicio" id="data_inicio" placeholder="Data de Início" required>
                     <input type="time" name="horario_inicio" id="horario_inicio" placeholder="Horário de Início">
                     <input type="date" name="data_fim" id="data_fim" placeholder="Data de Fim" required>
                     <input type="time" name="horario_fim" id="horario_fim" placeholder="Horário de Fim">
+
+                    <label>Término do Evento</label>
                     <input type="text" name="local" id="local" placeholder="Local do Evento">
                     <input type="number" name="valor" id="valor" step="0.01" placeholder="Valor do Evento">
                     <input type="date" name="data_limite_inscricao" id="data_limite_inscricao"
