@@ -41,12 +41,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - <?php echo SITE_NAME; ?></title>
     <script defer src="<?php echo PASTA_BASE; ?>public/js/main.js"></script>
-    <link rel="stylesheet" href="<?php echo PASTA_BASE; ?>public/css/style.css">
+    <link rel="stylesheet" href="<?php echo PASTA_BASE; ?>public/css/style.css?v=<?php echo time(); ?>">
 
 </head>
 
 <body>
-    <div class="main_container">        
+    <div class="main_container">
         <div class="container">
             <div class="login-container">
                 <h2>Login</h2>
