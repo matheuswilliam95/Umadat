@@ -19,8 +19,8 @@ require_once __DIR__ . '/../includes/functions.php';
     <header class="mobile-header">
         <div class="logo">
             <a href="<?php echo BASE_URL; ?>">
-                <img src="/public/images/logo.png" alt="Logo da Igreja"
-                    onerror="this.src='/public/images/placeholder-logo.png';">
+                <img src="<?php echo PASTA_BASE . 'public/img/logo.jpg'; ?>" alt="Logo da Igreja"
+                    onerror="this.src='/public/img/placeholder-logo.png';">
             </a>
         </div>
         <nav class="mobile-nav">
