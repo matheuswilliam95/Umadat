@@ -86,14 +86,13 @@ function createEvent($eventData)
                     <label>Início do Evento</label>
                     <input type="date" name="data_inicio" id="data_inicio" placeholder="Data de Início" required>
                     <input type="time" name="horario_inicio" id="horario_inicio" placeholder="Horário de Início">
+                    <label>Término do Evento</label>
                     <input type="date" name="data_fim" id="data_fim" placeholder="Data de Fim" required>
                     <input type="time" name="horario_fim" id="horario_fim" placeholder="Horário de Fim">
 
-                    <label>Término do Evento</label>
+                    <label>Sobre o Evento</label>
                     <input type="text" name="local" id="local" placeholder="Local do Evento">
                     <input type="number" name="valor" id="valor" step="0.01" placeholder="Valor do Evento">
-                    <input type="date" name="data_limite_inscricao" id="data_limite_inscricao"
-                        placeholder="Data Limite para Inscrição">
                     <input type="text" name="responsavel_nome" id="responsavel_nome"
                         placeholder="Organizador do Evento">
                     <input type="text" name="responsavel_contato" id="responsavel_contato"
@@ -103,6 +102,9 @@ function createEvent($eventData)
                         <option value="restrito">Restrito</option>
                     </select>
 
+                    <label>Data limite para Inscrição</label>
+                    <input type="date" name="data_limite_inscricao" id="data_limite_inscricao"
+                        placeholder="Data Limite para Inscrição">
                     <button type="submit">Cadastrar Evento</button>
                 </form>
             </div>
