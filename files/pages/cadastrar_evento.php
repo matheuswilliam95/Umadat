@@ -39,6 +39,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
+
+// Other function definitions
+
+function createEvent($eventData)
+{
+    global $db;
+    $sql = "INSERT INTO eventos (titulo, descricao, data_inicio, horario_inicio, data_fim, horario_fim, local, valor, data_limite_inscricao, responsavel_nome, responsavel_contato, tipo, criado_por) 
+            VALUES(: titulo, : descricao, : data_inicio, : horario_inicio, : data_fim, : horario_fim, : local, : valor, : data_limite_inscricao, : responsavel_nome, : responsavel_contato, : tipo, : criado_por)";
+    $stmt = $db->prepare($sql);
+    return $stmt->execute($eventData);
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -101,6 +112,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <button type="submit">Cadastrar Evento</button>
         </form>
     </div>
+    <script>
+
+    </script>
 </body>
 
 </html>
