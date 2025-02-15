@@ -141,3 +141,23 @@ form {
     font: 1em sans-serif;
     color: #969696;
 }
+
+.footer_links a {
+    color: #969696;
+}
+
+.footer_links a:hover {
+    color: #24869e;
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .container {
+        width: 95%;
+    }
+}
