@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../includes/config.php';
 ?>
-<footer class="mobile_footer desktop_footer">
+<div class="mobile_footer desktop_footer">
     <div class="footer_links">
         <a href="<?php echo BASE_URL; ?>sobre.php">Sobre</a>
         <a href="<?php echo BASE_URL; ?>contato.php">Contato</a>
@@ -17,9 +17,8 @@ require_once __DIR__ . '/../includes/config.php';
         <p>&copy; <?php echo date('Y'); ?> <?php echo SITE_NAME; ?>. Todos os direitos reservados.</p>
         <p>Desenvolvido com ❤️ para a comunidade.</p>
     </div>
-</footer>
 
-<script defer src="<?php echo PASTA_BASE; ?>public/js/main.js"></script>
-</body>
+    <script defer src="<?php echo PASTA_BASE; ?>public/js/main.js"></script>
+</div>
 
 </html>
