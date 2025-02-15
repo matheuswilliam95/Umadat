@@ -39,13 +39,19 @@ $eventos = getPublicEvents();
         <ul class="eventos-lista">
             <?php foreach ($eventos as $evento): ?>
                 <li class="evento-item">
-                    <h3><?php echo htmlspecialchars($evento['titulo']); ?></h3>
-                    <p><strong>Data:</strong> <?php echo formatDate($evento['data_inicio']); ?></p>
-                    <p><strong>Horário:</strong>
-                        <?php echo $evento['horario_inicio'] ? date('H:i', strtotime($evento['horario_inicio'])) : 'N/A'; ?>
-                    </p>
-                    <p><strong>Local:</strong> <?php echo htmlspecialchars($evento['local'] ?? 'N/A'); ?></p>
-                    <a href="evento.php?id=<?php echo $evento['id']; ?>" class="detalhes-btn">Ver Detalhes</a>
+                    <div class="evento-imagem">
+                        <img src="<?php echo htmlspecialchars($evento['imagem']); ?>"
+                            alt="<?php echo htmlspecialchars($evento['titulo']); ?>">
+                    </div>
+                    <div class="evento-descricao">
+                        <h3><?php echo htmlspecialchars($evento['titulo']); ?></h3>
+                        <p><strong>Data:</strong> <?php echo formatDate($evento['data_inicio']); ?></p>
+                        <p><strong>Horário:</strong>
+                            <?php echo $evento['horario_inicio'] ? date('H:i', strtotime($evento['horario_inicio'])) : 'N/A'; ?>
+                        </p>
+                        <p><strong>Local:</strong> <?php echo htmlspecialchars($evento['local'] ?? 'N/A'); ?></p>
+                        <a href="evento.php?id=<?php echo $evento['id']; ?>" class="detalhes-btn">Ver Detalhes</a>
+                    </div>
                 </li>
             <?php endforeach; ?>
         </ul>
