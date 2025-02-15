@@ -114,7 +114,7 @@ function updateEventImage($evento_id, $caminho_imagem)
                 <?php if (isset($error)): ?>
                     <p class="error-message"> <?php echo $error; ?> </p>
                 <?php endif; ?>
-                <form action="cadastrar_evento.php" method="POST">
+                <form action="cadastrar_evento.php" method="POST" enctype="multipart/form-data">
                     <label class="cadastro_evento">Descrição do Evento</label>
                     <input type="hidden" name="csrf_token" value="<?php echo generateCSRFToken(); ?>">
                     <input type="text" name="titulo" id="titulo" required placeholder="Título do Evento">
