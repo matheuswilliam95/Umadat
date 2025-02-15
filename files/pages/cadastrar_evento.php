@@ -33,30 +33,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Criar evento no banco
         if (createEvent(compact('titulo', 'descricao', 'data_inicio', 'horario_inicio', 'data_fim', 'horario_fim', 'local', 'valor', 'data_limite_inscricao', 'responsavel_nome', 'responsavel_contato', 'tipo', 'criado_por'))) {
-            $evento_id = $pdo->lastInsertId(); // Obtém o ID do evento recém-criado
-            // Remove barras extras no caminho da imagem
             $caminho_imagem = rtrim(PASTA_BASE, '/') . "/public/uploads/$evento_id/capa.jpg";
+            $upload_dir = rtrim(PASTA_BASE, '/') . "/public/uploads/$evento_id/";
 
+            // Log do caminho gerado
+            error_log("Upload dir: " . $upload_dir);
 
-            // Upload da imagem da capa
             if (!empty($_FILES['capa']['name'])) {
-                $upload_dir = rtrim(PASTA_BASE, '/') . "/public/uploads/$evento_id/";
                 if (!is_dir($upload_dir)) {
-                    mkdir($upload_dir, 0777, true);
+                    if (!mkdir($upload_dir, 0777, true)) {
+                        error_log("Erro ao criar diretório: " . $upload_dir);
+                    } else {
+                        error_log("Diretório criado: " . $upload_dir);
+                    }
                 }
 
-                $caminho_arquivo = $upload_dir . "capa.jpg"; // Salvando como JPG
+                $caminho_arquivo = $upload_dir . "capa.jpg";
 
-                if (move_uploaded_file($_FILES['capa']['tmp_name'], $caminho_arquivo)) {
-                    // Atualizar o evento com o caminho da imagem
-                    updateEventImage($evento_id, $caminho_imagem);
+                if ($_FILES['capa']['error'] === UPLOAD_ERR_OK) {
+                    if (!move_uploaded_file($_FILES['capa']['tmp_name'], $caminho_arquivo)) {
+                        error_log("Erro ao mover o arquivo para " . $caminho_arquivo);
+                    } else {
+                        error_log("Arquivo movido com sucesso: " . $caminho_arquivo);
+                    }
                 } else {
-                    $error = "Erro ao fazer upload da imagem.";
+                    error_log("Erro no upload: Código " . $_FILES['capa']['error']);
                 }
             }
-
-            header("Location: eventos.php?msg=Evento cadastrado com sucesso!");
-            exit;
         } else {
             $error = "Erro ao cadastrar evento. Verifique os dados e tente novamente.";
         }
