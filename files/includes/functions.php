@@ -188,13 +188,14 @@ function getEventRegistrations($eventId)
 }
 
 
-// Verifica se o usuário é administrador
 function checkAdmin()
 {
-    if (!isset($_SESSION['user_id']) || getUserRole($_SESSION['user_id']) !== 'super_admin') {
+    $role = getUserRole($_SESSION['user_id']);
+    if (!isset($_SESSION['user_id']) || !in_array($role, ['admin', 'super_admin'])) {
         die("Acesso negado.");
     }
 }
+
 
 // Exclui um evento e suas inscrições associadas
 function deleteEvent($eventId)
