@@ -65,58 +65,60 @@ function createEvent($eventData)
 </head>
 
 <body>
-    <div class="admin-container">
-        <h2>Cadastrar Novo Evento</h2>
-        <?php if (isset($error)): ?>
-            <p class="error-message"> <?php echo $error; ?> </p>
-        <?php endif; ?>
-        <form action="cadastrar_evento.php" method="POST">
-            <input type="hidden" name="csrf_token" value="<?php echo generateCSRFToken(); ?>">
-            <label for="titulo">Título do Evento:</label>
-            <input type="text" name="titulo" id="titulo" required>
+    <div class="main_container">
+        <div class="container">
 
-            <label for="descricao">Descrição:</label>
-            <textarea name="descricao" id="descricao" required></textarea>
+            <div class="admin-container">
+                <h2>Cadastrar Novo Evento</h2>
+                <?php if (isset($error)): ?>
+                    <p class="error-message"> <?php echo $error; ?> </p>
+                <?php endif; ?>
+                <form action="cadastrar_evento.php" method="POST">
+                    <input type="hidden" name="csrf_token" value="<?php echo generateCSRFToken(); ?>">
+                    <label for="titulo">Título do Evento:</label>
+                    <input type="text" name="titulo" id="titulo" required>
 
-            <label for="data_inicio">Data de Início:</label>
-            <input type="date" name="data_inicio" id="data_inicio" required>
+                    <label for="descricao">Descrição:</label>
+                    <textarea name="descricao" id="descricao" required></textarea>
 
-            <label for="horario_inicio">Horário de Início:</label>
-            <input type="time" name="horario_inicio" id="horario_inicio">
+                    <label for="data_inicio">Data de Início:</label>
+                    <input type="date" name="data_inicio" id="data_inicio" required>
 
-            <label for="data_fim">Data de Fim:</label>
-            <input type="date" name="data_fim" id="data_fim" required>
+                    <label for="horario_inicio">Horário de Início:</label>
+                    <input type="time" name="horario_inicio" id="horario_inicio">
 
-            <label for="horario_fim">Horário de Fim:</label>
-            <input type="time" name="horario_fim" id="horario_fim">
+                    <label for="data_fim">Data de Fim:</label>
+                    <input type="date" name="data_fim" id="data_fim" required>
 
-            <label for="local">Local:</label>
-            <input type="text" name="local" id="local">
+                    <label for="horario_fim">Horário de Fim:</label>
+                    <input type="time" name="horario_fim" id="horario_fim">
 
-            <label for="valor">Valor:</label>
-            <input type="number" name="valor" id="valor" step="0.01">
+                    <label for="local">Local:</label>
+                    <input type="text" name="local" id="local">
 
-            <label for="data_limite_inscricao">Data Limite para Inscrição:</label>
-            <input type="date" name="data_limite_inscricao" id="data_limite_inscricao">
+                    <label for="valor">Valor:</label>
+                    <input type="number" name="valor" id="valor" step="0.01">
 
-            <label for="responsavel_nome">Nome do Responsável:</label>
-            <input type="text" name="responsavel_nome" id="responsavel_nome">
+                    <label for="data_limite_inscricao">Data Limite para Inscrição:</label>
+                    <input type="date" name="data_limite_inscricao" id="data_limite_inscricao">
 
-            <label for="responsavel_contato">Contato do Responsável:</label>
-            <input type="text" name="responsavel_contato" id="responsavel_contato">
+                    <label for="responsavel_nome">Nome do Responsável:</label>
+                    <input type="text" name="responsavel_nome" id="responsavel_nome">
 
-            <label for="tipo">Público-Alvo:</label>
-            <select name="tipo" id="tipo" required>
-                <option value="publico">Público</option>
-                <option value="restrito">Restrito</option>
-            </select>
+                    <label for="responsavel_contato">Contato do Responsável:</label>
+                    <input type="text" name="responsavel_contato" id="responsavel_contato">
 
-            <button type="submit">Cadastrar Evento</button>
-        </form>
+                    <label for="tipo">Público-Alvo:</label>
+                    <select name="tipo" id="tipo" required>
+                        <option value="publico">Público</option>
+                        <option value="restrito">Restrito</option>
+                    </select>
+
+                    <button type="submit">Cadastrar Evento</button>
+                </form>
+            </div>
+        </div>
     </div>
-    <script>
-
-    </script>
 </body>
 
 </html>
