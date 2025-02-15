@@ -31,8 +31,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $criado_por = $_SESSION['user_id'];
 
+        // Criar evento no banco
         if (createEvent(compact('titulo', 'descricao', 'data_inicio', 'horario_inicio', 'data_fim', 'horario_fim', 'local', 'valor', 'data_limite_inscricao', 'responsavel_nome', 'responsavel_contato', 'tipo', 'criado_por'))) {
             $evento_id = $pdo->lastInsertId(); // Obtém o ID do evento recém-criado
+            $caminho_imagem = "public/uploads/$evento_id/capa.jpg";
 
             // Upload da imagem da capa
             if (!empty($_FILES['capa']['name'])) {
@@ -41,25 +43,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     mkdir($upload_dir, 0777, true);
                 }
 
-                $extensao = pathinfo($_FILES['capa']['name'], PATHINFO_EXTENSION);
-                $caminho_arquivo = $upload_dir . "capa.png";
+                $caminho_arquivo = $upload_dir . "capa.jpg"; // Salvando como JPG
 
                 if (move_uploaded_file($_FILES['capa']['tmp_name'], $caminho_arquivo)) {
-                    header("Location: eventos.php?msg=Evento cadastrado com sucesso!");
-                    exit;
+                    // Atualizar o evento com o caminho da imagem
+                    updateEventImage($evento_id, $caminho_imagem);
                 } else {
                     $error = "Erro ao fazer upload da imagem.";
                 }
-            } else {
-                header("Location: eventos.php?msg=Evento cadastrado com sucesso!");
-                exit;
             }
+
+            header("Location: eventos.php?msg=Evento cadastrado com sucesso!");
+            exit;
         } else {
             $error = "Erro ao cadastrar evento. Verifique os dados e tente novamente.";
         }
     }
 }
 
+// Função para criar evento
 function createEvent($eventData)
 {
     global $pdo;
@@ -68,7 +70,17 @@ function createEvent($eventData)
     $stmt = $pdo->prepare($sql);
     return $stmt->execute($eventData);
 }
+
+// Função para atualizar o caminho da imagem no banco
+function updateEventImage($evento_id, $caminho_imagem)
+{
+    global $pdo;
+    $sql = "UPDATE eventos SET imagem_capa = :imagem_capa WHERE id = :id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['imagem_capa' => $caminho_imagem, 'id' => $evento_id]);
+}
 ?>
+
 
 
 
@@ -130,7 +142,7 @@ function createEvent($eventData)
 
                     <label class="cadastro_evento">Capa do Evento</label>
                     <input type="file" name="capa" accept="image/png, image/jpeg">
-                    
+
                     <button type="submit">Cadastrar Evento</button>
                 </form>
             </div>
