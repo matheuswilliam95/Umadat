@@ -11,7 +11,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 // Redireciona se já estiver logado
 if (isset($_SESSION['usuario_id'])) {
-    header("Location: dashboard.php");
+    header("Location: eventos.php");
     exit;
 }
 
@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $senha = $_POST['senha'];
 
     if (login($email, $senha)) {
-        header("Location: dashboard.php");
+        header("Location: eventos.php");
         exit;
     } else {
         $erro = "E-mail ou senha inválidos.";
