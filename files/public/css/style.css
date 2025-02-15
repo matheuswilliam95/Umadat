@@ -447,4 +447,8 @@ header {
     .evento-descricao h3 {
         margin-bottom: 10px;
     }
+
+    footer {
+        box-sizing: border-box;
+    }
 }
