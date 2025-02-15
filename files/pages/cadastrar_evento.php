@@ -120,15 +120,15 @@ function updateEventImage($evento_id, $caminho_imagem)
                 <form action="cadastrar_evento.php" method="POST" enctype="multipart/form-data">
                     <label class="cadastro_evento">Descrição do Evento</label>
                     <input type="hidden" name="csrf_token" value="<?php echo generateCSRFToken(); ?>">
-                    <input type="text" name="titulo" id="titulo" required placeholder="Título do Evento">
-                    <textarea name="descricao" id="descricao" placeholder="Descrição" required></textarea>
+                    <input type="text" name="titulo" id="titulo" placeholder="Título do Evento">
+                    <textarea name="descricao" id="descricao" placeholder="Descrição"></textarea>
 
 
                     <label class="cadastro_evento">Início do Evento</label>
-                    <input type="date" name="data_inicio" id="data_inicio" placeholder="Data de Início" required>
+                    <input type="date" name="data_inicio" id="data_inicio" placeholder="Data de Início">
                     <input type="time" name="horario_inicio" id="horario_inicio" placeholder="Horário de Início">
                     <label>Término do Evento</label>
-                    <input type="date" name="data_fim" id="data_fim" placeholder="Data de Fim" required>
+                    <input type="date" name="data_fim" id="data_fim" placeholder="Data de Fim">
                     <input type="time" name="horario_fim" id="horario_fim" placeholder="Horário de Fim">
 
                     <label class="cadastro_evento">Sobre o Evento</label>
@@ -141,7 +141,7 @@ function updateEventImage($evento_id, $caminho_imagem)
                         placeholder="Organizador do Evento">
                     <input type="text" name="responsavel_contato" id="responsavel_contato"
                         placeholder="Telefone ou E-mail do Responsável">
-                    <select name="tipo" id="tipo" required placeholder="Público-Alvo">
+                    <select name="tipo" id="tipo" placeholder="Público-Alvo">
                         <option value="publico">Público</option>
                         <option value="restrito">Restrito</option>
                     </select>
