@@ -36,6 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $evento_id = $pdo->lastInsertId(); // Obtém o ID do evento recém-criado
             $upload_dir = __DIR__ . "/../public/uploads/$evento_id/";
             $upload_dir = rtrim($upload_dir, '/') . '/';
+            $caminho_banco = "public/uploads/$evento_id/capa.jpeg"; // Caminho salvo no banco
 
             error_log("Upload dir: " . $upload_dir);
 
@@ -55,6 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         error_log("Erro ao mover o arquivo para " . $caminho_arquivo);
                     } else {
                         error_log("Arquivo movido com sucesso: " . $caminho_arquivo);
+                        updateEventImage($evento_id, $caminho_banco);
                     }
                 } else {
                     error_log("Erro no upload: Código " . $_FILES['capa']['error']);
@@ -77,13 +79,14 @@ function createEvent($eventData)
 }
 
 // Função para atualizar o caminho da imagem no banco
-function updateEventImage($evento_id, $caminho_imagem)
+function updateEventImage($evento_id, $caminho_banco)
 {
     global $pdo;
     $sql = "UPDATE eventos SET imagem_capa = :imagem_capa WHERE id = :id";
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(['imagem_capa' => $caminho_imagem, 'id' => $evento_id]);
+    $stmt->execute(['imagem_capa' => $caminho_banco, 'id' => $evento_id]);
 }
+
 ?>
 
 
