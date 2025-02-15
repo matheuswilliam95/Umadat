@@ -151,15 +151,19 @@ function cancelEventRegistration($userId, $eventId)
     return executeQuery("DELETE FROM inscricoes WHERE usuario_id = ? AND evento_id = ?", [$userId, $eventId]);
 }
 
-// Função para buscar eventos públicos
+// Função para buscar eventos públicos, incluindo a imagem de capa
 function getPublicEvents()
 {
     global $pdo;
-    $sql = "SELECT id, titulo, data_inicio, horario_inicio, local FROM eventos WHERE tipo = 'publico' ORDER BY data_inicio ASC";
+    $sql = "SELECT id, titulo, data_inicio, horario_inicio, local, imagem_capa 
+            FROM eventos 
+            WHERE tipo = 'publico' 
+            ORDER BY data_inicio ASC";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
 
 // Obtém detalhes de um evento específico
 function getEventDetails($eventId)
