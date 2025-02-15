@@ -3,7 +3,6 @@ require_once __DIR__ . '/../includes/config.php';
 require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../includes/functions.php';
 
-
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -31,16 +30,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "Preencha todos os campos obrigatórios.";
     } else {
         $criado_por = $_SESSION['user_id'];
+
         if (createEvent(compact('titulo', 'descricao', 'data_inicio', 'horario_inicio', 'data_fim', 'horario_fim', 'local', 'valor', 'data_limite_inscricao', 'responsavel_nome', 'responsavel_contato', 'tipo', 'criado_por'))) {
-            header("Location: eventos.php?msg=Evento cadastrado com sucesso!");
-            exit;
+            $evento_id = $pdo->lastInsertId(); // Obtém o ID do evento recém-criado
+
+            // Upload da imagem da capa
+            if (!empty($_FILES['capa']['name'])) {
+                $upload_dir = __DIR__ . "/../public/uploads/$evento_id/";
+                if (!is_dir($upload_dir)) {
+                    mkdir($upload_dir, 0777, true);
+                }
+
+                $extensao = pathinfo($_FILES['capa']['name'], PATHINFO_EXTENSION);
+                $caminho_arquivo = $upload_dir . "capa.png";
+
+                if (move_uploaded_file($_FILES['capa']['tmp_name'], $caminho_arquivo)) {
+                    header("Location: eventos.php?msg=Evento cadastrado com sucesso!");
+                    exit;
+                } else {
+                    $error = "Erro ao fazer upload da imagem.";
+                }
+            } else {
+                header("Location: eventos.php?msg=Evento cadastrado com sucesso!");
+                exit;
+            }
         } else {
             $error = "Erro ao cadastrar evento. Verifique os dados e tente novamente.";
         }
     }
 }
-
-// Other function definitions
 
 function createEvent($eventData)
 {
@@ -50,9 +68,10 @@ function createEvent($eventData)
     $stmt = $pdo->prepare($sql);
     return $stmt->execute($eventData);
 }
-
-
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -108,6 +127,10 @@ function createEvent($eventData)
                     <label class="cadastro_evento">Data limite para Inscrição</label>
                     <input type="date" name="data_limite_inscricao" id="data_limite_inscricao"
                         placeholder="Data Limite para Inscrição">
+
+                    <label class="cadastro_evento">Capa do Evento</label>
+                    <input type="file" name="capa" accept="image/png, image/jpeg">
+                    
                     <button type="submit">Cadastrar Evento</button>
                 </form>
             </div>
