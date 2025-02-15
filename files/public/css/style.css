@@ -124,3 +124,18 @@ form {
 .criar_conta_BT:hover {
     background-color: #319929;
 }
+
+.desktop_footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f0f0f0;
+    padding: 0.5em;
+    text-align: center;
+}
+
+.footer_links {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
