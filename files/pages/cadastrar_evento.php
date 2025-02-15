@@ -37,7 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Remove barras extras no caminho da imagem
             $caminho_imagem = rtrim(PASTA_BASE, '/') . "/public/uploads/$evento_id/capa.jpg";
 
-            echo "<script>console.log('Caminho da imagem: " . addslashes($caminho_imagem) . "');</script>";
 
             // Upload da imagem da capa
             if (!empty($_FILES['capa']['name'])) {
