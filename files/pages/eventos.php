@@ -47,11 +47,13 @@ $eventos = getPublicEvents();
                         // Verifica se há uma imagem definida
                         $imagem_capa = !empty($evento['imagem_capa']) ? PASTA_BASE . $evento['imagem_capa'] : $imagem_padrao;
 
-                        // Função para verificar se a imagem existe e é válida
-                        function imagemValida($url)
-                        {
-                            $headers = @get_headers($url);
-                            return $headers && strpos($headers[0], '200') !== false && strpos($headers[0], 'image') !== false;
+                        // Verifica se a função já existe antes de declará-la
+                        if (!function_exists('imagemValida')) {
+                            function imagemValida($url)
+                            {
+                                $headers = @get_headers($url);
+                                return $headers && strpos($headers[0], '200') !== false && strpos($headers[0], 'image') !== false;
+                            }
                         }
 
                         // Se a imagem definida não for válida, usa a imagem padrão
