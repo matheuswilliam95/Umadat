@@ -355,10 +355,12 @@ header {
 
     .quick-icons {
         display: flex;
-        justify-content: space-around;
+        flex-direction: row;
+        justify-content: space-between;
         width: 100%;
         padding: 10px 0;
         background-color: #333;
+        gap: 10px;
     }
 
     .quick-icons a {
