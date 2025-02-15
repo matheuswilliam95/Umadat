@@ -34,11 +34,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Criar evento no banco
         if (createEvent(compact('titulo', 'descricao', 'data_inicio', 'horario_inicio', 'data_fim', 'horario_fim', 'local', 'valor', 'data_limite_inscricao', 'responsavel_nome', 'responsavel_contato', 'tipo', 'criado_por'))) {
             $evento_id = $pdo->lastInsertId(); // Obtém o ID do evento recém-criado
-            $caminho_imagem = "public/uploads/$evento_id/capa.jpg";
+            // Remove barras extras no caminho da imagem
+            $caminho_imagem = rtrim(PASTA_BASE, '/') . "/public/uploads/$evento_id/capa.jpg";
 
             // Upload da imagem da capa
             if (!empty($_FILES['capa']['name'])) {
-                $upload_dir = __DIR__ . "/../public/uploads/$evento_id/";
+                $upload_dir = rtrim(PASTA_BASE, '/') . "/public/uploads/$evento_id/";
                 if (!is_dir($upload_dir)) {
                     mkdir($upload_dir, 0777, true);
                 }
