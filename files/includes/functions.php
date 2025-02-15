@@ -90,16 +90,12 @@ function formatDate($date)
 }
 
 // Retorna o papel de um usuário no sistema
-if (!function_exists('getUserRole')) {
-    function getUserRole($user_id)
-    {
-        global $db;
-        $stmt = $db->prepare("SELECT role FROM usuarios WHERE id = :id");
-        $stmt->execute(['id' => $user_id]);
-        return $stmt->fetchColumn();
-    }
+function getUserRole($userId)
+{
+    $sql = "SELECT role FROM usuarios WHERE id = ?";
+    $result = fetchSingleRow($sql, [$userId]);
+    return $result ? $result['role'] : null;
 }
-
 
 
 // Retorna as informações do usuário
