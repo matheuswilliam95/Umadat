@@ -81,38 +81,20 @@ function createEvent($eventData)
                     <label for="titulo">Título do Evento:</label>
                     <input type="text" name="titulo" id="titulo" required>
 
-                    <label for="descricao">Descrição:</label>
-                    <textarea name="descricao" id="descricao" required></textarea>
-
-                    <label for="data_inicio">Data de Início:</label>
-                    <input type="date" name="data_inicio" id="data_inicio" required>
-
-                    <label for="horario_inicio">Horário de Início:</label>
-                    <input type="time" name="horario_inicio" id="horario_inicio">
-
-                    <label for="data_fim">Data de Fim:</label>
-                    <input type="date" name="data_fim" id="data_fim" required>
-
-                    <label for="horario_fim">Horário de Fim:</label>
-                    <input type="time" name="horario_fim" id="horario_fim">
-
-                    <label for="local">Local:</label>
-                    <input type="text" name="local" id="local">
-
-                    <label for="valor">Valor:</label>
-                    <input type="number" name="valor" id="valor" step="0.01">
-
-                    <label for="data_limite_inscricao">Data Limite para Inscrição:</label>
-                    <input type="date" name="data_limite_inscricao" id="data_limite_inscricao">
-
-                    <label for="responsavel_nome">Nome do Responsável:</label>
-                    <input type="text" name="responsavel_nome" id="responsavel_nome">
-
-                    <label for="responsavel_contato">Contato do Responsável:</label>
-                    <input type="text" name="responsavel_contato" id="responsavel_contato">
-
-                    <label for="tipo">Público-Alvo:</label>
-                    <select name="tipo" id="tipo" required>
+                    <textarea name="descricao" id="descricao" placeholder="Descrição" required></textarea>
+                    <input type="date" name="data_inicio" id="data_inicio" placeholder="Data de Início" required>
+                    <input type="time" name="horario_inicio" id="horario_inicio" placeholder="Horário de Início">
+                    <input type="date" name="data_fim" id="data_fim" placeholder="Data de Fim" required>
+                    <input type="time" name="horario_fim" id="horario_fim" placeholder="Horário de Fim">
+                    <input type="text" name="local" id="local" placeholder="Local do Evento">
+                    <input type="number" name="valor" id="valor" step="0.01" placeholder="Valor do Evento">
+                    <input type="date" name="data_limite_inscricao" id="data_limite_inscricao"
+                        placeholder="Data Limite para Inscrição">
+                    <input type="text" name="responsavel_nome" id="responsavel_nome"
+                        placeholder="Organizador do Evento">
+                    <input type="text" name="responsavel_contato" id="responsavel_contato"
+                        placeholder="Telefone ou E-mail do Responsável">
+                    <select name="tipo" id="tipo" required placeholder="Público-Alvo">
                         <option value="publico">Público</option>
                         <option value="restrito">Restrito</option>
                     </select>
