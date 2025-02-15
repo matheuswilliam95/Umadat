@@ -40,9 +40,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="<?php echo PASTA_BASE; ?>public/css/style.css?v=<?php echo time(); ?>">
 
 </head>
-<header>
-    <?php include __DIR__ . '/../templates/header.php'; ?>
-</header>
 
 <body>
     <div class="main_container">
