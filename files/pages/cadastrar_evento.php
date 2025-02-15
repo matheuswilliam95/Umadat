@@ -78,9 +78,7 @@ function createEvent($eventData)
                 <?php endif; ?>
                 <form action="cadastrar_evento.php" method="POST">
                     <input type="hidden" name="csrf_token" value="<?php echo generateCSRFToken(); ?>">
-                    <label for="titulo">Título do Evento:</label>
-                    <input type="text" name="titulo" id="titulo" required>
-
+                    <input type="text" name="titulo" id="titulo" required placeholder="Título do Evento">
                     <textarea name="descricao" id="descricao" placeholder="Descrição" required></textarea>
                     <input type="date" name="data_inicio" id="data_inicio" placeholder="Data de Início" required>
                     <input type="time" name="horario_inicio" id="horario_inicio" placeholder="Horário de Início">
