@@ -13,7 +13,6 @@ $eventos = getPublicEvents();
 <html lang="pt-BR">
 
 <head>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eventos - <?php echo SITE_NAME; ?></title>
@@ -41,10 +40,23 @@ $eventos = getPublicEvents();
             <?php foreach ($eventos as $evento): ?>
                 <li class="evento-item">
                     <div class="evento-imagem">
-                        <img src="<?php
-                        $imagem = PASTA_BASE . ($evento['imagem_capa'] ?? 'public/img/default_evento.jpg');
-                        echo file_exists($_SERVER['DOCUMENT_ROOT'] . str_replace(PASTA_BASE, '/', $imagem)) ? $imagem : PASTA_BASE . 'public/img/default_evento.jpg';
-                        ?>" alt="<?php echo htmlspecialchars($evento['titulo']); ?>">
+                        <?php
+                        // Caminho da imagem informada no banco de dados
+                        $imagem = isset($evento['imagem_capa']) && !empty($evento['imagem_capa'])
+                            ? PASTA_BASE . htmlspecialchars($evento['imagem_capa'])
+                            : '';
+
+                        // Caminho absoluto no servidor para verificar a existência do arquivo
+                        $caminho_absoluto = $_SERVER['DOCUMENT_ROOT'] . str_replace(PASTA_BASE, '/', $imagem);
+
+                        // Se a imagem não for informada ou não existir, usar a imagem padrão
+                        if (!$imagem || !file_exists($caminho_absoluto)) {
+                            $imagem = PASTA_BASE . 'public/img/default_evento.jpg';
+                        }
+                        ?>
+
+                        <img src="<?php echo $imagem; ?>" alt="<?php echo htmlspecialchars($evento['titulo']); ?>">
+
 
 
                     </div>
