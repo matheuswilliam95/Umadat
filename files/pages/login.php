@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR"> 
 
 <head>
     <meta charset="UTF-8">
@@ -70,5 +70,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 </body>
 <footer>
-    <?php include __DIR__ . '/../includes/footer.php'; ?>
+    <?php include __DIR__ . '/../templates/footer.php'; ?>
 </html>

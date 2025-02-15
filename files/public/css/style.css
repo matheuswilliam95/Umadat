@@ -41,13 +41,13 @@ button {
     margin: 0.5em;
     border-radius: 5px;
     border: none;
-    background-color: #3cc1e2;
-    color: #4d4d4d;
+    background-color: #3150ff;
+    color: #ffffff;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #2592b3;
+    background-color: #3c62e0;
     color: #ffffff;
 }
 
@@ -78,7 +78,7 @@ a:hover {
     text-decoration: underline;
 }
 
-.login_BT{
+.login_BT {
     width: 100%;
     height: 40px;
     font-size: large;
@@ -96,13 +96,31 @@ form {
     text-align: center;
     color: #24869e;
 }
+
 .login_links {
     display: flex;
     flex-direction: column;
     width: 100%;
+    align-items: center;
 }
 
-.container_login{
-    max-width: 400px;
+.container_login {
+    width: 396px;
     margin-top: 150px;
+}
+
+.criar_conta_BT {
+    padding: 0.5em 1em;
+    margin: 0.5em;
+    border-radius: 5px;
+    cursor: pointer;
+
+    width: fit-content;
+    font-size: large;
+    background-color: #32ad2e;
+    color: #fff7f7;
+}
+
+.criar_conta_BT:hover {
+    background-color: #319929;
 }
