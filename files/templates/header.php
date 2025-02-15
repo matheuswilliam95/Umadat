@@ -13,7 +13,8 @@ require_once __DIR__ . '/../includes/functions.php';
         </a>
     </div>
     <nav class="mobile-nav">
-        <button id="menu-toggle">☰</button>
+        <!-- Adicionamos a classe "menu-btn" para garantir que os estilos sejam aplicados -->
+        <button id="menu-toggle" class="menu-btn">☰</button>
         <ul id="menu" class="menu-list">
             <li><a href="<?php echo BASE_URL; ?>">Início</a></li>
             <li><a href="<?php echo BASE_URL; ?>postagens.php">Postagens</a></li>
@@ -29,8 +30,9 @@ require_once __DIR__ . '/../includes/functions.php';
         document.addEventListener("DOMContentLoaded", function () {
             const menuToggle = document.getElementById("menu-toggle");
             const menu = document.getElementById("menu");
+            // Em vez de manipular o estilo inline, alternamos uma classe
             menuToggle.addEventListener("click", function () {
-                menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+                menu.classList.toggle("active");
             });
         });
     </script>

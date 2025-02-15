@@ -248,8 +248,7 @@ h4 {
     background: #0056b3;
 }
 
-
-/*  --------------------------------- Menu --------------------------- */
+/* --------------------------------- Menu --------------------------- */
 header {
     display: flex;
     justify-content: space-between;
@@ -310,6 +309,12 @@ header {
         align-items: flex-start;
     }
 
+    /* Garante que os elementos posicionados de forma absoluta fiquem relativos à nav */
+    .mobile-nav {
+        position: relative;
+        width: 100%;
+    }
+
     .menu-list {
         display: none;
         flex-direction: column;
@@ -320,6 +325,12 @@ header {
         position: absolute;
         top: 60px;
         left: 0;
+        z-index: 1000;
+    }
+
+    /* Exibe o menu quando a classe "active" for aplicada */
+    .menu-list.active {
+        display: flex;
     }
 
     .menu-list li {
@@ -356,6 +367,7 @@ header {
         font-size: 20px;
     }
 }
+
 
 /*  --------------------------------- Responsividade --------------------------- */
 @media screen and (max-width: 600px) {
