@@ -63,6 +63,9 @@ function createEvent($eventData)
     <link rel="stylesheet" href="<?php echo PASTA_BASE; ?>public/css/style.css?v=<?php echo time(); ?>">
     <script defer src="<?php echo PASTA_BASE; ?>public/js/admin_eventos.js?v=<?php echo time(); ?>"></script>
 </head>
+<header>
+    <?php include __DIR__ . '/../templates/header.php'; ?>
+</header>
 
 <body>
     <div class=" main_container">
@@ -120,5 +123,8 @@ function createEvent($eventData)
         </div>
     </div>
 </body>
+<footer>
+    <?php include __DIR__ . '/../templates/footer.php'; ?>
+</footer>
 
 </html>
