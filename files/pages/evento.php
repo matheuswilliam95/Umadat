@@ -27,7 +27,8 @@ $relatedEvents = getRelatedEvents($eventId);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($evento['titulo']); ?> - <?php echo SITE_NAME; ?></title>
-    <link rel="stylesheet" href="<?php echo PASTA_BASE; ?>public/css/style.css">
+    <script defer src="<?php echo PASTA_BASE; ?>public/js/main.js"></script>
+    <link rel="stylesheet" href="<?php echo PASTA_BASE; ?>public/css/style.css?v=<?php echo time(); ?>">
     <script defer src="<?php echo PASTA_BASE; ?>public/js/evento.js"></script>
 </head>
 
