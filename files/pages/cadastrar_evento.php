@@ -44,10 +44,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 function createEvent($eventData)
 {
-    global $db;
+    global $pdo;
     $sql = "INSERT INTO eventos (titulo, descricao, data_inicio, horario_inicio, data_fim, horario_fim, local, valor, data_limite_inscricao, responsavel_nome, responsavel_contato, tipo, criado_por) 
             VALUES(: titulo, : descricao, : data_inicio, : horario_inicio, : data_fim, : horario_fim, : local, : valor, : data_limite_inscricao, : responsavel_nome, : responsavel_contato, : tipo, : criado_por)";
-    $stmt = $db->prepare($sql);
+    $stmt = $pdo->prepare($sql);
     return $stmt->execute($eventData);
 }
 
