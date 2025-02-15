@@ -60,12 +60,12 @@ function createEvent($eventData)
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Evento - <?php echo SITE_NAME; ?></title>
-    <link rel="stylesheet" href="<?php echo PASTA_BASE; ?>public/css/style.css">
-    <script defer src="<?php echo PASTA_BASE; ?>public/js/admin_eventos.js"></script>
+    <link rel="stylesheet" href="<?php echo PASTA_BASE; ?>public/css/style.css?v=<?php echo time(); ?>">
+    <script defer src="<?php echo PASTA_BASE; ?>public/js/admin_eventos.js?v=<?php echo time(); ?>"></script>
 </head>
 
 <body>
-    <div class="main_container">
+    <div class=" main_container">
         <div class="container">
 
             <div class="admin-container">
