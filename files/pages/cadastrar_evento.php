@@ -34,14 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Criar evento no banco
         if (createEvent(compact('titulo', 'descricao', 'data_inicio', 'horario_inicio', 'data_fim', 'horario_fim', 'local', 'valor', 'data_limite_inscricao', 'responsavel_nome', 'responsavel_contato', 'tipo', 'criado_por'))) {
             $evento_id = $pdo->lastInsertId(); // Obtém o ID do evento recém-criado
+            $upload_dir = __DIR__ . "/../public/uploads/$evento_id/";
+            $upload_dir = rtrim($upload_dir, '/') . '/';
 
-            // $caminho_imagem = rtrim(PASTA_BASE, '/') . "/public/uploads/$evento_id/capa.jpg";
-            // $upload_dir = rtrim(PASTA_BASE, '/') . "/public/uploads/$evento_id/";
-
-            $caminho_imagem = "/public/uploads/$evento_id/capa.jpg";
-            $upload_dir = "/public/uploads/$evento_id/";
-
-            // Log do caminho gerado
             error_log("Upload dir: " . $upload_dir);
 
             if (!empty($_FILES['capa']['name'])) {
@@ -120,15 +115,15 @@ function updateEventImage($evento_id, $caminho_imagem)
                 <form action="cadastrar_evento.php" method="POST" enctype="multipart/form-data">
                     <label class="cadastro_evento">Descrição do Evento</label>
                     <input type="hidden" name="csrf_token" value="<?php echo generateCSRFToken(); ?>">
-                    <input type="text" name="titulo" id="titulo" placeholder="Título do Evento">
-                    <textarea name="descricao" id="descricao" placeholder="Descrição"></textarea>
+                    <input type="text" name="titulo" id="titulo" required placeholder="Título do Evento">
+                    <textarea name="descricao" id="descricao" placeholder="Descrição" required></textarea>
 
 
                     <label class="cadastro_evento">Início do Evento</label>
-                    <input type="date" name="data_inicio" id="data_inicio" placeholder="Data de Início">
+                    <input type="date" name="data_inicio" id="data_inicio" placeholder="Data de Início" required>
                     <input type="time" name="horario_inicio" id="horario_inicio" placeholder="Horário de Início">
                     <label>Término do Evento</label>
-                    <input type="date" name="data_fim" id="data_fim" placeholder="Data de Fim">
+                    <input type="date" name="data_fim" id="data_fim" placeholder="Data de Fim" required>
                     <input type="time" name="horario_fim" id="horario_fim" placeholder="Horário de Fim">
 
                     <label class="cadastro_evento">Sobre o Evento</label>
@@ -141,7 +136,7 @@ function updateEventImage($evento_id, $caminho_imagem)
                         placeholder="Organizador do Evento">
                     <input type="text" name="responsavel_contato" id="responsavel_contato"
                         placeholder="Telefone ou E-mail do Responsável">
-                    <select name="tipo" id="tipo" placeholder="Público-Alvo">
+                    <select name="tipo" id="tipo" required placeholder="Público-Alvo">
                         <option value="publico">Público</option>
                         <option value="restrito">Restrito</option>
                     </select>
