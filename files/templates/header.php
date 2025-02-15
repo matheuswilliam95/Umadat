@@ -11,8 +11,8 @@ require_once __DIR__ . '/../includes/functions.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Rede social para igrejas - conecte-se com sua comunidade cristã">
     <title><?php echo SITE_NAME; ?></title>
-    <link rel="stylesheet" href="/public/css/style.css">
-    <script defer src="/public/js/main.js"></script>
+    <link rel="stylesheet" href="<?php echo PASTA_BASE; ?>public/css/style.css?v=<?php echo time(); ?>">
+    <script defer src="<?php echo PASTA_BASE; ?>public/js/main.js"></script>
 </head>
 
 <body>
@@ -20,7 +20,7 @@ require_once __DIR__ . '/../includes/functions.php';
         <div class="logo">
             <a href="<?php echo BASE_URL; ?>">
                 <img src="<?php echo PASTA_BASE . 'public/img/logo.jpg'; ?>" alt="Logo da Igreja"
-                    onerror="this.src='/public/img/placeholder-logo.png';">
+                    onerror="this.src='<?php echo PASTA_BASE . 'public/img/logo_placeholder.jpg'; ?>';">
             </a>
         </div>
         <nav class="mobile-nav">
