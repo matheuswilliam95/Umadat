@@ -19,8 +19,7 @@ require_once __DIR__ . '/../includes/config.php';
     </div>
 </footer>
 
-
-<script defer src="/public/js/main.js"></script>
+<script defer src="<?php echo PASTA_BASE; ?>public/js/main.js"></script>
 </body>
 
 </html>
