@@ -269,4 +269,18 @@ h4 {
     .evento-item {
         width: 100%;
     }
+
+    .evento-slider {
+        display: flex;
+        width: 200%;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .evento-slide {
+        width: 100%;
+        flex-shrink: 0;
+        text-align: center;
+        padding: 15px;
+        background: #fff;
+    }
 }

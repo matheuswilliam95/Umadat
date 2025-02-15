@@ -39,24 +39,54 @@ $eventos = getPublicEvents();
         <ul class="eventos-lista">
             <?php foreach ($eventos as $evento): ?>
                 <li class="evento-item">
-                    <div class="evento-imagem">
-                        <img src="<?php echo PASTA_BASE . htmlspecialchars($evento['imagem_capa'] ??  PASTA_BASE . 'public/img/default_evento.jpg'); ?>"
-                            alt="<?php echo htmlspecialchars($evento['titulo']); ?>">
+                    <div class="evento-slider">
+                        <!-- Primeira parte: Capa + Botão -->
+                        <div class="evento-slide">
+                            <div class="evento-imagem">
+                                <img src="<?php echo PASTA_BASE . htmlspecialchars($evento['imagem_capa'] ?? PASTA_BASE . 'public/img/default_evento.jpg'); ?>"
+                                    alt="<?php echo htmlspecialchars($evento['titulo']); ?>">
+                            </div>
+                            <a href="evento.php?id=<?php echo $evento['id']; ?>" class="detalhes-btn">Ver Detalhes</a>
+                        </div>
 
-                    </div>
-                    <div class="evento-descricao">
-                        <h3><?php echo htmlspecialchars($evento['titulo']); ?></h3>
-                        <p><strong>Data:</strong> <?php echo formatDate($evento['data_inicio']); ?></p>
-                        <p><strong>Horário:</strong>
-                            <?php echo $evento['horario_inicio'] ? date('H:i', strtotime($evento['horario_inicio'])) : 'N/A'; ?>
-                        </p>
-                        <p><strong>Local:</strong> <?php echo htmlspecialchars($evento['local'] ?? 'N/A'); ?></p>
-                        <a href="evento.php?id=<?php echo $evento['id']; ?>" class="detalhes-btn">Ver Detalhes</a>
+                        <!-- Segunda parte: Detalhes do evento -->
+                        <div class="evento-slide">
+                            <div class="evento-descricao">
+                                <h3><?php echo htmlspecialchars($evento['titulo']); ?></h3>
+                                <p><strong>Data:</strong> <?php echo formatDate($evento['data_inicio']); ?></p>
+                                <p><strong>Horário:</strong>
+                                    <?php echo $evento['horario_inicio'] ? date('H:i', strtotime($evento['horario_inicio'])) : 'N/A'; ?>
+                                </p>
+                                <p><strong>Local:</strong> <?php echo htmlspecialchars($evento['local'] ?? 'N/A'); ?></p>
+                            </div>
+                        </div>
                     </div>
                 </li>
             <?php endforeach; ?>
         </ul>
     </div>
+    <script>
+    document.querySelectorAll('.evento-slider').forEach(slider => {
+        let startX = 0;
+        let moved = false;
+
+        slider.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        });
+
+        slider.addEventListener('touchmove', (e) => {
+            let diff = e.touches[0].clientX - startX;
+            moved = Math.abs(diff) > 50; 
+        });
+
+        slider.addEventListener('touchend', () => {
+            if (moved) {
+                slider.style.transform = 
+                    slider.style.transform === 'translateX(-100%)' ? 'translateX(0)' : 'translateX(-100%)';
+            }
+        });
+    });
+</script>
 </body>
 
 </html>
