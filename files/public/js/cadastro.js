@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const selectCongregacao = document.getElementById("congregacao");
-    const selectConjunto = document.getElementById("conjunto");
+    const selectCongregacao = document.getElementById("cadastro_congregacao");
+    const selectConjunto = document.getElementById("cadastro_conjunto");
 
     selectCongregacao.addEventListener("change", function () {
         const congregacaoId = this.value;
