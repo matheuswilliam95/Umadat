@@ -57,6 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     } else {
                         error_log("Arquivo movido com sucesso: " . $caminho_arquivo);
                         updateEventImage($evento_id, $caminho_banco);
+                        header("Location: evento.php?id=$evento_id");
                     }
                 } else {
                     error_log("Erro no upload: Código " . $_FILES['capa']['error']);
