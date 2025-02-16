@@ -465,4 +465,11 @@ header {
     .mobile_footer {
         box-sizing: border-box;
     }
+
+    .evento-imagem {
+        max-width: 90%;
+        height: auto;
+        display: block;
+        margin: 10px 0;
+    }
 }
