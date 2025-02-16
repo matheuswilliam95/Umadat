@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $evento_id = $pdo->lastInsertId(); // Obtém o ID do evento recém-criado
             $upload_dir = __DIR__ . "/../public/uploads/$evento_id/";
             $upload_dir = rtrim($upload_dir, '/') . '/';
-            $caminho_banco = "public/uploads/$evento_id/capa.jpeg"; // Caminho salvo no banco
+            $caminho_banco = "public/uploads/$evento_id/capa.jpg"; // Caminho salvo no banco
 
             error_log("Upload dir: " . $upload_dir);
 
