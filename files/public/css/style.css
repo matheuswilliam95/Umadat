@@ -377,6 +377,13 @@ header {
     }
 }
 
+/*  -------------------------------- Evento ------------------------------------ */
+.evento-imagem {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px 0;
+}
 
 /*  --------------------------------- Responsividade --------------------------- */
 @media screen and (max-width: 600px) {

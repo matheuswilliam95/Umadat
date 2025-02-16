@@ -61,8 +61,12 @@ $relatedEvents = getRelatedEvents($eventId);
                     <button id="inscricao-btn" data-evento-id="<?php echo $evento['id']; ?>">Inscreva-se</button>
                 <?php endif; ?>
 
-                <img src="<?php echo PASTA_BASE . 'public/uploads/' . $evento['id'] . '/' . htmlspecialchars($imagem['caminho_imagem']); ?>"
-                    alt="Imagem do evento <?php echo htmlspecialchars($evento['titulo']); ?>">
+                <?php if (!empty($evento['imagem_capa'])): ?>
+                    <img src="<?php echo htmlspecialchars($evento['imagem_capa']); ?>" alt="Imagem do evento"
+                        class="evento-imagem">
+                <?php endif; ?>
+
+
 
                 <h3>Eventos Relacionados</h3>
                 <ul>
