@@ -62,8 +62,8 @@ $relatedEvents = getRelatedEvents($eventId);
                 <?php endif; ?>
 
                 <?php if (!empty($evento['imagem_capa'])): ?>
-                    <img src="<?php echo htmlspecialchars($evento['imagem_capa']); ?>" alt="Imagem do evento"
-                        class="evento-imagem">
+                    <img src="<?php echo PASTA_BASE . 'uploads/eventos/' . htmlspecialchars($evento['imagem_capa']); ?>"
+                        alt="Imagem do evento" class="evento-imagem">
                 <?php endif; ?>
 
 
