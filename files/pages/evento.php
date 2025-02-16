@@ -41,6 +41,13 @@ $relatedEvents = getRelatedEvents($eventId);
         <div class="container">
             <div class="evento-container">
                 <h2><?php echo htmlspecialchars($evento['titulo']); ?></h2>
+
+
+                <?php if (!empty($evento['imagem_capa'])): ?>
+                    <img src="<?php echo PASTA_BASE . htmlspecialchars($evento['imagem_capa']); ?>" alt="Imagem do evento"
+                        class="evento-imagem">
+                <?php endif; ?>
+
                 <p><strong>Descrição:</strong> <?php echo nl2br(htmlspecialchars($evento['descricao'])); ?></p>
                 <p><strong>Data:</strong> <?php echo formatDate($evento['data_inicio']); ?> -
                     <?php echo formatDate($evento['data_fim']); ?>
@@ -59,11 +66,6 @@ $relatedEvents = getRelatedEvents($eventId);
 
                 <?php if ($evento['data_limite_inscricao'] >= date('Y-m-d')): ?>
                     <button id="inscricao-btn" data-evento-id="<?php echo $evento['id']; ?>">Inscreva-se</button>
-                <?php endif; ?>
-
-                <?php if (!empty($evento['imagem_capa'])): ?>
-                    <img src="<?php echo PASTA_BASE . htmlspecialchars($evento['imagem_capa']); ?>" alt="Imagem do evento"
-                        class="evento-imagem">
                 <?php endif; ?>
 
 
