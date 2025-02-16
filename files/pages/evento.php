@@ -39,8 +39,6 @@ $relatedEvents = getRelatedEvents($eventId);
 <body>
     <div class="main_container">
         <div class="container">
-
-
             <div class="evento-container">
                 <h2><?php echo htmlspecialchars($evento['titulo']); ?></h2>
                 <p><strong>Descrição:</strong> <?php echo nl2br(htmlspecialchars($evento['descricao'])); ?></p>
@@ -62,6 +60,9 @@ $relatedEvents = getRelatedEvents($eventId);
                 <?php if ($evento['data_limite_inscricao'] >= date('Y-m-d')): ?>
                     <button id="inscricao-btn" data-evento-id="<?php echo $evento['id']; ?>">Inscreva-se</button>
                 <?php endif; ?>
+
+                <img src="<?php echo PASTA_BASE . 'public/uploads/' . $evento['id'] . '/' . htmlspecialchars($imagem['caminho_imagem']); ?>"
+                    alt="Imagem do evento <?php echo htmlspecialchars($evento['titulo']); ?>">
 
                 <h3>Eventos Relacionados</h3>
                 <ul>
