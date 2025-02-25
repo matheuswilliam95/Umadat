@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 
     <div class="logo_img_div">
-        <img src="/../public/img/system_logo.png">
+        <img src="<?php echo PASTA_BASE; ?>public/img/system_logo.png">
     </div>
 
     <div class="main_container">
