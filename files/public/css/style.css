@@ -86,8 +86,15 @@ a:hover {
 }
 
 /*  --------------------------------- Login ---------------------------- */
+.logo_img_div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
 .logo_img {
     width: 60%;
+    max-width: 300px;
 }
 
 .login_BT {
