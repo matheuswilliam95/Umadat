@@ -43,11 +43,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
 
-    <div class="logo_img_div">
-        <img class="logo_img" src="<?php echo PASTA_BASE; ?>public/img/system_logo.png">
-    </div>
 
     <div class="main_container">
+        <div class="logo_img_div">
+            <img class="logo_img" src="<?php echo PASTA_BASE; ?>public/img/system_logo.png">
+        </div>
         <div class="container container_login">
             <h2>Entre e Participe!</h2>
             <?php if (!empty($erro)): ?>
