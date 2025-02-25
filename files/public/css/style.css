@@ -84,17 +84,17 @@ a:hover {
 .cadastro_evento {
     margin-top: 1em;
 }
- 
+
 /*  --------------------------------- Login ---------------------------- */
-.logo_img_div{
+.logo_img_div {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 10px;
 }
+
 .logo_img {
-    width: 300px;
-    /* max-width: 300px; */
+    width: 260px;
     border-radius: 10px;
 }
 
