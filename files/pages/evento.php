@@ -37,6 +37,9 @@ $relatedEvents = getRelatedEvents($eventId);
 </header>
 
 <body>
+    <div class="logo_img_div">
+        <img src="./public/img/system_logo.png">
+    </div>
     <div class="main_container">
         <div class="container">
             <div class="evento-container">
