@@ -42,6 +42,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
+
+    <div class="logo_img_div">
+        <img src="./public/img/system_logo.png">
+    </div>
+
     <div class="main_container">
         <div class="container container_login">
             <h2>Entre e Participe!</h2>
