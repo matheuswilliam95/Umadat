@@ -55,6 +55,11 @@ $congregacoes = getCongregacoes();
     <script defer src="<?php echo PASTA_BASE; ?>public/js/main.js?v=<?php echo time(); ?>"></script>
 </head>
 
+
+<header>
+    <?php include __DIR__ . '/../templates/header.php'; ?>
+</header>
+
 <body>
     <div class="main_container">
         <div class="container">
