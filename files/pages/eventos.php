@@ -122,7 +122,7 @@ $eventos = getPublicEvents();
                 }
 
                 // Aplica a transição correta
-                slider.style.transform = `translateX(-${currentIndex * 10}%)`;
+                slider.style.transform = `translateX(-${currentIndex * 100}%)`;
             });
         });
 
