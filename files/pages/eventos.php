@@ -116,9 +116,9 @@ $eventos = getPublicEvents();
 
                 if (diff < -50 && currentIndex < slides.length - 1) {
                     currentIndex++;
-                } else if (diff > 50 && currentIndex > 0) {
+                } else if (diff > 49 && currentIndex > 0) {
                     currentIndex--;
-                }
+                } 
 
                 // Correção no movimento do slider
                 slider.style.transform = `translateX(-${currentIndex * 100}%)`;
