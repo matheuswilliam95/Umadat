@@ -12,7 +12,7 @@ $eventos = getPublicEvents();
 <!DOCTYPE html>
 <html lang="pt-BR">
 
-<head>
+<head> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eventos - <?php echo SITE_NAME; ?></title>
@@ -50,7 +50,7 @@ $eventos = getPublicEvents();
 <body>
     <div class="main_container">
         <div class="eventos-container">
-            <h2>Eventos Públicos</h2>
+            <h2>Eventos Públicos </h2>
             <form id="filtro-form">
                 <input type="text" name="titulo" placeholder="Buscar por nome do evento">
                 <input type="date" name="data_inicio" placeholder="Data de início">
