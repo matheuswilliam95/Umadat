@@ -7,7 +7,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-$eventos = getPublicEvents();
+$eventos = getPublicEvents(); 
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -15,6 +15,7 @@ $eventos = getPublicEvents();
 <head> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/swipe/2.2.14/swipe.min.js"></script>
     <title>Eventos - <?php echo SITE_NAME; ?></title>
     <script defer src="<?php echo PASTA_BASE; ?>public/js/main.js"></script>
     <link rel="stylesheet" href="<?php echo PASTA_BASE; ?>public/css/style.css?v=<?php echo time(); ?>">
@@ -91,7 +92,7 @@ $eventos = getPublicEvents();
                                     <p><strong>Local:</strong> <?php echo htmlspecialchars($evento['local'] ?? 'N/A'); ?>
                                     </p>
                                 </div>
-                            </div>                          
+                            </div>
                         </div>
                         <a href="evento.php?id=<?php echo $evento['id']; ?>" class="detalhes-btn">Ver Detalhes</a>
                     </li>
@@ -124,6 +125,7 @@ $eventos = getPublicEvents();
                 slider.style.transform = `translateX(-${currentIndex * 100}%)`;
             });
         });
+
 
     </script>
 </body>
