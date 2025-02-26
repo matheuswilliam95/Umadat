@@ -82,12 +82,13 @@ $congregacoes = getCongregacoes();
                     <input type="password" name="confirmar_senha" id="confirmar_senha" placeholder="Repita a Senha"
                         required>
 
+                    <!-- Campo de entrada para selecionar a congregação -->
                     <input list="congregacoes" name="congregacao_nome" id="cadastro_congregacao" required>
                     <datalist id="congregacoes">
                         <?php foreach ($congregacoes as $congregacao): ?>
                             <option value="<?php echo htmlspecialchars($congregacao['nome']); ?>"
-                                data-id="<?php echo $congregacao['id']; ?>">
-                            <?php endforeach; ?>
+                                data-id="<?php echo $congregacao['id']; ?>"></option>
+                        <?php endforeach; ?>
                     </datalist>
 
                     <!-- Campo oculto para armazenar o ID -->
@@ -116,7 +117,7 @@ $congregacoes = getCongregacoes();
 
             for (let option of options) {
                 if (option.value === input.value) {
-                    hiddenInput.value = option.getAttribute("data-id");
+                    hiddenInput.value = option.getAttribute("data-id"); // Captura o ID correto
                     break;
                 }
             }
