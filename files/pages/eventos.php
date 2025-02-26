@@ -102,41 +102,61 @@ $eventos = getPublicEvents();
     <script>
         // Lógica do slider para múltiplos slides (capa, detalhes e galeria)
         document.querySelectorAll('.evento-slider').forEach(slider => {
-            const slides = slider.querySelectorAll('.evento-slide');
-            let currentIndex = 0;
+            let currentIndex = 0; // Começa no primeiro slide
             let startX = 0;
 
-            // Eventos para toque
-            slider.addEventListener('touchstart', e => {
+            slider.addEventListener('touchstart', (e) => {
                 startX = e.touches[0].clientX;
             });
-            slider.addEventListener('touchend', e => {
+
+            slider.addEventListener('touchend', (e) => {
                 const endX = e.changedTouches[0].clientX;
                 const diff = endX - startX;
-                if (diff < -50 && currentIndex < slides.length - 1) {
-                    currentIndex++;
+
+                if (diff < -50 && currentIndex < 1) {
+                    // Avança para o próximo slide
+                    currentIndex = 1;
                 } else if (diff > 50 && currentIndex > 0) {
-                    currentIndex--;
+                    // Volta para o slide anterior
+                    currentIndex = 0;
                 }
+
+                // Aplica a transição correta
                 slider.style.transform = `translateX(-${currentIndex * 100}%)`;
             });
 
-            // Eventos para mouse
-            slider.addEventListener('mousedown', e => {
-                startX = e.clientX;
-                e.preventDefault();
+            // Adicionando suporte para desktop (arrastar com o mouse)
+            let isMouseDown = false;
+            let mouseStartX = 0;
+
+            slider.addEventListener('mousedown', (e) => {
+                isMouseDown = true;
+                mouseStartX = e.clientX;
             });
-            slider.addEventListener('mouseup', e => {
-                const endX = e.clientX;
-                const diff = endX - startX;
-                if (diff < -50 && currentIndex < slides.length - 1) {
-                    currentIndex++;
+
+            slider.addEventListener('mouseup', (e) => {
+                if (!isMouseDown) return;
+                isMouseDown = false;
+                const diff = e.clientX - mouseStartX;
+
+                if (diff < -50 && currentIndex < 1) {
+                    currentIndex = 1;
                 } else if (diff > 50 && currentIndex > 0) {
-                    currentIndex--;
+                    currentIndex = 0;
                 }
+
                 slider.style.transform = `translateX(-${currentIndex * 100}%)`;
             });
+
+            // Evita seleção de texto durante o arrastar
+            slider.addEventListener('mousemove', (e) => {
+                if (isMouseDown) {
+                    e.preventDefault();
+                }
+            });
+
         });
+
 
     </script>
 </body>
