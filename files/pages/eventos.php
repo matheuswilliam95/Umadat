@@ -9,6 +9,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 $eventos = getPublicEvents(); 
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
