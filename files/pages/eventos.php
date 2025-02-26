@@ -75,7 +75,6 @@ $eventos = getPublicEvents();
                                         alt="<?php echo htmlspecialchars($evento['titulo']); ?>">
                                 </div>
                             </div>
-                            <a href="evento.php?id=<?php echo $evento['id']; ?>" class="detalhes-btn">Ver Detalhes</a>
 
                             <!-- Slide 2: Detalhes do Evento -->
                             <div class="evento-slide">
@@ -114,6 +113,7 @@ $eventos = getPublicEvents();
                                 </div>
                             </div>
                         </div>
+                        <a href="evento.php?id=<?php echo $evento['id']; ?>" class="detalhes-btn">Ver Detalhes</a>
                     </li>
                 <?php endforeach; ?>
             </ul>
