@@ -74,8 +74,8 @@ $eventos = getPublicEvents();
                                     <img src="<?php echo PASTA_BASE . htmlspecialchars($evento['imagem_capa'] ?? (PASTA_BASE . 'public/img/default_evento.jpg')); ?>"
                                         alt="<?php echo htmlspecialchars($evento['titulo']); ?>">
                                 </div>
-                                <a href="evento.php?id=<?php echo $evento['id']; ?>" class="detalhes-btn">Ver Detalhes</a>
                             </div>
+                            <a href="evento.php?id=<?php echo $evento['id']; ?>" class="detalhes-btn">Ver Detalhes</a>
 
                             <!-- Slide 2: Detalhes do Evento -->
                             <div class="evento-slide">
