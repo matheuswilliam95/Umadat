@@ -57,19 +57,19 @@ button:hover {
 
 label {
     margin: 0.5em;
-    font: 1em sans-serif;
+    font: 1em;
     font-weight: bold;
 }
 
 .error {
     color: red;
-    font: 1em sans-serif;
+    font: 1em;
     margin: 0.5em;
 }
 
 .success {
     color: green;
-    font: 1em sans-serif;
+    font: 1em;
     margin: 0.5em;
 }
 
@@ -160,7 +160,7 @@ form {
     display: flex;
     justify-content: center;
     gap: 1em;
-    font: 1em sans-serif;
+    font: 1em;
     color: #969696;
 }
 
