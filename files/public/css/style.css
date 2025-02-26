@@ -392,7 +392,7 @@ header {
 
 /*  -------------------------------- Evento ------------------------------------ */
 .evento-imagem {
-    max-width: 800px;
+    /* max-width: 800px; */
     height: auto;
     display: block;
     margin: 10px 0;
@@ -464,7 +464,7 @@ header {
     }
 
     .evento-imagem img {
-        width: 50%;
+        /* width: 50%; */
         height: auto;
         border-radius: 10px;
     }
