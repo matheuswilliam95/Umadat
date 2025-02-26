@@ -479,10 +479,13 @@ header {
         box-sizing: border-box;
     }
 
-    .evento-imagem {
-        max-width: 90%;
+    .evento-imagem img {
+        width: 50%;
         height: auto;
+        border-radius: 10px;
         display: block;
-        margin: 10px 0;
+        /* torna o elemento um bloco */
+        margin: 0 auto;
+        /* centraliza horizontalmente */
     }
 }
