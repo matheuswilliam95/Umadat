@@ -48,6 +48,8 @@ button {
     background-color: #3150ff;
     color: #ffffff;
     cursor: pointer;
+    width: 100%;
+    height: 5em;
 }
 
 button:hover {
