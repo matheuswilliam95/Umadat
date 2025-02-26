@@ -81,18 +81,15 @@ $congregacoes = getCongregacoes();
                     <input type="password" name="senha" id="senha" placeholder=" Nova Senha" required>
                     <input type="password" name="confirmar_senha" id="confirmar_senha" placeholder="Repita a Senha"
                         required>
-
-                    <!-- Campo de entrada para selecionar a congregação -->
-                    <input list="congregacoes" name="congregacao_nome" id="cadastro_congregacao" required>
-                    <datalist id="congregacoes">
+                        
+                    <select name="congregacao" id="cadastro_congregacao" required>
+                        <option value="" disabled selected>Selecione uma Congregação</option>
                         <?php foreach ($congregacoes as $congregacao): ?>
-                            <option value="<?php echo htmlspecialchars($congregacao['nome']); ?>"
-                                data-id="<?php echo $congregacao['id']; ?>"></option>
+                            <option value="<?php echo $congregacao['id']; ?>">
+                                <?php echo htmlspecialchars($congregacao['nome']); ?>
+                            </option>
                         <?php endforeach; ?>
-                    </datalist>
-
-                    <!-- Campo oculto para armazenar o ID -->
-                    <input type="hidden" name="congregacao_id" id="congregacao_id">
+                    </select>
 
 
                     <select name="conjunto" id="cadastro_conjunto" aria-placeholder="Grupo ou Conjunto" required>
@@ -105,24 +102,6 @@ $congregacoes = getCongregacoes();
         </div>
     </div>
     <script defer src="/umadat/files/public/js/cadastro.js?v=<?php echo time(); ?>"></script>
-
-    <script>
-        document.getElementById("cadastro_congregacao").addEventListener("input", function () {
-            let input = this;
-            let datalist = document.getElementById("congregacoes");
-            let hiddenInput = document.getElementById("congregacao_id");
-            let options = datalist.getElementsByTagName("option");
-
-            hiddenInput.value = ""; // Limpa o ID se não houver correspondência
-
-            for (let option of options) {
-                if (option.value === input.value) {
-                    hiddenInput.value = option.getAttribute("data-id"); // Captura o ID correto
-                    break;
-                }
-            }
-        });
-    </script>
 </body>
 <footer>
     <?php include __DIR__ . '/../templates/footer.php'; ?>
