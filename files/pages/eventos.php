@@ -66,7 +66,9 @@ $eventos = getPublicEvents();
 
             <ul class="eventos-lista">
                 <?php foreach ($eventos as $evento): ?>
-                    <?php echo "<script> console.log(evento)</script>"; ?>
+                    <script>
+                        console.log(<?php echo json_encode($evento, JSON_UNESCAPED_UNICODE); ?>);
+                    </script>
                     <li class="evento-item">
                         <div class="evento-slider">
                             <!-- Slide 1: Capa + Botão -->
