@@ -21,8 +21,8 @@ require_once __DIR__ . '/../includes/functions.php';
     </ul>
     <div class="quick-icons">
         <a href="<?php echo BASE_URL; ?>" class="icon-home">Início</a>
-        <a href="<?php echo PASTA_BASE; ?>/pages/eventos.php" class="icon-post">Eventos</a>
-        <a href="<?php echo PASTA_BASE; ?>/pages/perfil.php" class="icon-profile">Perfil</a>
+        <a href="<?php echo PASTA_BASE; ?>pages/eventos.php" class="icon-post">Eventos</a>
+        <a href="<?php echo PASTA_BASE; ?>pages/perfil.php" class="icon-profile">Perfil</a>
     </div>
 </nav>
 <script>
