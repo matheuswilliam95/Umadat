@@ -116,7 +116,7 @@ $eventos = getPublicEvents();
 
                 if (diff < -50 && currentIndex < slides.length - 1) {
                     currentIndex++;
-                } else if (diff > 50 && currentIndex > 0) {
+                } else if (diff > 51 && currentIndex > 0) {
                     currentIndex--;
                 } 
 
