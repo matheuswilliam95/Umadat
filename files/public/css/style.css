@@ -441,13 +441,43 @@ header {
         box-sizing: border-box;
     }
 
-    /* .evento-slider {
-        display: flex;
-        width: 200%;
-        transition: transform 0.3s ease-in-out;
-    } */
+    /* CSS para os slides */
+    .evento-slider {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+    }
 
-    
+    .evento-slide {
+        width: 100%;
+        float: left;
+        box-sizing: border-box;
+        text-align: center;
+        transition: transform 0.4s ease-in-out;
+    }
+
+    .evento-imagem img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    .evento-descricao {
+        padding: 15px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+
+
+    .detalhes-btn:hover {
+        background: #0056b3;
+    }
+
+
 
     .evento-imagem img {
         /* width: 50%; */
@@ -473,13 +503,5 @@ header {
         box-sizing: border-box;
     }
 
-    .evento-imagem img {
-        width: 50%;
-        height: auto;
-        border-radius: 10px;
-        display: block;
-        /* torna o elemento um bloco */
-        margin: 0 auto;
-        /* centraliza horizontalmente */
-    }
+
 }

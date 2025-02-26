@@ -100,31 +100,24 @@ $eventos = getPublicEvents();
         </div>
     </div>
     <script>
-        const slider = document.querySelector(".evento-slider");
-        let isDown = false;
-        let startX;
-        let scrollLeft;
-
-        slider.addEventListener("mousedown", (e) => {
-            isDown = true;
-            startX = e.pageX - slider.offsetLeft;
-            scrollLeft = slider.scrollLeft;
-        });
-
-        slider.addEventListener("mouseleave", () => {
-            isDown = false;
-        });
-
-        slider.addEventListener("mouseup", () => {
-            isDown = false;
-        });
-
-        slider.addEventListener("mousemove", (e) => {
-            if (!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - slider.offsetLeft;
-            const walk = (x - startX) * 3;
-            slider.scrollLeft = scrollLeft - walk;
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".evento-slider").forEach(function (slider) {
+                new Swipe(slider, {
+                    startSlide: 0,
+                    speed: 400,
+                    auto: false,
+                    draggable: true,
+                    continuous: true,
+                    disableScroll: false,
+                    stopPropagation: false,
+                    callback: function (index, element) {
+                        console.log("Slide ativo:", index);
+                    },
+                    transitionEnd: function (index, element) {
+                        console.log("Transição finalizada no slide:", index);
+                    }
+                });
+            });
         });
 
 
