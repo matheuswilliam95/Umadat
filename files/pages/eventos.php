@@ -50,7 +50,7 @@ $eventos = getPublicEvents();
 <body>
     <div class="main_container">
         <div class="eventos-container">
-            <h2>Eventos Públicos </h2>
+            <h2>Eventos Públicos</h2>
             <form id="filtro-form">
                 <input type="text" name="titulo" placeholder="Buscar por nome do evento">
                 <input type="date" name="data_inicio" placeholder="Data de início">
