@@ -122,7 +122,7 @@ $eventos = getPublicEvents();
                 }
 
                 // Aplica a transição correta
-                slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+                slider.style.transform = `translateX(-${currentIndex * 50}%)`;
             });
 
             // Adicionando suporte para desktop (arrastar com o mouse)
