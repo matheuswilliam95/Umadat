@@ -38,7 +38,6 @@ textarea {
     border: 1px solid #ccc;
     box-sizing: border-box;
     font-size: 1.2em;
-    font-family: sans-serif;
 }
 
 button {
@@ -211,7 +210,6 @@ select option:disabled {
 h2 {
     color: #222222;
     font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
     text-align: center;
 }
 
