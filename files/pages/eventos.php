@@ -101,7 +101,7 @@ $eventos = getPublicEvents();
     </div>
     <script>
         // Lógica do slider para múltiplos slides (capa, detalhes e galeria)
-        document.querySelectorAll('.evento-slider').forEach(slider => {
+        document.querySelectorAll('.evento-slide').forEach(slider => {
             let currentIndex = 0; // Começa no primeiro slide
             let startX = 0;
 
