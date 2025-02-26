@@ -91,30 +91,7 @@ $eventos = getPublicEvents();
                                     <p><strong>Local:</strong> <?php echo htmlspecialchars($evento['local'] ?? 'N/A'); ?>
                                     </p>
                                 </div>
-                            </div>
-
-                            <!-- Slide 3: Galeria de Fotos -->
-                            <div class="evento-slide">
-                                <div class="evento-galeria">
-                                    <h3>Galeria de Fotos</h3>
-                                    <?php
-                                    // Consulta as imagens associadas a este evento
-                                    $stmt = $pdo->prepare("SELECT caminho_imagem FROM evento_imagens WHERE evento_id = ?");
-                                    $stmt->execute([$evento['id']]);
-                                    $imagens = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                                    ?>
-                                    <?php if (count($imagens) > 0): ?>
-                                        <div class="galeria-container">
-                                            <?php foreach ($imagens as $imagem): ?>
-                                                <img src="<?php echo PASTA_BASE . 'public/uploads/' . $evento['id'] . '/' . htmlspecialchars($imagem['caminho_imagem']); ?>"
-                                                    alt="Imagem do evento <?php echo htmlspecialchars($evento['titulo']); ?>">
-                                            <?php endforeach; ?>
-                                        </div>
-                                    <?php else: ?>
-                                        <p>Nenhuma foto disponível.</p>
-                                    <?php endif; ?>
-                                </div>
-                            </div>
+                            </div>                          
                         </div>
                         <a href="evento.php?id=<?php echo $evento['id']; ?>" class="detalhes-btn">Ver Detalhes</a>
                     </li>
