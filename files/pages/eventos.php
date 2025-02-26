@@ -136,14 +136,18 @@ $eventos = getPublicEvents();
             slider.addEventListener('touchend', (e) => {
                 const endX = e.changedTouches[0].clientX;
                 const diff = endX - startX;
+
                 if (diff < -50 && currentIndex < slides.length - 1) {
                     currentIndex++;
                 } else if (diff > 50 && currentIndex > 0) {
                     currentIndex--;
                 }
+
+                // Correção no movimento do slider
                 slider.style.transform = `translateX(-${currentIndex * 100}%)`;
             });
         });
+
     </script>
 </body>
 <footer>
