@@ -74,8 +74,10 @@ $eventos = getPublicEvents();
                             <!-- Slide 1: Capa + Botão -->
                             <div class="evento-slide">
                                 <div class="evento-imagem">
-                                    <img src="<?php echo PASTA_BASE . htmlspecialchars($evento['imagem_capa'] ?? (PASTA_BASE . 'public/img/default_evento.jpg')); ?>"
-                                        alt="<?php echo htmlspecialchars($evento['titulo']); ?>">
+                                    <a href="evento.php?id=<?php echo $evento['id']; ?>">
+                                        <img src="<?php echo PASTA_BASE . htmlspecialchars($evento['imagem_capa'] ?? (PASTA_BASE . 'public/img/default_evento.jpg')); ?>"
+                                            alt="<?php echo htmlspecialchars($evento['titulo']); ?>">
+                                    </a>
                                     <h2 class="titulo_enventos"><?php echo htmlspecialchars($evento['titulo']); ?></h2>
                                 </div>
                             </div>
