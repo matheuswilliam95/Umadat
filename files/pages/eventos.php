@@ -91,7 +91,7 @@ $eventos = getPublicEvents();
                                     <p><strong>Local:</strong> <?php echo htmlspecialchars($evento['local'] ?? 'N/A'); ?>
                                     </p>
                                 </div>
-                            </div>                          
+                            </div>
                         </div>
                         <a href="evento.php?id=<?php echo $evento['id']; ?>" class="detalhes-btn">Ver Detalhes</a>
                     </li>
@@ -106,21 +106,34 @@ $eventos = getPublicEvents();
             let currentIndex = 0;
             let startX = 0;
 
-            slider.addEventListener('touchstart', (e) => {
+            // Eventos para toque
+            slider.addEventListener('touchstart', e => {
                 startX = e.touches[0].clientX;
             });
-
-            slider.addEventListener('touchend', (e) => {
+            slider.addEventListener('touchend', e => {
                 const endX = e.changedTouches[0].clientX;
                 const diff = endX - startX;
-
                 if (diff < -50 && currentIndex < slides.length - 1) {
                     currentIndex++;
                 } else if (diff > 50 && currentIndex > 0) {
                     currentIndex--;
                 }
+                slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+            });
 
-                // Correção no movimento do slider
+            // Eventos para mouse
+            slider.addEventListener('mousedown', e => {
+                startX = e.clientX;
+                e.preventDefault();
+            });
+            slider.addEventListener('mouseup', e => {
+                const endX = e.clientX;
+                const diff = endX - startX;
+                if (diff < -50 && currentIndex < slides.length - 1) {
+                    currentIndex++;
+                } else if (diff > 50 && currentIndex > 0) {
+                    currentIndex--;
+                }
                 slider.style.transform = `translateX(-${currentIndex * 100}%)`;
             });
         });

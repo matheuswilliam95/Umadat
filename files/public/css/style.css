@@ -441,11 +441,19 @@ header {
         box-sizing: border-box;
     }
 
-    .evento-slider {
+    /* .evento-slider {
         display: flex;
         width: 200%;
         transition: transform 0.3s ease-in-out;
+    } */
+
+    .evento-slider {
+        display: flex;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        width: 200%; /* Considerando 2 slides */
     }
+    
 
     .evento-slide {
         width: 100%;
