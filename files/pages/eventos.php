@@ -101,25 +101,7 @@ $eventos = getPublicEvents();
         </div>
     </div>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            document.querySelectorAll(".evento-slider").forEach(function (slider) {
-                new Swipe(slider, {
-                    startSlide: 0,
-                    speed: 400,
-                    auto: false,
-                    draggable: true,
-                    continuous: true,
-                    disableScroll: false,
-                    stopPropagation: false,
-                    callback: function (index, element) {
-                        console.log("Slide ativo:", index);
-                    },
-                    transitionEnd: function (index, element) {
-                        console.log("Transição finalizada no slide:", index);
-                    }
-                });
-            });
-        });
+
 
 
     </script>
