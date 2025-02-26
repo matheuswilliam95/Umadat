@@ -6,7 +6,7 @@ require_once __DIR__ . '/../includes/functions.php';
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-$eventos = getPublicEvents(); 
+$eventos = getPublicEvents();
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -76,6 +76,7 @@ $eventos = getPublicEvents();
                                 <div class="evento-imagem">
                                     <img src="<?php echo PASTA_BASE . htmlspecialchars($evento['imagem_capa'] ?? (PASTA_BASE . 'public/img/default_evento.jpg')); ?>"
                                         alt="<?php echo htmlspecialchars($evento['titulo']); ?>">
+                                    <h2 class="titulo_enventos"><?php echo htmlspecialchars($evento['titulo']); ?></h2>
                                 </div>
                             </div>
 
