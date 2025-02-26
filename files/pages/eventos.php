@@ -66,7 +66,7 @@ $eventos = getPublicEvents();
 
             <ul class="eventos-lista">
                 <?php foreach ($eventos as $evento): ?>
-                    <?php echo "<script> debug.log(evento)</script>"; ?>
+                    <?php echo "<script> console.log(evento)</script>"; ?>
                     <li class="evento-item">
                         <div class="evento-slider">
                             <!-- Slide 1: Capa + Botão -->
