@@ -126,7 +126,7 @@ function updateEventImage($evento_id, $caminho_banco)
                     <label class="cadastro_evento">Início do Evento</label>
                     <input type="date" name="data_inicio" id="data_inicio" placeholder="Data de Início" required>
                     <input type="time" name="horario_inicio" id="horario_inicio" placeholder="Horário de Início">
-                    <label>Término do Evento</label>
+                    <label class="cadastro_evento">Término do Evento</label>
                     <input type="date" name="data_fim" id="data_fim" placeholder="Data de Fim" required>
                     <input type="time" name="horario_fim" id="horario_fim" placeholder="Horário de Fim">
 
