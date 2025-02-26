@@ -100,30 +100,31 @@ $eventos = getPublicEvents();
         </div>
     </div>
     <script>
-        // Lógica do slider para múltiplos slides (capa, detalhes e galeria)
-        document.querySelectorAll('.evento-slider').forEach(slider => {
-            let currentIndex = 0; // Começa no primeiro slide
-            let startX = 0;
+        const slider = document.querySelector(".evento-slider");
+        let isDown = false;
+        let startX;
+        let scrollLeft;
 
-            slider.addEventListener('touchstart', (e) => {
-                startX = e.touches[0].clientX;
-            });
+        slider.addEventListener("mousedown", (e) => {
+            isDown = true;
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
 
-            slider.addEventListener('touchend', (e) => {
-                const endX = e.changedTouches[0].clientX;
-                const diff = endX - startX;
+        slider.addEventListener("mouseleave", () => {
+            isDown = false;
+        });
 
-                if (diff < -50 && currentIndex < 1) {
-                    // Avança para o próximo slide
-                    currentIndex = 1;
-                } else if (diff > 50 && currentIndex > 0) {
-                    // Volta para o slide anterior
-                    currentIndex = 0;
-                }
+        slider.addEventListener("mouseup", () => {
+            isDown = false;
+        });
 
-                // Aplica a transição correta
-                slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-            });
+        slider.addEventListener("mousemove", (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 3;
+            slider.scrollLeft = scrollLeft - walk;
         });
 
 
