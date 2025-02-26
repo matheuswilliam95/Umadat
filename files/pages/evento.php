@@ -45,7 +45,7 @@ $relatedEvents = getRelatedEvents($eventId);
 
                 <?php if (!empty($evento['imagem_capa'])): ?>
                     <img src="<?php echo PASTA_BASE . htmlspecialchars($evento['imagem_capa']); ?>" alt="Imagem do evento"
-                        class="evento-imagem">
+                        class="capa_evento_single">
                 <?php endif; ?>
 
                 <p><strong>Descrição:</strong> <?php echo nl2br(htmlspecialchars($evento['descricao'])); ?></p>
