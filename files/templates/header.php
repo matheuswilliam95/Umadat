@@ -15,14 +15,14 @@ require_once __DIR__ . '/../includes/functions.php';
     <button id="menu-toggle" class="menu-btn">☰</button>
     <ul id="menu" class="menu-list">
         <li><a href="<?php echo BASE_URL; ?>">Início</a></li>
-        <li><a href="<?php echo BASE_URL; ?>eventos.php">Eventos</a></li>
-        <li><a href="<?php echo BASE_URL; ?>cadastro.php">Novo Evento</a></li>
-        <li><a href="<?php echo BASE_URL; ?>perfil.php">Perfil</a></li>
+        <li><a href="<?php echo PASTA_BASE; ?>eventos.php">Eventos</a></li>
+        <li><a href="<?php echo PASTA_BASE; ?>cadastro.php">Novo Evento</a></li>
+        <li><a href="<?php echo PASTA_BASE; ?>perfil.php">Perfil</a></li>
     </ul>
     <div class="quick-icons">
         <a href="<?php echo BASE_URL; ?>" class="icon-home">Início</a>
-        <a href="<?php echo BASE_URL; ?>eventos.php" class="icon-post">Eventos</a>
-        <a href="<?php echo BASE_URL; ?>perfil.php" class="icon-profile">Perfil</a>
+        <a href="<?php echo PASTA_BASE; ?>eventos.php" class="icon-post">Eventos</a>
+        <a href="<?php echo PASTA_BASE; ?>perfil.php" class="icon-profile">Perfil</a>
     </div>
 </nav>
 <script>
