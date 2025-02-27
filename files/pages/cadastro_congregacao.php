@@ -10,8 +10,9 @@ if (session_status() === PHP_SESSION_NONE) {
 
 
 // Redireciona se já estiver logado
-if (!isset($_SESSION['usuario_id'])) {
-    header("Location: login.php");
+if (isset($_SESSION['usuario_id'])) {
+    echo "<script> console.log('usuario logado')</script>";
+    // header("Location: login.php");
     exit;
 }
 
