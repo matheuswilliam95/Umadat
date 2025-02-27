@@ -13,12 +13,19 @@ checkAdmin(); // Garante que apenas administradores acessem
 <!DOCTYPE html>
 <html lang="pt-br">
 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Congregação</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Cadastrar Congregação - <?php echo SITE_NAME; ?></title>
+    <link rel="stylesheet" href="<?php echo PASTA_BASE; ?>public/css/style.css?v=<?php echo time(); ?>">
+    <script defer src="<?php echo PASTA_BASE; ?>public/js/admin_eventos.js?v=<?php echo time(); ?>"></script>
 </head>
+
+<header>
+    <?php include __DIR__ . '/../templates/header.php'; ?>
+</header>
+
 
 <body>
     <h2>Cadastro de Nova Congregação</h2>
