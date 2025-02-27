@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../includes/config.php';
 require_once __DIR__ . '/../includes/db.php';
+require_once __DIR__ . '/../includes/auth.php';
 require_once __DIR__ . '/../includes/functions.php';
 
 if (session_status() === PHP_SESSION_NONE) {
@@ -9,7 +10,12 @@ if (session_status() === PHP_SESSION_NONE) {
 
 checkAdmin(); // Garante que apenas administradores acessem
 
-$regionais = getRegionais();
+// Redireciona se já estiver logado
+if (isset($_SESSION['usuario_id'])) {
+    header("Location: dashboard.php");
+    exit;
+}
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = trim($_POST['nome']);
@@ -30,6 +36,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<p>O nome da congregação é obrigatório!</p>";
     }
 }
+
+$regionais = getRegionais();
+
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <h2>Cadastro de Nova Congregação</h2>
 
-    <form action="" method="POST">
+    <form action="cadastro_congregacao.php" method="POST">
         <label for="nome">Nome da Congregação:</label>
         <input type="text" id="nome" name="nome" required>
 
