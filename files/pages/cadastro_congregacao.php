@@ -18,20 +18,20 @@ if (isset($_SESSION['usuario_id'])) {
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nome = trim($_POST['nome']);
-    $regional_id = !empty($_POST['regional_id']) ? $_POST['regional_id'] : NULL;
+    $nome = sanitizeInput($_POST['nome']);
+    $regional_id = !empty($_POST['regional_id']) ? intval($_POST['regional_id']) : NULL;
 
     if (!empty($nome)) {
-        $query = "INSERT INTO congregacoes (nome, regional_id) VALUES (?, ?)";
-        $stmt = mysqli_prepare($conn, $query);
-        mysqli_stmt_bind_param($stmt, "si", $nome, $regional_id);
-
-        if (mysqli_stmt_execute($stmt)) {
+        try {
+            $pdo = new PDO(DB_DSN, DB_USER, DB_PASS, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+            $stmt = $pdo->prepare("INSERT INTO congregacoes (nome, regional_id) VALUES (:nome, :regional_id)");
+            $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
+            $stmt->bindParam(':regional_id', $regional_id, PDO::PARAM_INT);
+            $stmt->execute();
             echo "<p>Congregação cadastrada com sucesso!</p>";
-        } else {
-            echo "<p>Erro ao cadastrar: " . mysqli_error($conn) . "</p>";
+        } catch (PDOException $e) {
+            echo "<p>Erro ao cadastrar: " . $e->getMessage() . "</p>";
         }
-        mysqli_stmt_close($stmt);
     } else {
         echo "<p>O nome da congregação é obrigatório!</p>";
     }
