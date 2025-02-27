@@ -66,7 +66,7 @@ $regionais = getRegionais();
 
         <label for="regional">Regional:</label>
 
-        <select name="regional" id="regional_id">
+        <select name="regional_id" id="regional_id">
             <option value="" disabled selected>Selecione uma Congregação</option>
             <?php foreach ($regionais as $regional): ?>
                 <option value="<?php echo $regional['id']; ?>">
