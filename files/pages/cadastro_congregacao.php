@@ -6,6 +6,8 @@ require_once __DIR__ . '/../includes/functions.php';
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
+    $_SESSION['usuario_id'] = $usuario_id; // Defina isso após validar o usuário
+
 }
 
 // Verifica se o usuário está logado
