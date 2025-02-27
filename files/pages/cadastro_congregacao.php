@@ -23,7 +23,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (!empty($nome)) {
         try {
-            $pdo = new PDO(DB_DSN, DB_USER, DB_PASS, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
             $stmt = $pdo->prepare("INSERT INTO congregacoes (nome, regional_id) VALUES (:nome, :regional_id)");
             $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
             $stmt->bindParam(':regional_id', $regional_id, PDO::PARAM_INT);
