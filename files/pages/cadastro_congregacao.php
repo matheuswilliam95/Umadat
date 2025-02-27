@@ -49,7 +49,7 @@
             ?>
         </select>
 
-        <button type="submit">Cadastrar</button>
+        <button class="button" type="submit">Cadastrar</button>
     </form>
 </body>
 
