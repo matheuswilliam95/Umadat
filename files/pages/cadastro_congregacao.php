@@ -8,14 +8,11 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Verifica se a sessão expirou
+// Verifica se o usuário está logado
 if (!isset($_SESSION['usuario_id'])) {
     header("Location: login.php");
     exit;
 }
-
-checkAdmin(); // Garante que apenas administradores acessem
-
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = sanitizeInput($_POST['nome']);
