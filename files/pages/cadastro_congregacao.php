@@ -1,3 +1,15 @@
+<?php
+require_once __DIR__ . '/../includes/config.php';
+require_once __DIR__ . '/../includes/db.php';
+require_once __DIR__ . '/../includes/functions.php';
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+checkAdmin(); // Garante que apenas administradores acessem
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -11,7 +23,6 @@
 <body>
     <h2>Cadastro de Nova Congregação</h2>
     <?php
-    include 'conexao.php';
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $nome = trim($_POST['nome']);
