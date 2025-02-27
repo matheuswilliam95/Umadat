@@ -68,18 +68,9 @@ $regionais = getRegionais();
             <?php endforeach; ?>
         </select>
 
-        <!-- <select id="regional" name="regional_id">
-            <option value="">Selecione</option>
-            <?php
-            $query = "SELECT id, nome FROM hierarquia ORDER BY nome";
-            $result = mysqli_query($conn, $query);
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo "<option value='" . $row['id'] . "'>" . $row['nome'] . "</option>";
-            }
-            ?>
-        </select> -->
 
-        <button class="button" type="submit">Cadastrar</button>
+
+        <button type="submit">Cadastrar</button>
     </form>
 </body>
 
