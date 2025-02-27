@@ -187,11 +187,15 @@ function getEventRegistrations($eventId)
     return fetchAllRows($sql, [$eventId]);
 }
 
-
 function checkAdmin()
 {
+    if (!isset($_SESSION['user_id'])) {
+        header("Location: login.php"); // Redireciona para login se a sessão expirou
+        exit;
+    }
+
     $role = getUserRole($_SESSION['user_id']);
-    if (!isset($_SESSION['user_id']) || !in_array($role, ['admin', 'super_admin'])) {
+    if (!in_array($role, ['admin', 'super_admin'])) {
         die("Acesso negado.");
     }
 }

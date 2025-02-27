@@ -13,7 +13,7 @@ if (session_status() === PHP_SESSION_NONE) {
 if (isset($_SESSION['usuario_id'])) {
     echo "<script> console.log('usuario logado')</script>";
     // header("Location: login.php");
-    exit;
+    // exit;
 }
 
 checkAdmin(); // Garante que apenas administradores acessem
