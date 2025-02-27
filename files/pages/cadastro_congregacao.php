@@ -10,6 +10,26 @@ if (session_status() === PHP_SESSION_NONE) {
 checkAdmin(); // Garante que apenas administradores acessem
 
 $regionais = getRegionais();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nome = trim($_POST['nome']);
+    $regional_id = !empty($_POST['regional_id']) ? $_POST['regional_id'] : NULL;
+
+    if (!empty($nome)) {
+        $query = "INSERT INTO congregacoes (nome, regional_id) VALUES (?, ?)";
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_stmt_bind_param($stmt, "si", $nome, $regional_id);
+
+        if (mysqli_stmt_execute($stmt)) {
+            echo "<p>Congregação cadastrada com sucesso!</p>";
+        } else {
+            echo "<p>Erro ao cadastrar: " . mysqli_error($conn) . "</p>";
+        }
+        mysqli_stmt_close($stmt);
+    } else {
+        echo "<p>O nome da congregação é obrigatório!</p>";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -31,28 +51,7 @@ $regionais = getRegionais();
 
 <body>
     <h2>Cadastro de Nova Congregação</h2>
-    <?php
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $nome = trim($_POST['nome']);
-        $regional_id = !empty($_POST['regional_id']) ? $_POST['regional_id'] : NULL;
-
-        if (!empty($nome)) {
-            $query = "INSERT INTO congregacoes (nome, regional_id) VALUES (?, ?)";
-            $stmt = mysqli_prepare($conn, $query);
-            mysqli_stmt_bind_param($stmt, "si", $nome, $regional_id);
-
-            if (mysqli_stmt_execute($stmt)) {
-                echo "<p>Congregação cadastrada com sucesso!</p>";
-            } else {
-                echo "<p>Erro ao cadastrar: " . mysqli_error($conn) . "</p>";
-            }
-            mysqli_stmt_close($stmt);
-        } else {
-            echo "<p>O nome da congregação é obrigatório!</p>";
-        }
-    }
-    ?>
     <form action="" method="POST">
         <label for="nome">Nome da Congregação:</label>
         <input type="text" id="nome" name="nome" required>
@@ -67,9 +66,6 @@ $regionais = getRegionais();
                 </option>
             <?php endforeach; ?>
         </select>
-
-
-
         <button type="submit">Cadastrar</button>
     </form>
 </body>
