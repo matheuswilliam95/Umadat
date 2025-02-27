@@ -8,13 +8,14 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-checkAdmin(); // Garante que apenas administradores acessem
 
 // Redireciona se já estiver logado
 if (!isset($_SESSION['usuario_id'])) {
-    header("Location: dashboard.php");
+    header("Location: login.php");
     exit;
 }
+
+checkAdmin(); // Garante que apenas administradores acessem
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
