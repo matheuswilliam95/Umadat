@@ -27,7 +27,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
             $stmt->bindParam(':regional_id', $regional_id, PDO::PARAM_INT);
             $stmt->execute();
-            echo "<p>Congregação cadastrada com sucesso!</p>";
+
+            // Redireciona para evitar reenvio do formulário ao atualizar a página
+            header("Location: cadastro_congregacao.php");
+            exit;
         } catch (PDOException $e) {
             echo "<p>Erro ao cadastrar: " . $e->getMessage() . "</p>";
         }
@@ -35,6 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<p>O nome da congregação é obrigatório!</p>";
     }
 }
+
 
 $regionais = getRegionais();
 
