@@ -11,7 +11,7 @@ if (session_status() === PHP_SESSION_NONE) {
 checkAdmin(); // Garante que apenas administradores acessem
 
 // Redireciona se já estiver logado
-if (isset($_SESSION['usuario_id'])) {
+if (!isset($_SESSION['usuario_id'])) {
     header("Location: dashboard.php");
     exit;
 }
