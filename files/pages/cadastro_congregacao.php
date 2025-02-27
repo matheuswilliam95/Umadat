@@ -6,15 +6,16 @@ require_once __DIR__ . '/../includes/functions.php';
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
-    $_SESSION['usuario_id'] = $usuario_id; // Defina isso após validar o usuário
-
 }
 
-// Verifica se o usuário está logado
-if (!isset($_SESSION['usuario_id'])) {
-    // header("Location: login.php");
+checkAdmin(); // Garante que apenas administradores acessem
+
+// Redireciona se já estiver logado
+if (isset($_SESSION['usuario_id'])) {
+    header("Location: dashboard.php");
     exit;
 }
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = sanitizeInput($_POST['nome']);
