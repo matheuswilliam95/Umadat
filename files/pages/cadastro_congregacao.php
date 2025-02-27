@@ -60,7 +60,7 @@ $regionais = getRegionais();
 <body>
     <h2>Cadastro de Nova Congregação</h2>
 
-    <form action="cadastro_congregacao.php" method="POST">
+    <form action="" method="POST">
         <label for="nome">Nome da Congregação:</label>
         <input type="text" id="nome" name="nome" required>
 
