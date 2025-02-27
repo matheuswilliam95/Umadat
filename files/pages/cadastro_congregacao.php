@@ -8,6 +8,8 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 checkAdmin(); // Garante que apenas administradores acessem
+
+$regionais = getRegionais();
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +58,17 @@ checkAdmin(); // Garante que apenas administradores acessem
         <input type="text" id="nome" name="nome" required>
 
         <label for="regional">Regional:</label>
-        <select id="regional" name="regional_id">
+
+        <select name="regional" id="regional_id">
+            <option value="" disabled selected>Selecione uma Congregação</option>
+            <?php foreach ($regionais as $regional): ?>
+                <option value="<?php echo $regional['id']; ?>">
+                    <?php echo htmlspecialchars($regional['nome']); ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+
+        <!-- <select id="regional" name="regional_id">
             <option value="">Selecione</option>
             <?php
             $query = "SELECT id, nome FROM hierarquia ORDER BY nome";
@@ -65,7 +77,7 @@ checkAdmin(); // Garante que apenas administradores acessem
                 echo "<option value='" . $row['id'] . "'>" . $row['nome'] . "</option>";
             }
             ?>
-        </select>
+        </select> -->
 
         <button class="button" type="submit">Cadastrar</button>
     </form>

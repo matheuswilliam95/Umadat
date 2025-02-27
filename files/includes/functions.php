@@ -245,6 +245,12 @@ function getCongregacoes()
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
+function getRegionais()
+{
+    global $pdo;
+    $stmt = $pdo->query("SELECT id, nome FROM hierarquia ORDER BY nome ASC");
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 
 
 ?>
