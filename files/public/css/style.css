@@ -419,16 +419,16 @@ header {
 }
 
 .botoes_link_evento {
-    display: flex;
-    gap: 10px;
-    background-color: #ffffff00;
-    border: none;
-    cursor: pointer;
-    color: #007585;
-    font-size: 2.5em;
-    font-weight: bold;
-    text-decoration: none;
-    transition: color 0.3s ease;
+    display: flex !important;
+    gap: 10px !important;
+    background-color: #ffffff00 !important;
+    border: none !important;
+    cursor: pointer !important;
+    color: #007585 !important;
+    font-size: 2.5em !important;
+    font-weight: bold !important;
+    text-decoration: none !important;
+    transition: color 0.3s ease !important;
 
 }
 
