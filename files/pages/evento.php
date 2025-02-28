@@ -130,7 +130,7 @@ $relatedEvents = getRelatedEvents($eventId);
                 </script>
 
                 <!-- Local -->
-                <p><strong>Local:</strong>
+                <p>
                     <?php
                     $local = $evento['local'] ?? 'N/A';
                     if ($local !== 'N/A') {
