@@ -416,6 +416,8 @@ header {
 .evento-links {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+
 }
 
 .botoes_link_evento {
