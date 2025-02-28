@@ -400,6 +400,14 @@ header {
     margin: 10px 0;
 }
 
+.button_exportar_agenda {
+    background-color: #3150ff;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
 /*  --------------------------------- Responsividade --------------------------- */
 @media screen and (max-width: 600px) {
     .container {

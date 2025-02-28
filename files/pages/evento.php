@@ -81,25 +81,26 @@ $relatedEvents = getRelatedEvents($eventId);
                 <?php if ($evento['data_limite_inscricao'] >= date('Y-m-d')): ?>
                     <button id="inscricao-btn" data-evento-id="<?php echo $evento['id']; ?>">Inscreva-se</button>
                 <?php endif; ?>
-                              <?php
-                              // Formata as datas para o formato esperado pelo Google Calendar (YYYYMMDDTHHmmssZ)
-                              $startDateTime = !empty($evento['horario_inicio'])
-                                  ? date('Ymd\THis\Z', strtotime($evento['data_inicio'] . ' ' . $evento['horario_inicio']))
-                                  : date('Ymd\THis\Z', strtotime($evento['data_inicio']));
-                              $endDateTime = !empty($evento['horario_fim'])
-                                  ? date('Ymd\THis\Z', strtotime($evento['data_fim'] . ' ' . $evento['horario_fim']))
-                                  : date('Ymd\THis\Z', strtotime($evento['data_fim']));
 
-                              $googleCalendarUrl = "https://calendar.google.com/calendar/render?action=TEMPLATE";
-                              $googleCalendarUrl .= "&text=" . urlencode($evento['titulo']);
-                              $googleCalendarUrl .= "&dates=" . $startDateTime . "/" . $endDateTime;
-                              $googleCalendarUrl .= "&details=" . urlencode($evento['descricao']);
-                              if (!empty($evento['local'])) {
-                                  $googleCalendarUrl .= "&location=" . urlencode($evento['local']);
-                              }
-                              ?>
-                              <!-- Botão para enviar para a agenda via Google Calendar -->
-                              <a class="btn" target="_blank" href="<?php echo $googleCalendarUrl; ?>">Adicionar ao Google Calendar</a>
+                <!-- Botão para exportar para o Google Calendar --> 
+                <?php
+                $startDateTime = !empty($evento['horario_inicio'])
+                    ? date('Ymd\THis\Z', strtotime($evento['data_inicio'] . ' ' . $evento['horario_inicio']))
+                    : date('Ymd\THis\Z', strtotime($evento['data_inicio']));
+                $endDateTime = !empty($evento['horario_fim'])
+                    ? date('Ymd\THis\Z', strtotime($evento['data_fim'] . ' ' . $evento['horario_fim']))
+                    : date('Ymd\THis\Z', strtotime($evento['data_fim']));
+
+                $googleCalendarUrl = "https://calendar.google.com/calendar/render?action=TEMPLATE";
+                $googleCalendarUrl .= "&text=" . urlencode($evento['titulo']);
+                $googleCalendarUrl .= "&dates=" . $startDateTime . "/" . $endDateTime;
+                $googleCalendarUrl .= "&details=" . urlencode($evento['descricao']);
+                if (!empty($evento['local'])) {
+                    $googleCalendarUrl .= "&location=" . urlencode($evento['local']);
+                }
+                ?>
+                <!-- Botão para enviar para a agenda via Google Calendar -->
+                <a class="button_exportar_agenda" target="_blank" href="<?php echo $googleCalendarUrl; ?>">Adicionar ao Google Calendar</a>
 
                 <h3>Eventos Relacionados</h3>
                 <ul>
