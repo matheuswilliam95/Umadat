@@ -427,7 +427,6 @@ header {
 }
 
 .botoes_link_evento {
-    display: flex !important;
     gap: 10px !important;
     background-color: #ffffff00 !important;
     border: none !important;
