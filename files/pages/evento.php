@@ -84,7 +84,7 @@ $relatedEvents = getRelatedEvents($eventId);
 
                 <!-- Botão para salvar o evento na agenda do celular -->
                 <a class="btn"
-                    href="<?php echo PASTA_BASE; ?>includes/export_event_ics.php?id=<?php echo $evento['id']; ?>">Salvar
+                    href="<?php echo PASTA_BASE; ?>api/export_event_ics.php?id=<?php echo $evento['id']; ?>">Salvar
                     na Agenda</a>
 
 
