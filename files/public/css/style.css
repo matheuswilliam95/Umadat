@@ -418,6 +418,11 @@ header {
     justify-content: space-between;
 }
 
+.botoes_link_evento {
+    display: flex;
+    gap: 10px;
+}
+
 /*  --------------------------------- Responsividade --------------------------- */
 @media screen and (max-width: 600px) {
     .container {
