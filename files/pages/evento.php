@@ -109,8 +109,7 @@ $relatedEvents = getRelatedEvents($eventId);
                     $googleCalendarUrl .= "&location=" . urlencode($evento['local']);
                 }
                 ?>
-                <a class="button_exportar_agenda" target="_blank" href="<?php echo $googleCalendarUrl; ?>">Save the
-                    Date</a>
+                <a class="button_exportar_agenda" target="_blank" href="<?php echo $googleCalendarUrl; ?>">&#x1F4C5;</a>
 
                 <!-- Botão para compartilhar link do evento -->
                 <button id="compartilhar-btn" class="compartilhar_evento_button"
