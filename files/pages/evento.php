@@ -113,7 +113,8 @@ $relatedEvents = getRelatedEvents($eventId);
                     Date</a>
 
                 <!-- Botão para compartilhar link do evento -->
-                <button id="compartilhar-btn" onclick="compartilharEvento()">Compartilhar</button>
+                <button id="compartilhar-btn" class="compartilhar_evento_button"
+                    onclick="compartilharEvento()">Compartilhar</button>
                 <script>
                     function compartilharEvento() {
                         const url = window.location.href;
