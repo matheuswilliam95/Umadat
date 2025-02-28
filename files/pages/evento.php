@@ -110,10 +110,10 @@ $relatedEvents = getRelatedEvents($eventId);
                         $googleCalendarUrl .= "&location=" . urlencode($evento['local']);
                     }
                     ?>
-                    <a class="button_exportar_agenda" target="_blank" href="<?php echo $googleCalendarUrl; ?>">&#x1F4C5;</a>
+                    <a class="botoes_link_evento" target="_blank" href="<?php echo $googleCalendarUrl; ?>">&#x1F4C5;</a>
 
                     <!-- Botão para compartilhar link do evento -->
-                    <button id="compartilhar-btn" class="compartilhar_evento_button"
+                    <button id="compartilhar-btn" class="botoes_link_evento"
                         onclick="compartilharEvento()">&#x1F4E3;</button>
                     <script>
                         function compartilharEvento() {
@@ -135,7 +135,7 @@ $relatedEvents = getRelatedEvents($eventId);
                         <?php
                         $local = $evento['local'] ?? 'N/A';
                         if ($local !== 'N/A') {
-                            echo '<a href="https://www.google.com/maps/search/?api=1&query=' . urlencode($local) . '" target="_blank">&#x1F4CD;</a>';
+                            echo '<a class="botoes_link_evento" href="https://www.google.com/maps/search/?api=1&query=' . urlencode($local) . '" target="_blank">&#x1F4CD;</a>';
                         } else {
                             echo 'N/A';
                         }
