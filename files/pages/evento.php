@@ -45,20 +45,28 @@ $relatedEvents = getRelatedEvents($eventId);
                 <h2><?php echo htmlspecialchars($evento['titulo']); ?></h2>
 
 
+                <!-- Imagem -->
                 <?php if (!empty($evento['imagem_capa'])): ?>
                     <img src="<?php echo PASTA_BASE . htmlspecialchars($evento['imagem_capa']); ?>" alt="Imagem do evento"
                         class="capa_evento_single">
                 <?php endif; ?>
 
+                <!-- Local -->
                 <p><strong>Descrição:</strong> <?php echo nl2br(htmlspecialchars($evento['descricao'])); ?></p>
+
+                <!-- Data -->
                 <p><strong>Data:</strong> <?php echo formatDate($evento['data_inicio']); ?> -
                     <?php echo formatDate($evento['data_fim']); ?>
                 </p>
+
+                <!-- Horário -->
                 <p><strong>Horário:</strong>
                     <?php echo $evento['horario_inicio'] ? date('H:i', strtotime($evento['horario_inicio'])) : 'N/A'; ?>
                     às
                     <?php echo $evento['horario_fim'] ? date('H:i', strtotime($evento['horario_fim'])) : 'N/A'; ?>
                 </p>
+
+                <!-- Local -->
                 <p><strong>Local:</strong>
                     <?php
                     $local = $evento['local'] ?? 'N/A';
@@ -69,6 +77,8 @@ $relatedEvents = getRelatedEvents($eventId);
                     }
                     ?>
                 </p>
+
+                <!-- Valores -->
                 <p><strong>Valor:</strong>
                     <?php echo $evento['valor'] ? 'R$ ' . number_format($evento['valor'], 2, ',', '.') : 'Gratuito'; ?>
                 </p>
@@ -82,7 +92,7 @@ $relatedEvents = getRelatedEvents($eventId);
                     <button id="inscricao-btn" data-evento-id="<?php echo $evento['id']; ?>">Inscreva-se</button>
                 <?php endif; ?>
 
-                <!-- Botão para exportar para o Google Calendar --> 
+                <!-- Botão para exportar para o Google Calendar -->
                 <?php
                 $startDateTime = !empty($evento['horario_inicio'])
                     ? date('Ymd\THis\Z', strtotime($evento['data_inicio'] . ' ' . $evento['horario_inicio']))
@@ -99,8 +109,8 @@ $relatedEvents = getRelatedEvents($eventId);
                     $googleCalendarUrl .= "&location=" . urlencode($evento['local']);
                 }
                 ?>
-                <!-- Botão para enviar para a agenda via Google Calendar -->
-                <a class="button_exportar_agenda" target="_blank" href="<?php echo $googleCalendarUrl; ?>">Save the Date</a>
+                <a class="button_exportar_agenda" target="_blank" href="<?php echo $googleCalendarUrl; ?>">Save the
+                    Date</a>
 
                 <h3>Eventos Relacionados</h3>
                 <ul>
