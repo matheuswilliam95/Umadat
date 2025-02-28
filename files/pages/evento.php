@@ -112,6 +112,23 @@ $relatedEvents = getRelatedEvents($eventId);
                 <a class="button_exportar_agenda" target="_blank" href="<?php echo $googleCalendarUrl; ?>">Save the
                     Date</a>
 
+                <!-- Botão para compartilhar link do evento -->
+                <button id="compartilhar-btn" onclick="compartilharEvento()">Compartilhar</button>
+                <script>
+                    function compartilharEvento() {
+                        const url = window.location.href;
+                        if (navigator.share) {
+                            navigator.share({
+                                title: '<?php echo htmlspecialchars($evento['titulo']); ?>',
+                                text: 'Confira este evento:',
+                                url: url
+                            }).catch(console.error);
+                        } else {
+                            prompt('Copie o link do evento:', url);
+                        }
+                    }
+                </script>
+
                 <h3>Eventos Relacionados</h3>
                 <ul>
                     <?php foreach ($relatedEvents as $relEvent): ?>
