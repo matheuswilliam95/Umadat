@@ -417,7 +417,13 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+}
 
+.evento-links button {
+    flex: 1;
+    margin: 0 5px;
+    text-align: center;
 }
 
 .botoes_link_evento {
@@ -431,7 +437,7 @@ header {
     font-weight: bold !important;
     text-decoration: none !important;
     transition: color 0.3s ease !important;
-
+    width: auto !important;
 }
 
 /*  --------------------------------- Responsividade --------------------------- */
