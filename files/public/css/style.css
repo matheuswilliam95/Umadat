@@ -413,6 +413,11 @@ header {
     color: rgb(172, 255, 255);
 }
 
+.evento-links {
+    display: flex;
+    justify-content: space-between;
+}
+
 /*  --------------------------------- Responsividade --------------------------- */
 @media screen and (max-width: 600px) {
     .container {

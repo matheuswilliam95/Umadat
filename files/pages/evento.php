@@ -92,54 +92,56 @@ $relatedEvents = getRelatedEvents($eventId);
                     <button id="inscricao-btn" data-evento-id="<?php echo $evento['id']; ?>">Inscreva-se</button>
                 <?php endif; ?>
 
-                <!-- Botão para exportar para o Google Calendar -->
-                <?php
-                $startDateTime = !empty($evento['horario_inicio'])
-                    ? date('Ymd\THis\Z', strtotime($evento['data_inicio'] . ' ' . $evento['horario_inicio']))
-                    : date('Ymd\THis\Z', strtotime($evento['data_inicio']));
-                $endDateTime = !empty($evento['horario_fim'])
-                    ? date('Ymd\THis\Z', strtotime($evento['data_fim'] . ' ' . $evento['horario_fim']))
-                    : date('Ymd\THis\Z', strtotime($evento['data_fim']));
-
-                $googleCalendarUrl = "https://calendar.google.com/calendar/render?action=TEMPLATE";
-                $googleCalendarUrl .= "&text=" . urlencode($evento['titulo']);
-                $googleCalendarUrl .= "&dates=" . $startDateTime . "/" . $endDateTime;
-                $googleCalendarUrl .= "&details=" . urlencode($evento['descricao']);
-                if (!empty($evento['local'])) {
-                    $googleCalendarUrl .= "&location=" . urlencode($evento['local']);
-                }
-                ?>
-                <a class="button_exportar_agenda" target="_blank" href="<?php echo $googleCalendarUrl; ?>">&#x1F4C5;</a>
-
-                <!-- Botão para compartilhar link do evento -->
-                <button id="compartilhar-btn" class="compartilhar_evento_button"
-                    onclick="compartilharEvento()">&#x1F4E3;</button>
-                <script>
-                    function compartilharEvento() {
-                        const url = window.location.href;
-                        if (navigator.share) {
-                            navigator.share({
-                                title: '<?php echo htmlspecialchars($evento['titulo']); ?>',
-                                text: 'Confira este evento:',
-                                url: url
-                            }).catch(console.error);
-                        } else {
-                            prompt('Copie o link do evento:', url);
-                        }
-                    }
-                </script>
-
-                <!-- Local -->
-                <p>
+                <div class="evento-links">
+                    <!-- Botão para exportar para o Google Calendar -->
                     <?php
-                    $local = $evento['local'] ?? 'N/A';
-                    if ($local !== 'N/A') {
-                        echo '<a href="https://www.google.com/maps/search/?api=1&query=' . urlencode($local) . '" target="_blank">&#x1F4CD;</a>';
-                    } else {
-                        echo 'N/A';
+                    $startDateTime = !empty($evento['horario_inicio'])
+                        ? date('Ymd\THis\Z', strtotime($evento['data_inicio'] . ' ' . $evento['horario_inicio']))
+                        : date('Ymd\THis\Z', strtotime($evento['data_inicio']));
+                    $endDateTime = !empty($evento['horario_fim'])
+                        ? date('Ymd\THis\Z', strtotime($evento['data_fim'] . ' ' . $evento['horario_fim']))
+                        : date('Ymd\THis\Z', strtotime($evento['data_fim']));
+
+                    $googleCalendarUrl = "https://calendar.google.com/calendar/render?action=TEMPLATE";
+                    $googleCalendarUrl .= "&text=" . urlencode($evento['titulo']);
+                    $googleCalendarUrl .= "&dates=" . $startDateTime . "/" . $endDateTime;
+                    $googleCalendarUrl .= "&details=" . urlencode($evento['descricao']);
+                    if (!empty($evento['local'])) {
+                        $googleCalendarUrl .= "&location=" . urlencode($evento['local']);
                     }
                     ?>
-                </p>
+                    <a class="button_exportar_agenda" target="_blank" href="<?php echo $googleCalendarUrl; ?>">&#x1F4C5;</a>
+
+                    <!-- Botão para compartilhar link do evento -->
+                    <button id="compartilhar-btn" class="compartilhar_evento_button"
+                        onclick="compartilharEvento()">&#x1F4E3;</button>
+                    <script>
+                        function compartilharEvento() {
+                            const url = window.location.href;
+                            if (navigator.share) {
+                                navigator.share({
+                                    title: '<?php echo htmlspecialchars($evento['titulo']); ?>',
+                                    text: 'Confira este evento:',
+                                    url: url
+                                }).catch(console.error);
+                            } else {
+                                prompt('Copie o link do evento:', url);
+                            }
+                        }
+                    </script>
+
+                    <!-- Local -->
+                    <p>
+                        <?php
+                        $local = $evento['local'] ?? 'N/A';
+                        if ($local !== 'N/A') {
+                            echo '<a href="https://www.google.com/maps/search/?api=1&query=' . urlencode($local) . '" target="_blank">&#x1F4CD;</a>';
+                        } else {
+                            echo 'N/A';
+                        }
+                        ?>
+                    </p>
+                </div>
 
                 <h3>Eventos Relacionados</h3>
                 <ul>
