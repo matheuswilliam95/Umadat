@@ -57,7 +57,16 @@ $relatedEvents = getRelatedEvents($eventId);
                     às
                     <?php echo $evento['horario_fim'] ? date('H:i', strtotime($evento['horario_fim'])) : 'N/A'; ?>
                 </p>
-                <p><strong>Local:</strong> <?php echo htmlspecialchars($evento['local'] ?? 'N/A'); ?></p>
+                <p><strong>Local:</strong>
+                    <?php
+                    $local = $evento['local'] ?? 'N/A';
+                    if ($local !== 'N/A') {
+                        echo '<a href="https://www.google.com/maps/search/?api=1&query=' . urlencode($local) . '" target="_blank">' . htmlspecialchars($local) . '</a>';
+                    } else {
+                        echo 'N/A';
+                    }
+                    ?>
+                </p>
                 <p><strong>Valor:</strong>
                     <?php echo $evento['valor'] ? 'R$ ' . number_format($evento['valor'], 2, ',', '.') : 'Gratuito'; ?>
                 </p>

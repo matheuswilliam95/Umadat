@@ -22,7 +22,6 @@ checkAdmin(); // Garante que apenas administradores acessem
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = sanitizeInput($_POST['nome']);
     $regional_id = !empty($_POST['regional_id']) ? intval($_POST['regional_id']) : NULL;
-
     if (!empty($nome)) {
         try {
             $stmt = $pdo->prepare("INSERT INTO congregacoes (nome, regional_id) VALUES (:nome, :regional_id)");
