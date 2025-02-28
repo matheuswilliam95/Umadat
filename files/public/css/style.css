@@ -421,6 +421,15 @@ header {
 .botoes_link_evento {
     display: flex;
     gap: 10px;
+    background-color: #ffffff00;
+    border: none;
+    cursor: pointer;
+    color: #007585;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
 }
 
 /*  --------------------------------- Responsividade --------------------------- */
