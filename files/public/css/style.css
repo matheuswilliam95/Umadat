@@ -401,11 +401,16 @@ header {
 }
 
 .button_exportar_agenda {
-    background-color: #fcff31;
-    color: rgb(55, 59, 0);
+    background-color: #007585;
+    color: rgb(172, 255, 255);
     padding: 10px;
     border-radius: 5px;
     text-decoration: none;
+}
+
+.button_exportar_agenda:hover {
+    background-color: #005f6b;
+    color: rgb(172, 255, 255);
 }
 
 /*  --------------------------------- Responsividade --------------------------- */
