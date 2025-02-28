@@ -401,8 +401,8 @@ header {
 }
 
 .button_exportar_agenda {
-    background-color: #3150ff;
-    color: white;
+    background-color: #fcff31;
+    color: rgb(55, 59, 0);
     padding: 10px;
     border-radius: 5px;
     text-decoration: none;

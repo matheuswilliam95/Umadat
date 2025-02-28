@@ -100,7 +100,7 @@ $relatedEvents = getRelatedEvents($eventId);
                 }
                 ?>
                 <!-- Botão para enviar para a agenda via Google Calendar -->
-                <a class="button_exportar_agenda" target="_blank" href="<?php echo $googleCalendarUrl; ?>">Adicionar ao Google Calendar</a>
+                <a class="button_exportar_agenda" target="_blank" href="<?php echo $googleCalendarUrl; ?>">Save the Date</a>
 
                 <h3>Eventos Relacionados</h3>
                 <ul>
