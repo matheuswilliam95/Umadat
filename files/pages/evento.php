@@ -91,7 +91,7 @@ $relatedEvents = getRelatedEvents($eventId);
                         <?php
                         $dataInicio = date('d/m/Y', strtotime($evento['data_inicio']));
                         $dataFim = date('d/m/Y', strtotime($evento['data_fim']));
-                        if ($dataInicio === $dataFim) {
+                        if ($dataInicio == $dataFim) {
                             echo $dataInicio;
                         } else {
                             echo $dataInicio . ' - ' . $dataFim;
