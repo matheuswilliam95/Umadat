@@ -58,7 +58,7 @@ textarea {
     font-size: 1.2em;
 }
 
-button {
+.button {
     padding: 0.5em 1em;
     margin: 0.5em;
     border-radius: 5px;
@@ -70,7 +70,7 @@ button {
     height: 5em;
 }
 
-button:hover {
+.button:hover {
     background-color: var(--secondary_color);
     color: #ffffff;
 }
