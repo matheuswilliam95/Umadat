@@ -110,7 +110,7 @@ $relatedEvents = getRelatedEvents($eventId);
                         $googleCalendarUrl .= "&location=" . urlencode($evento['local']);
                     }
                     ?>
-                    <div style="text-align: center;">
+                    <div class="alinhamento_icones">
                         <a class="botoes_link_evento" target="_blank" href="<?php echo $googleCalendarUrl; ?>">
                             <img class="icon_evento" src="<?php echo PASTA_BASE; ?>public/img/calendar_icon.png"
                                 alt="Adicionar ao Google Calendar">
@@ -145,19 +145,21 @@ $relatedEvents = getRelatedEvents($eventId);
                     </script>
 
                     <!-- Local -->
-                    <p>
-                        <?php
-                        $local = $evento['local'] ?? 'N/A';
-                        if ($local !== 'N/A') {
-                            echo '<div style="text-align: center;">';
-                            echo '<a class="botoes_link_evento" href="https://www.google.com/maps/search/?api=1&query=' . urlencode($local) . '" target="_blank"><img class="icon_evento" src="' . PASTA_BASE . 'public/img/place_icon.png" alt="Local"></a>';
-                            echo '<br><small>Ver no mapa</small>';
-                            echo '</div>';
-                        } else {
-                            echo 'N/A';
-                        }
-                        ?>
-                    </p>
+                    <div class="alinhamento_icones">
+                        <p>
+                            <?php
+                            $local = $evento['local'] ?? 'N/A';
+                            if ($local !== 'N/A') {
+                                echo '<div style="text-align: center;">';
+                                echo '<a class="botoes_link_evento" href="https://www.google.com/maps/search/?api=1&query=' . urlencode($local) . '" target="_blank"><img class="icon_evento" src="' . PASTA_BASE . 'public/img/place_icon.png" alt="Local"></a>';
+                                echo '<br><small>Ver no mapa</small>';
+                                echo '</div>';
+                            } else {
+                                echo 'N/A';
+                            }
+                            ?>
+                        </p>
+                    </div>
                 </div>
 
                 <h3>Eventos Relacionados</h3>
