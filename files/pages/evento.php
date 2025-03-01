@@ -122,6 +122,8 @@ $relatedEvents = getRelatedEvents($eventId);
                         <img class="icon_evento" src="<?php echo PASTA_BASE; ?>public/img/share_icon.png"
                             alt="Compartilhar">
                     </button>
+                    <small>Compartilhar</small>
+
                     <script>
                         function compartilharEvento() {
                             const url = window.location.href;
