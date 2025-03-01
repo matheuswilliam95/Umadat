@@ -89,7 +89,7 @@ $relatedEvents = getRelatedEvents($eventId);
                 <p><strong>Responsável:</strong> <?php echo htmlspecialchars($evento['responsavel_nome'] ?? 'N/A'); ?>
                 </p>
 
-                <?php if ($evento['data_limite_inscricao'] >= date('Y-m-d')): ?>
+                <?php if (!is_null($evento['data_limite_inscricao'])): ?>
                     <p>
                         <strong>Data limite de inscrição:</strong>
                         <?php echo date('d/m/Y', strtotime($evento['data_limite_inscricao'])); ?>
