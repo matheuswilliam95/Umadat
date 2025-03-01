@@ -294,6 +294,11 @@ header {
     width: auto;
 }
 
+.menu-btn {
+    width: 30vw;
+    cursor: pointer;
+}
+
 /* Menu para Desktop */
 @media (min-width: 768px) {
     .mobile-header {
