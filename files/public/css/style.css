@@ -529,6 +529,11 @@ header {
         box-sizing: border-box;
     }
 
+    #menu-toggle {
+        margin: 0 5px;
+        ;
+    }
+
 }
 
 /*  -------------------------------- Evento ------------------------------------ */
