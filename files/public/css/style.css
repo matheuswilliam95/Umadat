@@ -306,6 +306,7 @@ header {
 .menu_btn {
     width: 30vw;
     cursor: pointer;
+    font-size: 2em;
 }
 
 /* Menu para Desktop */
