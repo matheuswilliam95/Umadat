@@ -557,6 +557,11 @@ header {
         background-color: #005713;
         color: #ffffff;
     }
+
+    .link_local_texto {
+        color: #000000;
+        text-decoration: none;
+    }
 }
 
 /*  -------------------------------- Evento ------------------------------------ */

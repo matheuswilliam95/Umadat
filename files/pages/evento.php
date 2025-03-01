@@ -71,7 +71,7 @@ $relatedEvents = getRelatedEvents($eventId);
                     <?php
                     $local = $evento['local'] ?? 'N/A';
                     if ($local !== 'N/A') {
-                        echo '<a href="https://www.google.com/maps/search/?api=1&query=' . urlencode($local) . '" target="_blank">' . htmlspecialchars($local) . '</a>';
+                        echo '<a class="link_local_texto" href="https://www.google.com/maps/search/?api=1&query=' . urlencode($local) . '" target="_blank">' . htmlspecialchars($local) . '</a>';
                     } else {
                         echo 'N/A';
                     }
