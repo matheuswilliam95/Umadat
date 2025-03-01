@@ -176,16 +176,8 @@ $relatedEvents = getRelatedEvents($eventId);
                     <!-- Exibir nome ou congregação responsável -->
                     <p><strong>Responsável:</strong> <?php echo htmlspecialchars($responsavel['nome'] ?? 'N/A'); ?></p>
 
-                    <!-- Link para acessar o instagram do responsável -->
-                    <?php if (!empty($responsavel['instagram_username'])): ?>
-                        <div class="alinhamento_icones">
-                            <a class="botoes_link_evento" href="https://www.instagram.com/<?php echo htmlspecialchars($responsavel['instagram_username']); ?>" target="_blank">
-                                <img class="icon_evento" src="<?php echo PASTA_BASE; ?>public/img/instagram_icon.png" alt="Instagram">
-                                <br>
-                                <small>Instagram</small>
-                            </a>
-                        </div>
-                    <?php endif; ?>
+
+
                 </div>
 
 
