@@ -51,8 +51,14 @@ $relatedEvents = getRelatedEvents($eventId);
                         class="capa_evento_single">
                 <?php endif; ?>
 
-                <!-- Local -->
-                <p><strong>Descrição:</strong> <?php echo nl2br(htmlspecialchars($evento['descricao'])); ?></p>
+                <!-- Descrição -->
+                <p><strong>Descrição:</strong> 
+                    <?php 
+                    $descricao = htmlspecialchars($evento['descricao']);
+                    $descricao = preg_replace('/@(\w+)/', '<a href="https://www.instagram.com/$1" target="_blank">@$1</a>', $descricao);
+                    echo nl2br($descricao); 
+                    ?>
+                </p>
 
                 <!-- Data -->
                 <p><strong>Data:</strong>
