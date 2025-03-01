@@ -543,6 +543,14 @@ header {
         text-align: center;
         width: 33%;
     }
+
+    .inscricao-btn {
+        background-color: #007585;
+        color: #fff;
+        padding: 10px;
+        border-radius: 5px;
+        text-decoration: none;
+    }
 }
 
 /*  -------------------------------- Evento ------------------------------------ */
