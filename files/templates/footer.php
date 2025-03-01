@@ -9,7 +9,7 @@ require_once __DIR__ . '/../includes/config.php';
     <div class="footer_social">
         <a href="#" class="social-icon">📘</a>
         <a href="#" class="social-icon">🐦</a>
-        <a href="instagram.com.br" class="social-icon"><img src="<?php echo BASE_URL; ?>public/img/instagram_icon.png"
+        <a href="instagram.com.br" class="social-icon"><img src="<?php echo PASTA_BASE; ?>public/img/instagram_icon.png"
                 alt="Instagram" /></a>
     </div>
     <div class="footer_copy">
