@@ -96,6 +96,15 @@ if (isset($_SESSION['user_id'])) {
                     ?>
                 </p>
 
+                <!-- Realizadores -->
+                <p><strong>Realizadores:</strong>
+                <?php
+                $congregacao = !is_null($evento['congregacao_id']) ? getCongregacaoName($evento['congregacao_id']) : 'N/A';
+                $conjunto = !is_null($evento['conjunto_id']) ? getConjuntoName($evento['conjunto_id']) : 'N/A';
+                ?>
+                <p><strong>Congregação:</strong> <?php echo htmlspecialchars($congregacao); ?></p>
+                <p><strong>Conjunto:</strong> <?php echo htmlspecialchars($conjunto); ?></p>
+
                 <!-- Valores -->
                 <p><strong>Valor:</strong>
                     <?php echo $evento['valor'] ? 'R$ ' . number_format($evento['valor'], 2, ',', '.') : 'Gratuito'; ?>

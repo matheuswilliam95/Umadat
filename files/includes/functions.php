@@ -256,4 +256,19 @@ function getRegionais()
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
+// Obtém o nome da congregação pelo ID
+function getCongregacaoName($congregacaoId)
+{
+    $sql = "SELECT nome FROM congregacoes WHERE id = ?";
+    $result = fetchSingleRow($sql, [$congregacaoId]);
+    return $result ? $result['nome'] : null;
+}
+
+// Obtém o nome do conjunto pelo ID
+function getConjuntoName($conjuntoId)
+{
+    $sql = "SELECT nome FROM conjuntos WHERE id = ?";
+    $result = fetchSingleRow($sql, [$conjuntoId]);
+    return $result ? $result['nome'] : null;
+}
 ?>
