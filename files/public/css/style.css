@@ -365,7 +365,7 @@ header {
 
     /* Garante que os elementos posicionados de forma absoluta fiquem relativos à nav */
     .mobile-nav {
-        position: relative;
+        position: absolute;
         width: 100%;
     }
 
