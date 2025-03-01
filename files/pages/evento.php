@@ -167,7 +167,22 @@ $relatedEvents = getRelatedEvents($eventId);
                             ?>
                         </p>
                     </div>
+
+                    <!-- // Link para acessar o instagram do evento -->
+                    <?php if (!empty($evento['instagram'])): ?>
+                        <div class="alinhamento_icones">
+                            <a class="botoes_link_evento" href="<?php echo $evento['instagram_username']; ?>"
+                                target="_blank">
+                                <img class="icon_evento" src="<?php echo PASTA_BASE; ?>public/img/instagram_icon.png"
+                                    alt="Instagram">
+                                <br>
+                                <small>Instagram</small>
+                            </a>
+                        <?php endif; ?>
+                    </div>
                 </div>
+
+
 
                 <?php if (!empty($relatedEvents)): ?>
                     <h3>Eventos Relacionados</h3>
