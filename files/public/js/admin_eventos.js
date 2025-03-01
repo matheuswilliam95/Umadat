@@ -5,7 +5,12 @@ function initAutocomplete() {
         const query = input.value;
         if (query.length > 2) {
             fetch(`../includes/proxy.php?q=${encodeURIComponent(query)}`)
-                .then(response => response.json())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
                 .then(results => {
                     suggestionsContainer.innerHTML = '';
                     if (results.length > 0) {
