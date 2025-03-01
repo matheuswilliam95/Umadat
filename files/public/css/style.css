@@ -549,15 +549,15 @@ header {
         font-size: 1.2em;
         width: 100%;
         margin-top: 10px;
-        background-color: #048100;
-        color: #ffffff;
+        background-color: #00ff38;
+        color: #000000;
         padding: 10px;
         border-radius: 5px;
         text-decoration: none;
     }
 
     .inscricao_button:hover {
-        background-color: #005713;
+        background-color: #00a023;
         color: #ffffff;
     }
 

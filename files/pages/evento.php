@@ -95,6 +95,7 @@ $relatedEvents = getRelatedEvents($eventId);
                             echo $dataInicio;
                         } else {
                             echo $dataInicio . ' - ' . $dataFim;
+                            echo '<script>console.log("Data Início: ' . $dataInicio . '"); console.log("Data Fim: ' . $dataFim . '");</script>';
                         }
                         ?>
                         <br>
