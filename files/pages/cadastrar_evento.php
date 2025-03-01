@@ -102,8 +102,13 @@ function updateEventImage($evento_id, $caminho_banco)
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Evento - <?php echo SITE_NAME; ?></title>
     <link rel="stylesheet" href="<?php echo PASTA_BASE; ?>public/css/style.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
     <script defer src="<?php echo PASTA_BASE; ?>public/js/admin_eventos.js?v=<?php echo time(); ?>"></script>
 </head>
+
 <header>
     <?php include __DIR__ . '/../templates/header.php'; ?>
 </header>
@@ -132,14 +137,19 @@ function updateEventImage($evento_id, $caminho_banco)
                     <input type="time" name="horario_fim" id="horario_fim" placeholder="Horário de Fim">
 
                     <label class="cadastro_evento">Sobre o Evento</label>
-                    <input type="text" name="local" id="local" placeholder="Local do Evento" onFocus="initAutocomplete()">
-                    <script>
-                        function initAutocomplete() {
-                            var input = document.getElementById('local');
-                            var autocomplete = new google.maps.places.Autocomplete(input);
-                        }
-                    </script>
-                    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initAutocomplete" async defer></script>
+
+
+
+
+                    <!-- HTML para o campo de entrada e o script -->
+                    <input type="text" name="local" id="local" placeholder="Local do Evento"
+                        onFocus="initAutocomplete()">
+                    <div id="suggestions" class="suggestions"></div>
+
+
+
+
+
                     <input type="number" name="valor" id="valor" step="0.01" placeholder="Valor do Evento">
 
 

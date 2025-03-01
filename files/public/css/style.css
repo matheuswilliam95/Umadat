@@ -616,3 +616,22 @@ header {
     transition: color 0.3s ease !important;
     width: auto !important;
 }
+
+/* Adicione estilos para o campo de pesquisa de endereços */
+.suggestions {
+    border: 1px solid #ccc;
+    max-height: 150px;
+    overflow-y: auto;
+    position: absolute;
+    background-color: white;
+    z-index: 1000;
+}
+
+.suggestion-item {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.suggestion-item:hover {
+    background-color: #f0f0f0;
+}
