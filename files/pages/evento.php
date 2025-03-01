@@ -169,13 +169,15 @@ $relatedEvents = getRelatedEvents($eventId);
                     </div>
                 </div>
 
-                <h3>Eventos Relacionados</h3>
-                <ul>
-                    <?php foreach ($relatedEvents as $relEvent): ?>
-                        <li><a href="evento.php?id=<?php echo $relEvent['id']; ?>">
-                                <?php echo htmlspecialchars($relEvent['titulo']); ?> </a></li>
-                    <?php endforeach; ?>
-                </ul>
+                <?php if (!empty($relatedEvents)): ?>
+                    <h3>Eventos Relacionados</h3>
+                    <ul>
+                        <?php foreach ($relatedEvents as $relEvent): ?>
+                            <li><a href="evento.php?id=<?php echo $relEvent['id']; ?>">
+                                    <?php echo htmlspecialchars($relEvent['titulo']); ?> </a></li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
             </div>
         </div>
     </div>
