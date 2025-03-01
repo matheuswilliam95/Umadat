@@ -6,6 +6,16 @@ require_once __DIR__ . '/../includes/functions.php';
 <!DOCTYPE html>
 <html>
 <head>
+    <style>
+        .mobile-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .menu_btn {
+            margin-left: auto;
+        }
+    </style>
 </head>
 <body>
     <div class="logo">
