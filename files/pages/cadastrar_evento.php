@@ -132,7 +132,14 @@ function updateEventImage($evento_id, $caminho_banco)
                     <input type="time" name="horario_fim" id="horario_fim" placeholder="Horário de Fim">
 
                     <label class="cadastro_evento">Sobre o Evento</label>
-                    <input type="text" name="local" id="local" placeholder="Local do Evento">
+                    <input type="text" name="local" id="local" placeholder="Local do Evento" onFocus="initAutocomplete()">
+                    <script>
+                        function initAutocomplete() {
+                            var input = document.getElementById('local');
+                            var autocomplete = new google.maps.places.Autocomplete(input);
+                        }
+                    </script>
+                    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initAutocomplete" async defer></script>
                     <input type="number" name="valor" id="valor" step="0.01" placeholder="Valor do Evento">
 
 
