@@ -21,18 +21,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data_limite_inscricao = $_POST['data_limite_inscricao'] ?: null;
     $responsavel_nome = sanitizeInput($_POST['responsavel_nome'] ?? '');
     $responsavel_contato = sanitizeInput($_POST['responsavel_contato'] ?? '');
+    $instagram_username = sanitizeInput($_POST['instagram_username'] ?? '');
     $tipo = $_POST['tipo'];
     $csrf_token = $_POST['csrf_token'];
 
     if (!verifyCSRFToken($csrf_token)) {
         $error = "Token CSRF inválido.";
-    } elseif (empty($titulo) || empty($descricao) || empty($data_inicio) || empty($data_fim)) {
+    } elseif (empty($titulo) || empty($descricao) || empty($data_inicio) || empty($horario_inicio) || empty($tipo)) {
         $error = "Preencha todos os campos obrigatórios.";
     } else {
         $criado_por = $_SESSION['user_id'];
 
         // Criar evento no banco
-        if (createEvent(compact('titulo', 'descricao', 'data_inicio', 'horario_inicio', 'data_fim', 'horario_fim', 'local', 'valor', 'data_limite_inscricao', 'responsavel_nome', 'responsavel_contato', 'tipo', 'criado_por'))) {
+        if (createEvent(compact('titulo', 'descricao', 'data_inicio', 'horario_inicio', 'data_fim', 'horario_fim', 'local', 'valor', 'data_limite_inscricao', 'responsavel_nome', 'responsavel_contato', 'tipo', 'criado_por', 'instagram_username'))) {
             $evento_id = $pdo->lastInsertId(); // Obtém o ID do evento recém-criado
             $upload_dir = __DIR__ . "/../public/uploads/$evento_id/";
             $upload_dir = rtrim($upload_dir, '/') . '/';
@@ -154,14 +155,14 @@ function updateEventImage($evento_id, $caminho_banco)
                         placeholder="Data Limite para Inscrição">
 
                     <label class="cadastro_evento">Capa do Evento</label>
-                    <input type="file" name="capa" accept="image/png, image/jpeg">
+                    <input type="file" name="capa" class="upload_file_button" accept="image/png, image/jpeg">
 
-                    <button type="submit">Cadastrar Evento</button>
+                    <button type="submit" class="button">Cadastrar Evento</button>
 
                 </form>
             </div>
-                </div>
         </div>
+    </div>
 </body>
 <footer>
     <?php include __DIR__ . '/../templates/footer.php'; ?>
