@@ -533,6 +533,10 @@ header {
         margin-top: 0;
         margin-right: 20px;
         position: static;
+        width: 30vw;
+        height: 10vh;
+        cursor: pointer;
+        background-color: var(--primary_color);
     }
 
     .alinhamento_icones {
