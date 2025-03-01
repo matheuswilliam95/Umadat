@@ -81,20 +81,6 @@ $eventos = getPublicEvents();
                                     <h2 class="titulo_enventos"><?php echo htmlspecialchars($evento['titulo']); ?></h2>
                                 </div>
                             </div>
-
-                            <!-- Slide 2: Detalhes do Evento -->
-                            <div class="evento-slide">
-                                <div class="evento-descricao">
-                                    <h3><?php echo htmlspecialchars($evento['titulo']); ?></h3>
-                                    <p><strong>Data:</strong> <?php echo formatDate($evento['data_inicio']); ?></p>
-                                    <p>
-                                        <strong>Horário:</strong>
-                                        <?php echo $evento['horario_inicio'] ? date('H:i', strtotime($evento['horario_inicio'])) : 'N/A'; ?>
-                                    </p>
-                                    <p><strong>Local:</strong> <?php echo htmlspecialchars($evento['local'] ?? 'N/A'); ?>
-                                    </p>
-                                </div>
-                            </div>
                         </div>
                         <a href="evento.php?id=<?php echo $evento['id']; ?>" class="detalhes-btn">Ver Detalhes</a>
                     </li>
