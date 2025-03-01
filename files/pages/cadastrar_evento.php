@@ -191,6 +191,7 @@ $congregacoes = getCongregacoes();
             </div>
         </div>
     </div>
+    <script defer src="/umadat/files/public/js/admin_eventos.js?v=<?php echo time(); ?>"></script>
 </body>
 <footer>
     <?php include __DIR__ . '/../templates/footer.php'; ?>
