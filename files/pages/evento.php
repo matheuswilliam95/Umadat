@@ -110,56 +110,59 @@ $relatedEvents = getRelatedEvents($eventId);
                         $googleCalendarUrl .= "&location=" . urlencode($evento['local']);
                     }
                     ?>
+                    <div style="text-align: center;"></div>
                     <a class="botoes_link_evento" target="_blank" href="<?php echo $googleCalendarUrl; ?>">
                         <img class="icon_evento" src="<?php echo PASTA_BASE; ?>public/img/calendar_icon.png"
                             alt="Adicionar ao Google Calendar">
                     </a>
-
-                    <!-- Botão para compartilhar link do evento -->
-                    <button id="compartilhar-btn" class="botoes_link_evento" onclick="compartilharEvento()">
-                        <img class="icon_evento" src="<?php echo PASTA_BASE; ?>public/img/share_icon.png"
-                            alt="Compartilhar">
-                    </button>
-                    <script>
-                        function compartilharEvento() {
-                            const url = window.location.href;
-                            if (navigator.share) {
-                                navigator.share({
-                                    title: '<?php echo htmlspecialchars($evento['titulo']); ?>',
-                                    text: 'Confira este evento:',
-                                    url: url
-                                }).catch(console.error);
-                            } else {
-                                prompt('Copie o link do evento:', url);
-                            }
-                        }
-                    </script>
-
-                    <!-- Local -->
-                    <p>
-                        <?php
-                        $local = $evento['local'] ?? 'N/A';
-                        if ($local !== 'N/A') {
-                            echo '<div style="text-align: center;">';
-                            echo '<a class="botoes_link_evento" href="https://www.google.com/maps/search/?api=1&query=' . urlencode($local) . '" target="_blank"><img class="icon_evento" src="' . PASTA_BASE . 'public/img/place_icon.png" alt="Local"></a>';
-                            echo '<br><small>Ver no mapa</small>';
-                            echo '</div>';
-                        } else {
-                            echo 'N/A';
-                        }
-                        ?>
-                    </p>
+                    <br><small>Salvar data</small>
                 </div>
 
-                <h3>Eventos Relacionados</h3>
-                <ul>
-                    <?php foreach ($relatedEvents as $relEvent): ?>
-                        <li><a href="evento.php?id=<?php echo $relEvent['id']; ?>">
-                                <?php echo htmlspecialchars($relEvent['titulo']); ?> </a></li>
-                    <?php endforeach; ?>
-                </ul>
+                <!-- Botão para compartilhar link do evento -->
+                <button id="compartilhar-btn" class="botoes_link_evento" onclick="compartilharEvento()">
+                    <img class="icon_evento" src="<?php echo PASTA_BASE; ?>public/img/share_icon.png"
+                        alt="Compartilhar">
+                </button>
+                <script>
+                    function compartilharEvento() {
+                        const url = window.location.href;
+                        if (navigator.share) {
+                            navigator.share({
+                                title: '<?php echo htmlspecialchars($evento['titulo']); ?>',
+                                text: 'Confira este evento:',
+                                url: url
+                            }).catch(console.error);
+                        } else {
+                            prompt('Copie o link do evento:', url);
+                        }
+                    }
+                </script>
+
+                <!-- Local -->
+                <p>
+                    <?php
+                    $local = $evento['local'] ?? 'N/A';
+                    if ($local !== 'N/A') {
+                        echo '<div style="text-align: center;">';
+                        echo '<a class="botoes_link_evento" href="https://www.google.com/maps/search/?api=1&query=' . urlencode($local) . '" target="_blank"><img class="icon_evento" src="' . PASTA_BASE . 'public/img/place_icon.png" alt="Local"></a>';
+                        echo '<br><small>Ver no mapa</small>';
+                        echo '</div>';
+                    } else {
+                        echo 'N/A';
+                    }
+                    ?>
+                </p>
             </div>
+
+            <h3>Eventos Relacionados</h3>
+            <ul>
+                <?php foreach ($relatedEvents as $relEvent): ?>
+                    <li><a href="evento.php?id=<?php echo $relEvent['id']; ?>">
+                            <?php echo htmlspecialchars($relEvent['titulo']); ?> </a></li>
+                <?php endforeach; ?>
+            </ul>
         </div>
+    </div>
     </div>
 </body>
 <footer>
