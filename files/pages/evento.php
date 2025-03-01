@@ -55,8 +55,8 @@ $relatedEvents = getRelatedEvents($eventId);
                 <p><strong>Descrição:</strong> <?php echo nl2br(htmlspecialchars($evento['descricao'])); ?></p>
 
                 <!-- Data -->
-                <p><strong>Data:</strong> <?php echo formatDate($evento['data_inicio']); ?> -
-                    <?php echo formatDate($evento['data_fim']); ?>
+                <p><strong>Data:</strong> <?php echo date('d/m/Y', strtotime($evento['data_inicio'])); ?> -
+                    <?php echo date('d/m/Y', strtotime($evento['data_fim'])); ?>
                 </p>
 
                 <!-- Horário -->
