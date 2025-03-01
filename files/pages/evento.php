@@ -60,7 +60,7 @@ if (isset($_SESSION['user_id'])) {
                 <?php endif; ?>
 
                 <!-- Informações Gerais do Evento -->
-                <h2 class="subtitulo_evento_infos">Informações do Evento</h2>
+                <h3 class="subtitulo_evento_infos">Informações do Evento</h3>
 
 
                 <!-- Descrição -->
