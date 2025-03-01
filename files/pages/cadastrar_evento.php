@@ -92,6 +92,9 @@ function updateEventImage($evento_id, $caminho_banco)
     $stmt->execute(['imagem_capa' => $caminho_banco, 'id' => $evento_id]);
 }
 
+
+$congregacoes = getCongregacoes();
+
 ?>
 
 
@@ -163,12 +166,22 @@ function updateEventImage($evento_id, $caminho_banco)
                         placeholder="Data Limite para Inscrição">
 
                     <!-- Seleção de Congregação-->
-                    <label class="cadastro_evento">Congregação</label>
+                    <!-- <label class="cadastro_evento">Congregação</label>
                     <select name="congregacao" id="congregacao" required>
                         <option value="" disabled selected>Selecione a Congregação</option>
                         <!-- Adicione as opções de congregação aqui -->
-                        <option value="congregacao1">Congregação 1</option>
-                        <option value="congregacao2">Congregação 2</option>
+                    <option value="congregacao1">Congregação 1</option>
+                    <option value="congregacao2">Congregação 2</option>
+                    </select> -->
+
+
+                    <select name="congregacao" id="cadastro_congregacao" required>
+                        <option value="" disabled selected>Selecione uma Congregação</option>
+                        <?php foreach ($congregacoes as $congregacao): ?>
+                            <option value="<?php echo $congregacao['id']; ?>">
+                                <?php echo htmlspecialchars($congregacao['nome']); ?>
+                            </option>
+                        <?php endforeach; ?>
                     </select>
 
                     <!-- Seleção de Conjunto-->
