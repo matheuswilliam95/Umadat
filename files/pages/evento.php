@@ -59,6 +59,10 @@ if (isset($_SESSION['user_id'])) {
                         class="capa_evento_single">
                 <?php endif; ?>
 
+                <!-- Informações Gerais do Evento -->
+                <h2 class="subtitulo_evento_infos">Informações do Evento</h2>
+
+
                 <!-- Descrição -->
                 <p><strong>Descrição:</strong>
                     <?php
@@ -97,11 +101,12 @@ if (isset($_SESSION['user_id'])) {
                 </p>
 
                 <!-- Realizadores -->
-                <p><strong>Realizadores:</strong>
-                    <?php
-                    $congregacao = !is_null($evento['congregacao']) ? getCongregacaoName($evento['congregacao']) : 'N/A';
-                    $conjunto = !is_null($evento['conjunto']) ? getConjuntoName($evento['conjunto']) : 'N/A';
-                    ?>
+                <h2 class="subtitulo_evento_infos">Organizadores</h2>
+
+                <?php
+                $congregacao = !is_null($evento['congregacao']) ? getCongregacaoName($evento['congregacao']) : 'N/A';
+                $conjunto = !is_null($evento['conjunto']) ? getConjuntoName($evento['conjunto']) : 'N/A';
+                ?>
                 <p><strong>Congregação:</strong> <?php echo htmlspecialchars($congregacao); ?></p>
                 <p><strong>Conjunto:</strong> <?php echo htmlspecialchars($conjunto); ?></p>
 

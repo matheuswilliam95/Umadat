@@ -587,6 +587,12 @@ header {
         color: #410055;
         font-family: var(--font_family);
     }
+
+    .subtitulo_evento_infos {
+        font-size: 1.2em;
+        font-weight: bold;
+        margin-top: 10px;
+    }
 }
 
 /*  -------------------------------- Evento ------------------------------------ */
