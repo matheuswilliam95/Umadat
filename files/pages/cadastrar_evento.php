@@ -145,6 +145,10 @@ function updateEventImage($evento_id, $caminho_banco)
                         <option value="restrito">Restrito</option>
                     </select>
 
+                    <!-- Input do instagram -->
+                    <label class="cadastro_evento">Instagram</label>
+                    <input type="text" name="instagram_username" id="instagram_username" placeholder="Instagram">
+
                     <label class="cadastro_evento">Data limite para Inscrição</label>
                     <input type="date" name="data_limite_inscricao" id="data_limite_inscricao"
                         placeholder="Data Limite para Inscrição">

@@ -169,16 +169,18 @@ $relatedEvents = getRelatedEvents($eventId);
                     </div>
 
                     <!-- Instagram do Evento -->
-                    <div class="alinhamento_icones">
-                        <a class="botoes_link_evento"
-                            href="https://www.instagram.com/<?php echo htmlspecialchars($evento['instagram_username']); ?>"
-                            target="_blank">
-                            <img class="icon_evento" src="<?php echo PASTA_BASE; ?>public/img/instagram_icon.png"
-                                alt="Instagram">
-                            <br>
-                        </a>
-                        <small>Instagram</small>
-                    </div>
+                    <?php if (!empty($evento['instagram_username'])): ?>
+                        <div class="alinhamento_icones">
+                            <a class="botoes_link_evento"
+                                href="https://www.instagram.com/<?php echo htmlspecialchars($evento['instagram_username']); ?>"
+                                target="_blank">
+                                <img class="icon_evento" src="<?php echo PASTA_BASE; ?>public/img/instagram_icon.png"
+                                    alt="Instagram">
+                                <br>
+                            </a>
+                            <small>Instagram</small>
+                        </div>
+                    <?php endif; ?>
                 </div>
 
 
