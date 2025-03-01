@@ -16,12 +16,14 @@ if (isset($_SESSION['usuario_id'])) {
 }
 
 $erro = "";
+$redirectUrl = isset($_GET['redirect']) ? $_GET['redirect'] : 'eventos.php';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = sanitizeInput($_POST['email']);
     $senha = $_POST['senha'];
 
     if (login($email, $senha)) {
-        header("Location: eventos.php");
+        header("Location: " . $redirectUrl);
         exit;
     } else {
         $erro = "E-mail ou senha inválidos.";
@@ -55,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <?php echo htmlspecialchars($erro); ?>
                 </p>
             <?php endif; ?>
-            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) . '?redirect=' . urlencode($redirectUrl); ?>" method="POST">
 
                 <input type="email" name="email" id="email" placeholder="Email ou telefone" required>
 
