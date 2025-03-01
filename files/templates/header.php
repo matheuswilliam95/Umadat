@@ -44,6 +44,14 @@ require_once __DIR__ . '/../includes/functions.php';
                 menu.classList.toggle("active");
             });
         });
+
+        document.addEventListener("click", function (event) {
+            const menu = document.getElementById("menu");
+            const menuToggle = document.getElementById("menu-toggle");
+            if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
+                menu.classList.remove("active");
+            }
+        });
     </script>
 </body>
 </html>
