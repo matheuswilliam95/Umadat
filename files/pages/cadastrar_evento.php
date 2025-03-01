@@ -143,7 +143,7 @@ function updateEventImage($evento_id, $caminho_banco)
                     <!-- HTML para o campo de entrada e o script -->
                     <input type="text" name="local" id="local" placeholder="Local do Evento"
                         onFocus="initAutocomplete()">
-                    <div id="suggestions" class="suggestions"></div>
+                    <div id="suggestions" class="suggestions"> Sugestões...</div>
 
 
 
