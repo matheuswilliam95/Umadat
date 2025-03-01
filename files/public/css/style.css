@@ -546,15 +546,15 @@ header {
 
     .inscricao_button {
         margin-top: 10px;
-        background-color: #06b400;
-        color: #000000;
+        background-color: #048100;
+        color: #ffffff;
         padding: 10px;
         border-radius: 5px;
         text-decoration: none;
     }
 
     .inscricao_button:hover {
-        background-color: #007e1b;
+        background-color: #005713;
         color: #ffffff;
     }
 }
