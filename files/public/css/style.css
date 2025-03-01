@@ -305,8 +305,16 @@ header {
 
 .menu_btn {
     width: 30vw;
+    height: 10vh;
     cursor: pointer;
     font-size: 2em;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.mobile-nav {
+    position: relative;
 }
 
 /* Menu para Desktop */

@@ -6,16 +6,6 @@ require_once __DIR__ . '/../includes/functions.php';
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
-        .mobile-nav {
-            position: relative;
-        }
-        .menu_btn {
-            position: absolute;
-            right: 0;
-            top: 0;
-        }
-    </style>
 </head>
 <body>
     <div class="logo">
