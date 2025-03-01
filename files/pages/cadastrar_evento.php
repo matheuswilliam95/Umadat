@@ -23,6 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $responsavel_contato = sanitizeInput($_POST['responsavel_contato'] ?? '');
     $instagram_username = sanitizeInput($_POST['instagram_username'] ?? '');
     $tipo = $_POST['tipo'];
+    $congregacao = $_POST['congregacao'];
+    $conjunto = $_POST['conjunto'];
     $csrf_token = $_POST['csrf_token'];
 
     if (!verifyCSRFToken($csrf_token)) {
@@ -33,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $criado_por = $_SESSION['user_id'];
 
         // Criar evento no banco
-        if (createEvent(compact('titulo', 'descricao', 'data_inicio', 'horario_inicio', 'data_fim', 'horario_fim', 'local', 'valor', 'data_limite_inscricao', 'responsavel_nome', 'responsavel_contato', 'tipo', 'criado_por', 'instagram_username'))) {
+        if (createEvent(compact('titulo', 'descricao', 'data_inicio', 'horario_inicio', 'data_fim', 'horario_fim', 'local', 'valor', 'data_limite_inscricao', 'responsavel_nome', 'responsavel_contato', 'tipo', 'criado_por', 'instagram_username', 'congregacao', 'conjunto'))) {
             $evento_id = $pdo->lastInsertId(); // Obtém o ID do evento recém-criado
             $upload_dir = __DIR__ . "/../public/uploads/$evento_id/";
             $upload_dir = rtrim($upload_dir, '/') . '/';
@@ -75,8 +77,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 function createEvent($eventData)
 {
     global $pdo;
-    $sql = "INSERT INTO eventos (titulo, descricao, data_inicio, horario_inicio, data_fim, horario_fim, local, valor, data_limite_inscricao, responsavel_nome, responsavel_contato, tipo, criado_por, instagram_username) 
-            VALUES(:titulo, :descricao, :data_inicio, :horario_inicio, :data_fim, :horario_fim, :local, :valor, :data_limite_inscricao, :responsavel_nome, :responsavel_contato, :tipo, :criado_por, :instagram_username)";
+    $sql = "INSERT INTO eventos (titulo, descricao, data_inicio, horario_inicio, data_fim, horario_fim, local, valor, data_limite_inscricao, responsavel_nome, responsavel_contato, tipo, criado_por, instagram_username, congregacao, conjunto) 
+            VALUES(:titulo, :descricao, :data_inicio, :horario_inicio, :data_fim, :horario_fim, :local, :valor, :data_limite_inscricao, :responsavel_nome, :responsavel_contato, :tipo, :criado_por, :instagram_username, :congregacao, :conjunto)";
     $stmt = $pdo->prepare($sql);
     return $stmt->execute($eventData);
 }
@@ -159,6 +161,24 @@ function updateEventImage($evento_id, $caminho_banco)
                     <label class="cadastro_evento">Data limite para Inscrição</label>
                     <input type="date" name="data_limite_inscricao" id="data_limite_inscricao"
                         placeholder="Data Limite para Inscrição">
+
+                    <!-- Seleção de Congregação-->
+                    <label class="cadastro_evento">Congregação</label>
+                    <select name="congregacao" id="congregacao" required>
+                        <option value="" disabled selected>Selecione a Congregação</option>
+                        <!-- Adicione as opções de congregação aqui -->
+                        <option value="congregacao1">Congregação 1</option>
+                        <option value="congregacao2">Congregação 2</option>
+                    </select>
+
+                    <!-- Seleção de Conjunto-->
+                    <label class="cadastro_evento">Conjunto</label>
+                    <select name="conjunto" id="conjunto" required>
+                        <option value="" disabled selected>Selecione o Conjunto</option>
+                        <!-- Adicione as opções de conjunto aqui -->
+                        <option value="conjunto1">Conjunto 1</option>
+                        <option value="conjunto2">Conjunto 2</option>
+                    </select>
 
                     <label class="cadastro_evento">Capa do Evento</label>
                     <input type="file" name="capa" class="upload_file_button" accept="image/png, image/jpeg">
