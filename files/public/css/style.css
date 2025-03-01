@@ -314,7 +314,7 @@ header {
 }
 
 .mobile-nav {
-    position: relative;
+    position: absolute;
 }
 
 /* Menu para Desktop */
