@@ -168,16 +168,16 @@ $relatedEvents = getRelatedEvents($eventId);
                         </p>
                     </div>
 
-                    <?php
-                    // Fetch the responsible name or congregation
-                    $responsavel = getCongregacaoConjuntoResponsavel($evento['congregacao_conjunto_responsavel']);
-                    ?>
-
-                    <!-- Exibir nome ou congregação responsável -->
-                    <p><strong>Responsável:</strong> <?php echo htmlspecialchars($responsavel['nome'] ?? 'N/A'); ?></p>
-
-
-
+                    <!-- Instagram do Evento -->
+                    <div class="alinhamento_icones">
+                        <a class="botoes_link_evento" href="<?php echo $evento['instagram_username']; ?>"
+                            target="_blank">
+                            <img class="icon_evento" src="<?php echo PASTA_BASE; ?>public/img/instagram_icon.png"
+                                alt="Instagram">
+                            <br>
+                        </a>
+                        <small>Instagram</small>
+                    </div>
                 </div>
 
 
