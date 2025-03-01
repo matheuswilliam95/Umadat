@@ -157,10 +157,11 @@ function updateEventImage($evento_id, $caminho_banco)
                     <input type="file" name="capa" accept="image/png, image/jpeg">
 
                     <button type="submit">Cadastrar Evento</button>
+
                 </form>
             </div>
+                </div>
         </div>
-    </div>
 </body>
 <footer>
     <?php include __DIR__ . '/../templates/footer.php'; ?>
