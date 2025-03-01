@@ -535,6 +535,10 @@ header {
         position: static;
     }
 
+    .alinhamento_icones {
+        text-align: center;
+        width: 33%;
+    }
 }
 
 /*  -------------------------------- Evento ------------------------------------ */
