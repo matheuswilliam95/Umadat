@@ -532,9 +532,9 @@ header {
     #menu-toggle {
         margin-top: 0;
         margin-right: 20px;
-        position: static;
         width: 30vw;
-        height: 10vh;
+        border-radius: 10px;
+
         cursor: pointer;
         background-color: var(--primary_color);
     }
