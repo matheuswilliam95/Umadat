@@ -206,6 +206,35 @@ $relatedEvents = getRelatedEvents($eventId);
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const inscreverBtn = document.getElementById("inscricao-btn");
+            if (inscreverBtn) {
+                inscreverBtn.addEventListener("click", function () {
+                    const eventoId = this.getAttribute("data-evento-id");
+                    fetch("inscrever.php", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/x-www-form-urlencoded"
+                        },
+                        body: `evento_id=${eventoId}`
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                alert("Inscrição realizada com sucesso!");
+                            } else {
+                                alert("Erro ao realizar inscrição: " + data.message);
+                            }
+                        })
+                        .catch(error => {
+                            console.error("Erro:", error);
+                            alert("Erro ao realizar inscrição.");
+                        });
+                });
+            }
+        });
+    </script>
 </body>
 <footer>
     <?php include __DIR__ . '/../templates/footer.php'; ?>
