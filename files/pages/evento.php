@@ -170,7 +170,8 @@ $relatedEvents = getRelatedEvents($eventId);
 
                     <!-- Instagram do Evento -->
                     <div class="alinhamento_icones">
-                        <a class="botoes_link_evento" href="<?php echo $evento['instagram_username']; ?>"
+                        <a class="botoes_link_evento"
+                            href="https://www.instagram.com/<?php echo htmlspecialchars($evento['instagram_username']); ?>"
                             target="_blank">
                             <img class="icon_evento" src="<?php echo PASTA_BASE; ?>public/img/instagram_icon.png"
                                 alt="Instagram">
