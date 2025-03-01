@@ -55,8 +55,12 @@ $relatedEvents = getRelatedEvents($eventId);
                 <p><strong>Descrição:</strong> <?php echo nl2br(htmlspecialchars($evento['descricao'])); ?></p>
 
                 <!-- Data -->
-                <p><strong>Data:</strong> <?php echo date('d/m/Y', strtotime($evento['data_inicio'])); ?> -
-                    <?php echo date('d/m/Y', strtotime($evento['data_fim'])); ?>
+                <p><strong>Data:</strong>
+                    <?php
+                    $dataInicio = date('d/m/Y', strtotime($evento['data_inicio']));
+                    $dataFim = date('d/m/Y', strtotime($evento['data_fim']));
+                    echo $dataInicio === $dataFim ? $dataInicio : $dataInicio . ' - ' . $dataFim;
+                    ?>
                 </p>
 
                 <!-- Horário -->
@@ -88,16 +92,8 @@ $relatedEvents = getRelatedEvents($eventId);
                 <?php if ($evento['data_limite_inscricao'] >= date('Y-m-d')): ?>
                     <p>
                         <strong>Data limite de inscrição:</strong>
-                        <?php
-                        $dataInicio = date('d/m/Y', strtotime($evento['data_inicio']));
-                        $dataFim = date('d/m/Y', strtotime($evento['data_fim']));
-                        if ($dataInicio == $dataFim) {
-                            echo $dataInicio;
-                        } else {
-                            echo $dataInicio . ' - ' . $dataFim;
-                            echo '<script>console.log("Data Início: ' . $dataInicio . '"); console.log("Data Fim: ' . $dataFim . '");</script>';
-                        }
-                        ?>
+                        <?php echo date('d/m/Y', strtotime($evento['data_limite_inscricao'])); ?>
+
                         <br>
                         <button id="inscricao-btn" class="inscricao_button"
                             data-evento-id="<?php echo $evento['id']; ?>">Inscrever</button>
