@@ -121,7 +121,8 @@ $relatedEvents = getRelatedEvents($eventId);
 
                     <!-- Botão para compartilhar link do evento -->
                     <div style="text-align: center;">
-                        <button id="compartilhar-btn" class="botoes_link_evento" onclick="compartilharEvento()">
+                        <button class="icon_evento" id="compartilhar-btn" class="botoes_link_evento"
+                            onclick="compartilharEvento()">
                             <img class="icon_evento" src="<?php echo PASTA_BASE; ?>public/img/share_icon.png"
                                 alt="Compartilhar">
                         </button>
