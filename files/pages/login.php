@@ -72,8 +72,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 </body>
-<footer>
-    <?php include __DIR__ . '/../templates/footer.php'; ?>
-</footer>
 
 </html>
