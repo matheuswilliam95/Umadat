@@ -115,8 +115,8 @@ $relatedEvents = getRelatedEvents($eventId);
                             <img class="icon_evento" src="<?php echo PASTA_BASE; ?>public/img/calendar_icon.png"
                                 alt="Adicionar ao Google Calendar">
                             <br>
-                            <small>Salvar data</small>
                         </a>
+                        <small>Salvar data</small>
                     </div>
 
                     <!-- Botão para compartilhar link do evento -->
