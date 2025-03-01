@@ -547,7 +547,7 @@ header {
     .inscricao_button {
         margin-top: 10px;
         background-color: #06b400;
-        color: #fff;
+        color: #000000;
         padding: 10px;
         border-radius: 5px;
         text-decoration: none;
@@ -555,6 +555,7 @@ header {
 
     .inscricao_button:hover {
         background-color: #007e1b;
+        color: #ffffff;
     }
 }
 
