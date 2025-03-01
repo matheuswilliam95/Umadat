@@ -100,13 +100,17 @@ if (isset($_SESSION['user_id'])) {
                     ?>
                 </p>
 
-                
+
                 <!-- Valores -->
-                <p><strong>Valor:</strong>
-                    <?php echo $evento['valor'] ? 'R$ ' . number_format($evento['valor'], 2, ',', '.') : 'Gratuito'; ?>
-                </p>
-                <p><strong>Responsável:</strong> <?php echo htmlspecialchars($evento['responsavel_nome'] ?? 'N/A'); ?>
-                </p>
+                <?php if ($evento['valor'] > 0): ?>
+                    <p><strong>Valor:</strong>
+                        <?php echo 'R$ ' . number_format($evento['valor'], 2, ',', '.'); ?>
+                    </p>
+                <?php endif; ?>
+
+                <?php if (!empty($evento['responsavel_nome'])): ?>
+                    <p><strong>Responsável:</strong> <?php echo htmlspecialchars($evento['responsavel_nome']); ?></p>
+                <?php endif; ?>
 
                 <!-- Realizadores -->
                 <h2 class="subtitulo_evento_infos">Organizadores</h2>
@@ -115,7 +119,7 @@ if (isset($_SESSION['user_id'])) {
                 $congregacao = !is_null($evento['congregacao']) ? getCongregacaoName($evento['congregacao']) : 'N/A';
                 $conjunto = !is_null($evento['conjunto']) ? getConjuntoName($evento['conjunto']) : 'N/A';
                 ?>
-                
+
                 <?php if (!is_null($evento['congregacao'])): ?>
                     <p><strong>Congregação:</strong> <?php echo htmlspecialchars($congregacao); ?></p>
                 <?php endif; ?>
