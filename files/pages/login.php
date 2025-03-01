@@ -61,11 +61,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <input type="password" name="senha" id="senha" placeholder="Senha" required>
 
-                <button type="submit" class="login_BT">Entrar</button>
+                <button type="submit" class="login_BT button">Entrar</button>
             </form>
             <div class="login_links">
                 <a class="link_login" href="recuperar_senha.php">Esqueceu a senha?</a>
-                <a class="criar_conta_BT button" href="cadastro.php">
+                <a class="criar_conta_BT" href="cadastro.php">
                     Criar uma conta
                 </a>
             </div>
