@@ -534,7 +534,7 @@ header {
         margin-right: 20px;
         width: 30vw;
         border-radius: 10px;
-
+        border: none;
         cursor: pointer;
         background-color: var(--primary_color);
     }
