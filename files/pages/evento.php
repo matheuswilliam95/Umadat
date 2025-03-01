@@ -140,8 +140,10 @@ $relatedEvents = getRelatedEvents($eventId);
                         <?php
                         $local = $evento['local'] ?? 'N/A';
                         if ($local !== 'N/A') {
+                            echo '<div style="text-align: center;">';
                             echo '<a class="botoes_link_evento" href="https://www.google.com/maps/search/?api=1&query=' . urlencode($local) . '" target="_blank"><img class="icon_evento" src="' . PASTA_BASE . 'public/img/place_icon.png" alt="Local"></a>';
                             echo '<br><small>Ver no mapa</small>';
+                            echo '</div>';
                         } else {
                             echo 'N/A';
                         }
