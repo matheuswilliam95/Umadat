@@ -542,7 +542,7 @@ header {
 
     .alinhamento_icones {
         text-align: center;
-        width: 33%;
+        /* width: 33%; */
     }
 
     .inscricao_button {
