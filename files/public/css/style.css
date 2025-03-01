@@ -545,11 +545,16 @@ header {
     }
 
     .inscricao_button {
-        background-color: #007585;
+        margin-top: 10px;
+        background-color: #06b400;
         color: #fff;
         padding: 10px;
         border-radius: 5px;
         text-decoration: none;
+    }
+
+    .inscricao_button:hover {
+        background-color: #007e1b;
     }
 }
 
