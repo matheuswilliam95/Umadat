@@ -19,13 +19,21 @@ if (!$evento) {
 }
 
 $relatedEvents = getRelatedEvents($eventId);
+
+$isInscrito = false;
+if (isset($_SESSION['user_id'])) {
+    $usuario_id = $_SESSION['user_id'];
+    $stmt = $pdo->prepare("SELECT COUNT(*) FROM inscricoes WHERE usuario_id = :usuario_id AND evento_id = :evento_id");
+    $stmt->execute(['usuario_id' => $usuario_id, 'evento_id' => $eventId]);
+    $isInscrito = $stmt->fetchColumn() > 0;
+}
 ?>
 
 
 <!DOCTYPE html>
 <html lang="pt-BR">
 
-<head>
+<head></head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($evento['titulo']); ?> - <?php echo SITE_NAME; ?></title>
@@ -102,7 +110,9 @@ $relatedEvents = getRelatedEvents($eventId);
                     </p>
                     <?php if (strtotime(date('Y-m-d')) <= strtotime($evento['data_limite_inscricao'])): ?>
                         <button id="inscricao-btn" class="inscricao_button"
-                            data-evento-id="<?php echo $evento['id']; ?>">Inscrever</button>
+                            data-evento-id="<?php echo $evento['id']; ?>" data-action="<?php echo $isInscrito ? 'cancelar' : 'inscrever'; ?>">
+                            <?php echo $isInscrito ? 'Cancelar Inscrição' : 'Inscrever'; ?>
+                        </button>
                     <?php else: ?>
                         <button id="inscricao-btn" class="inscricao_button" disabled>Inscrição Encerrada</button>
                     <?php endif; ?>
@@ -212,24 +222,32 @@ $relatedEvents = getRelatedEvents($eventId);
             if (inscreverBtn) {
                 inscreverBtn.addEventListener("click", function () {
                     const eventoId = this.getAttribute("data-evento-id");
+                    const action = this.getAttribute("data-action");
                     fetch("inscrever.php", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/x-www-form-urlencoded"
                         },
-                        body: `evento_id=${eventoId}`
+                        body: `evento_id=${eventoId}&action=${action}`
                     })
                         .then(response => response.json())
                         .then(data => {
                             if (data.success) {
-                                alert("Inscrição realizada com sucesso!");
+                                alert(data.message);
+                                if (action === 'inscrever') {
+                                    inscreverBtn.textContent = 'Cancelar Inscrição';
+                                    inscreverBtn.setAttribute('data-action', 'cancelar');
+                                } else {
+                                    inscreverBtn.textContent = 'Inscrever';
+                                    inscreverBtn.setAttribute('data-action', 'inscrever');
+                                }
                             } else {
-                                alert("Erro ao realizar inscrição: " + data.message);
+                                alert("Erro: " + data.message);
                             }
                         })
                         .catch(error => {
                             console.error("Erro:", error);
-                            alert("Erro ao realizar inscrição.");
+                            alert("Erro ao realizar a ação.");
                         });
                 });
             }

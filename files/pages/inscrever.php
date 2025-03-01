@@ -15,13 +15,24 @@ if (!isset($_SESSION['user_id'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $usuario_id = $_SESSION['user_id'];
     $evento_id = intval($_POST['evento_id']);
+    $action = $_POST['action'];
 
-    $sql = "INSERT INTO inscricoes (usuario_id, evento_id) VALUES (:usuario_id, :evento_id)";
-    $stmt = $pdo->prepare($sql);
-    if ($stmt->execute(['usuario_id' => $usuario_id, 'evento_id' => $evento_id])) {
-        echo json_encode(['success' => true, 'message' => 'Inscrição realizada com sucesso.']);
-    } else {
-        echo json_encode(['success' => false, 'message' => 'Erro ao realizar inscrição.']);
+    if ($action === 'inscrever') {
+        $sql = "INSERT INTO inscricoes (usuario_id, evento_id) VALUES (:usuario_id, :evento_id)";
+        $stmt = $pdo->prepare($sql);
+        if ($stmt->execute(['usuario_id' => $usuario_id, 'evento_id' => $evento_id])) {
+            echo json_encode(['success' => true, 'message' => 'Inscrição realizada com sucesso.']);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Erro ao realizar inscrição.']);
+        }
+    } elseif ($action === 'cancelar') {
+        $sql = "DELETE FROM inscricoes WHERE usuario_id = :usuario_id AND evento_id = :evento_id";
+        $stmt = $pdo->prepare($sql);
+        if ($stmt->execute(['usuario_id' => $usuario_id, 'evento_id' => $evento_id])) {
+            echo json_encode(['success' => true, 'message' => 'Inscrição cancelada com sucesso.']);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Erro ao cancelar inscrição.']);
+        }
     }
 }
 ?>
