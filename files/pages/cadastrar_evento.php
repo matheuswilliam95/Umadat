@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $descricao = sanitizeInput($_POST['descricao']);
     $data_inicio = $_POST['data_inicio'];
     $horario_inicio = $_POST['horario_inicio'] ?: null;
-    $data_fim = $_POST['data_fim'];
+    $data_fim = $_POST['data_fim'] ?: null;
     $horario_fim = $_POST['horario_fim'] ?: null;
     $local = sanitizeInput($_POST['local'] ?? '');
     $valor = $_POST['valor'] ?: null;
@@ -74,8 +74,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 function createEvent($eventData)
 {
     global $pdo;
-    $sql = "INSERT INTO eventos (titulo, descricao, data_inicio, horario_inicio, data_fim, horario_fim, local, valor, data_limite_inscricao, responsavel_nome, responsavel_contato, tipo, criado_por) 
-            VALUES(:titulo, :descricao, :data_inicio, :horario_inicio, :data_fim, :horario_fim, :local, :valor, :data_limite_inscricao, :responsavel_nome, :responsavel_contato, :tipo, :criado_por)";
+    $sql = "INSERT INTO eventos (titulo, descricao, data_inicio, horario_inicio, data_fim, horario_fim, local, valor, data_limite_inscricao, responsavel_nome, responsavel_contato, tipo, criado_por, instagram_username) 
+            VALUES(:titulo, :descricao, :data_inicio, :horario_inicio, :data_fim, :horario_fim, :local, :valor, :data_limite_inscricao, :responsavel_nome, :responsavel_contato, :tipo, :criado_por, :instagram_username)";
     $stmt = $pdo->prepare($sql);
     return $stmt->execute($eventData);
 }
