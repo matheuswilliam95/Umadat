@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     } else {
                         error_log("Arquivo movido com sucesso: " . $caminho_arquivo);
                         updateEventImage($evento_id, $caminho_banco);
-                        header("Location: evento.php?id=$evento_id");
+                        echo "<script>alert('Evento registrado com sucesso.'); window.location.href='evento.php?id=$evento_id';</script>";
                     }
                 } else {
                     error_log("Erro no upload: Código " . $_FILES['capa']['error']);
@@ -66,6 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         } else {
             $error = "Erro ao cadastrar evento. Verifique os dados e tente novamente.";
+            echo "<script>alert('Erro ao cadastrar evento. Verifique os dados e tente novamente.');</script>";
         }
     }
 }
