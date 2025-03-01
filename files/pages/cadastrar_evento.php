@@ -137,16 +137,7 @@ function updateEventImage($evento_id, $caminho_banco)
                     <input type="time" name="horario_fim" id="horario_fim" placeholder="Horário de Fim">
 
                     <label class="cadastro_evento">Sobre o Evento</label>
-
-
-
-                    <!-- HTML para o campo de entrada e o script -->
-                    <input type="text" name="local" id="local" placeholder="Local do Evento"
-                        onFocus="initAutocomplete()">
-                    <div id="suggestions" class="suggestions"> Sugestões...</div>
-
-
-
+                    <input type="text" name="local" id="local" placeholder="Local do Evento">
                     <input type="number" name="valor" id="valor" step="0.01" placeholder="Valor do Evento">
 
 
