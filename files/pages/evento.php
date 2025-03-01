@@ -86,11 +86,10 @@ $relatedEvents = getRelatedEvents($eventId);
                 </p>
 
                 <?php if ($evento['data_limite_inscricao'] >= date('Y-m-d')): ?>
-                    <button id="inscricao-btn" data-evento-id="<?php echo $evento['id']; ?>">Inscreva-se</button>
-                <?php endif; ?>
-                <?php if ($evento['data_limite_inscricao'] >= date('Y-m-d')): ?>
-                    <button id="inscricao-btn" data-evento-id="<?php echo $evento['id']; ?>">Inscreva-se</button>
-                <?php endif; ?>
+                    <p><strong>Data limite de inscrição:</strong>
+                        <?php echo formatDate($evento['data_limite_inscricao']); ?>
+                        <button id="inscricao-btn" data-evento-id="<?php echo $evento['id']; ?>">Inscreva-se</button>
+                    <?php endif; ?>
 
                 <div class="evento-links">
                     <!-- Botão para exportar para o Google Calendar -->
