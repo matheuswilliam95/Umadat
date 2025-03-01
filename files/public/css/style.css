@@ -592,7 +592,8 @@ header {
     .subtitulo_evento_infos {
         font-size: 1.2em;
         font-weight: bold;
-        margin-top: 10px;
+        margin-top: 2em;
+
     }
 }
 
