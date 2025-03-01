@@ -113,8 +113,9 @@ $relatedEvents = getRelatedEvents($eventId);
                     <a class="botoes_link_evento" target="_blank" href="<?php echo $googleCalendarUrl; ?>">&#x1F4C5;</a>
 
                     <!-- Botão para compartilhar link do evento -->
-                    <button id="compartilhar-btn" class="botoes_link_evento"
-                        onclick="compartilharEvento()">&#x1F4E3;</button>
+                    <button id="compartilhar-btn" class="botoes_link_evento" onclick="compartilharEvento()">
+                        <img src="<?php echo PASTA_BASE; ?>public/img/share_icon.png" alt="Compartilhar">
+                    </button>
                     <script>
                         function compartilharEvento() {
                             const url = window.location.href;
