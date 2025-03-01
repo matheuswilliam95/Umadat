@@ -1,4 +1,4 @@
-<g?php
+<?php
 require_once __DIR__ . '/../includes/config.php';
 require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../includes/functions.php';
@@ -60,7 +60,7 @@ if (isset($_SESSION['user_id'])) {
                 <?php endif; ?>
 
                 <!-- Informações Gerais do Evento -->
-                <h3 class="subtitulo_evento_infos">Informações do Evento</h3>
+                <h2 class="subtitulo_evento_infos">Informações do Evento</h2>
 
 
                 <!-- Descrição -->
