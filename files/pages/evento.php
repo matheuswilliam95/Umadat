@@ -34,12 +34,12 @@ if (isset($_SESSION['user_id'])) {
 <html lang="pt-BR">
 
 <head></head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo htmlspecialchars($evento['titulo']); ?> - <?php echo SITE_NAME; ?></title>
-    <script defer src="<?php echo PASTA_BASE; ?>public/js/main.js"></script>
-    <link rel="stylesheet" href="<?php echo PASTA_BASE; ?>public/css/style.css?v=<?php echo time(); ?>">
-    <script defer src="<?php echo PASTA_BASE; ?>public/js/evento.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title><?php echo htmlspecialchars($evento['titulo']); ?> - <?php echo SITE_NAME; ?></title>
+<script defer src="<?php echo PASTA_BASE; ?>public/js/main.js"></script>
+<link rel="stylesheet" href="<?php echo PASTA_BASE; ?>public/css/style.css?v=<?php echo time(); ?>">
+<script defer src="<?php echo PASTA_BASE; ?>public/js/evento.js"></script>
 </head>
 
 <header>
@@ -60,11 +60,11 @@ if (isset($_SESSION['user_id'])) {
                 <?php endif; ?>
 
                 <!-- Descrição -->
-                <p><strong>Descrição:</strong> 
-                    <?php 
+                <p><strong>Descrição:</strong>
+                    <?php
                     $descricao = htmlspecialchars($evento['descricao']);
                     $descricao = preg_replace('/@(\w+)/', '<a class="link_instagram_participantes" href="https://www.instagram.com/$1" target="_blank">@$1</a>', $descricao);
-                    echo nl2br($descricao); 
+                    echo nl2br($descricao);
                     ?>
                 </p>
 
@@ -98,10 +98,10 @@ if (isset($_SESSION['user_id'])) {
 
                 <!-- Realizadores -->
                 <p><strong>Realizadores:</strong>
-                <?php
-                $congregacao = !is_null($evento['congregacao_id']) ? getCongregacaoName($evento['congregacao_id']) : 'N/A';
-                $conjunto = !is_null($evento['conjunto_id']) ? getConjuntoName($evento['conjunto_id']) : 'N/A';
-                ?>
+                    <?php
+                    $congregacao = !is_null($evento['congregacao']) ? getCongregacaoName($evento['congregacao']) : 'N/A';
+                    $conjunto = !is_null($evento['conjunto']) ? getConjuntoName($evento['conjunto']) : 'N/A';
+                    ?>
                 <p><strong>Congregação:</strong> <?php echo htmlspecialchars($congregacao); ?></p>
                 <p><strong>Conjunto:</strong> <?php echo htmlspecialchars($conjunto); ?></p>
 
@@ -119,7 +119,8 @@ if (isset($_SESSION['user_id'])) {
                     </p>
                     <?php if (strtotime(date('Y-m-d')) <= strtotime($evento['data_limite_inscricao'])): ?>
                         <button id="inscricao-btn" class="inscricao_button <?php echo $isInscrito ? 'cancelar' : ''; ?>"
-                            data-evento-id="<?php echo $evento['id']; ?>" data-action="<?php echo $isInscrito ? 'cancelar' : 'inscrever'; ?>">
+                            data-evento-id="<?php echo $evento['id']; ?>"
+                            data-action="<?php echo $isInscrito ? 'cancelar' : 'inscrever'; ?>">
                             <?php echo $isInscrito ? 'Cancelar Inscrição' : 'Inscrever'; ?>
                         </button>
                     <?php else: ?>
