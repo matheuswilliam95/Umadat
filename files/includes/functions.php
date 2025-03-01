@@ -256,5 +256,37 @@ function getRegionais()
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
+function getCongregacaoConjuntoResponsavel($eventoId)
+{
+    global $db;
+
+    // Consulta para obter a coluna congregacao_conjunto_responsavel da tabela eventos
+    $sql = "SELECT congregacao_conjunto_responsavel FROM eventos WHERE id = ?";
+    $stmt = $db->prepare($sql);
+    $stmt->execute([$eventoId]);
+    $evento = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$evento) {
+        return null; // Retorna null se o evento não for encontrado
+    }
+
+    $responsavelId = $evento['congregacao_conjunto_responsavel'];
+
+    // Consulta para buscar o responsável na tabela de congregações
+    $sql = "SELECT nome, instagram_username FROM congregacoes WHERE id = ?";
+    $stmt = $db->prepare($sql);
+    $stmt->execute([$responsavelId]);
+    $responsavel = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Se não encontrar na tabela de congregações, buscar na tabela de conjuntos
+    if (!$responsavel) {
+        $sql = "SELECT nome, instagram_username FROM conjuntos WHERE id = ?";
+        $stmt = $db->prepare($sql);
+        $stmt->execute([$responsavelId]);
+        $responsavel = $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    return $responsavel;
+}
 
 ?>
