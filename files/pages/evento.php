@@ -55,7 +55,7 @@ $relatedEvents = getRelatedEvents($eventId);
                 <p><strong>Descrição:</strong> 
                     <?php 
                     $descricao = htmlspecialchars($evento['descricao']);
-                    $descricao = preg_replace('/@(\w+)/', '<a href="https://www.instagram.com/$1" target="_blank">@$1</a>', $descricao);
+                    $descricao = preg_replace('/@(\w+)/', '<a class="link_instagram_participantes" href="https://www.instagram.com/$1" target="_blank">@$1</a>', $descricao);
                     echo nl2br($descricao); 
                     ?>
                 </p>

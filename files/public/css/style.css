@@ -572,6 +572,10 @@ header {
         color: #000000;
         text-decoration: none;
     }
+
+    .link_instagram_participantes {
+        color: #410055;
+    }
 }
 
 /*  -------------------------------- Evento ------------------------------------ */
