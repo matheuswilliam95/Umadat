@@ -114,7 +114,8 @@ $relatedEvents = getRelatedEvents($eventId);
 
                     <!-- Botão para compartilhar link do evento -->
                     <button id="compartilhar-btn" class="botoes_link_evento" onclick="compartilharEvento()">
-                        <img src="<?php echo PASTA_BASE; ?>public/img/share_icon.png" alt="Compartilhar">
+                        <img class="icon_evento" src="<?php echo PASTA_BASE; ?>public/img/share_icon.png"
+                            alt="Compartilhar">
                     </button>
                     <script>
                         function compartilharEvento() {
@@ -136,7 +137,7 @@ $relatedEvents = getRelatedEvents($eventId);
                         <?php
                         $local = $evento['local'] ?? 'N/A';
                         if ($local !== 'N/A') {
-                            echo '<a class="botoes_link_evento" href="https://www.google.com/maps/search/?api=1&query=' . urlencode($local) . '" target="_blank"><img src="' . PASTA_BASE . 'public/img/place_icon.png" alt="Local"></a>';
+                            echo '<a class="botoes_link_evento" href="https://www.google.com/maps/search/?api=1&query=' . urlencode($local) . '" target="_blank"><img class="icon_evento" src="' . PASTA_BASE . 'public/img/place_icon.png" alt="Local"></a>';
                         } else {
                             echo 'N/A';
                         }

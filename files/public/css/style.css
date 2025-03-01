@@ -496,7 +496,11 @@ header {
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
 
+    .icon_evento {
+        width: 2em;
+        height: 2em;
 
+    }
 
     .detalhes-btn:hover {
         background: var(--secondary_color);
