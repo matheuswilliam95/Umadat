@@ -252,7 +252,8 @@ if ($isLoggedIn) {
                     const eventoId = this.getAttribute("data-evento-id");
                     const action = this.getAttribute("data-action");
                     if (action === 'login') {
-                        window.location.href = "<?php echo PASTA_BASE; ?>pages/login.php";
+                        const currentUrl = encodeURIComponent(window.location.href);
+                        window.location.href = "<?php echo PASTA_BASE; ?>pages/login.php?redirect=" + currentUrl;
                     } else {
                         fetch("inscrever.php", {
                             method: "POST",
