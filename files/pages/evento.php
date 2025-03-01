@@ -109,7 +109,7 @@ if (isset($_SESSION['user_id'])) {
                         <?php echo date('d/m/Y', strtotime($evento['data_limite_inscricao'])); ?>
                     </p>
                     <?php if (strtotime(date('Y-m-d')) <= strtotime($evento['data_limite_inscricao'])): ?>
-                        <button id="inscricao-btn" class="inscricao_button"
+                        <button id="inscricao-btn" class="inscricao_button <?php echo $isInscrito ? 'cancelar' : ''; ?>"
                             data-evento-id="<?php echo $evento['id']; ?>" data-action="<?php echo $isInscrito ? 'cancelar' : 'inscrever'; ?>">
                             <?php echo $isInscrito ? 'Cancelar Inscrição' : 'Inscrever'; ?>
                         </button>
@@ -237,9 +237,11 @@ if (isset($_SESSION['user_id'])) {
                                 if (action === 'inscrever') {
                                     inscreverBtn.textContent = 'Cancelar Inscrição';
                                     inscreverBtn.setAttribute('data-action', 'cancelar');
+                                    inscreverBtn.classList.add('cancelar');
                                 } else {
                                     inscreverBtn.textContent = 'Inscrever';
                                     inscreverBtn.setAttribute('data-action', 'inscrever');
+                                    inscreverBtn.classList.remove('cancelar');
                                 }
                             } else {
                                 alert("Erro: " + data.message);

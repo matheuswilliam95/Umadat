@@ -568,6 +568,16 @@ header {
         cursor: not-allowed;
     }
 
+    .inscricao_button.cancelar {
+        background-color: #ff0000;
+        color: #ffffff;
+    }
+
+    .inscricao_button.cancelar:hover {
+        background-color: #cc0000;
+        color: #ffffff;
+    }
+
     .link_local_texto {
         color: #000000;
         text-decoration: none;
