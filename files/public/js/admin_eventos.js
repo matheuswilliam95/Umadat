@@ -1,25 +1,27 @@
 function initAutocomplete() {
-    var input = document.getElementById('local');
-    var suggestionsContainer = document.getElementById('suggestions');
-    var geocoder = L.Control.Geocoder.nominatim();
+    const input = document.getElementById('local');
+    const suggestionsContainer = document.getElementById('suggestions');
     input.addEventListener('input', function () {
-        var query = input.value;
+        const query = input.value;
         if (query.length > 2) {
-            geocoder.geocode(query, function (results) {
-                suggestionsContainer.innerHTML = '';
-                if (results.length > 0) {
-                    results.forEach(function (result) {
-                        var suggestionItem = document.createElement('div');
-                        suggestionItem.className = 'suggestion-item';
-                        suggestionItem.textContent = result.name;
-                        suggestionItem.addEventListener('click', function () {
-                            input.value = result.name;
-                            suggestionsContainer.innerHTML = '';
+            fetch(`../includes/proxy.php?q=${encodeURIComponent(query)}`)
+                .then(response => response.json())
+                .then(results => {
+                    suggestionsContainer.innerHTML = '';
+                    if (results.length > 0) {
+                        results.forEach(result => {
+                            const suggestionItem = document.createElement('div');
+                            suggestionItem.className = 'suggestion-item';
+                            suggestionItem.textContent = result.display_name;
+                            suggestionItem.addEventListener('click', function () {
+                                input.value = result.display_name;
+                                suggestionsContainer.innerHTML = '';
+                            });
+                            suggestionsContainer.appendChild(suggestionItem);
                         });
-                        suggestionsContainer.appendChild(suggestionItem);
-                    });
-                }
-            });
+                    }
+                })
+                .catch(error => console.error('Error:', error));
         } else {
             suggestionsContainer.innerHTML = '';
         }
