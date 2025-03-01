@@ -116,9 +116,12 @@ if (isset($_SESSION['user_id'])) {
                 $conjunto = !is_null($evento['conjunto']) ? getConjuntoName($evento['conjunto']) : 'N/A';
                 ?>
                 
-                <p><strong>Congregação:</strong> <?php echo htmlspecialchars($congregacao); ?></p>
-                
-                <p><strong>Conjunto:</strong> <?php echo htmlspecialchars($conjunto); ?></p>
+                <?php if (!is_null($evento['congregacao'])): ?>
+                    <p><strong>Congregação:</strong> <?php echo htmlspecialchars($congregacao); ?></p>
+                <?php endif; ?>
+                <?php if (!is_null($evento['conjunto'])): ?>
+                    <p><strong>Conjunto:</strong> <?php echo htmlspecialchars($conjunto); ?></p>
+                <?php endif; ?>
 
 
                 <!-- Inscrições -->
