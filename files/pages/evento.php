@@ -50,7 +50,7 @@ if (isset($_SESSION['user_id'])) {
     <div class="main_container">
         <div class="container">
             <div class="evento-container">
-                <h2><?php echo htmlspecialchars($evento['titulo']); ?></h2>
+                <h2><?php echo strtoupper(htmlspecialchars($evento['titulo'])); ?></h2>
 
 
                 <!-- Imagem -->
