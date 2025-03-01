@@ -165,16 +165,8 @@ $congregacoes = getCongregacoes();
                     <input type="date" name="data_limite_inscricao" id="data_limite_inscricao"
                         placeholder="Data Limite para Inscrição">
 
-                    <!-- Seleção de Congregação-->
-                    <!-- <label class="cadastro_evento">Congregação</label>
-                    <select name="congregacao" id="congregacao" required>
-                        <option value="" disabled selected>Selecione a Congregação</option>
-                        <!-- Adicione as opções de congregação aqui -->
-                    <option value="congregacao1">Congregação 1</option>
-                    <option value="congregacao2">Congregação 2</option>
-                    </select> -->
 
-
+                    <!-- Input da Congregação -->
                     <select name="congregacao" id="cadastro_congregacao" required>
                         <option value="" disabled selected>Selecione uma Congregação</option>
                         <?php foreach ($congregacoes as $congregacao): ?>
@@ -184,14 +176,11 @@ $congregacoes = getCongregacoes();
                         <?php endforeach; ?>
                     </select>
 
-                    <!-- Seleção de Conjunto-->
-                    <label class="cadastro_evento">Conjunto</label>
-                    <select name="conjunto" id="conjunto" required>
-                        <option value="" disabled selected>Selecione o Conjunto</option>
-                        <!-- Adicione as opções de conjunto aqui -->
-                        <option value="conjunto1">Conjunto 1</option>
-                        <option value="conjunto2">Conjunto 2</option>
+                    <!-- Input do conjunto -->
+                    <select name="conjunto" id="cadastro_conjunto" aria-placeholder="Grupo ou Conjunto" required>
+                        <option value="">Selecione uma congregação primeiro</option>
                     </select>
+
 
                     <label class="cadastro_evento">Capa do Evento</label>
                     <input type="file" name="capa" class="upload_file_button" accept="image/png, image/jpeg">
