@@ -21,7 +21,8 @@ if (!$evento) {
 $relatedEvents = getRelatedEvents($eventId);
 
 $isInscrito = false;
-if (isset($_SESSION['user_id'])) {
+$isLoggedIn = isset($_SESSION['user_id']);
+if ($isLoggedIn) {
     $usuario_id = $_SESSION['user_id'];
     $stmt = $pdo->prepare("SELECT COUNT(*) FROM inscricoes WHERE usuario_id = :usuario_id AND evento_id = :evento_id");
     $stmt->execute(['usuario_id' => $usuario_id, 'evento_id' => $eventId]);
@@ -137,8 +138,8 @@ if (isset($_SESSION['user_id'])) {
                     <?php if (strtotime(date('Y-m-d')) <= strtotime($evento['data_limite_inscricao'])): ?>
                         <button id="inscricao-btn" class="inscricao_button <?php echo $isInscrito ? 'cancelar' : ''; ?>"
                             data-evento-id="<?php echo $evento['id']; ?>"
-                            data-action="<?php echo $isInscrito ? 'cancelar' : 'inscrever'; ?>">
-                            <?php echo $isInscrito ? 'Cancelar Inscrição' : 'Inscrever'; ?>
+                            data-action="<?php echo $isLoggedIn ? ($isInscrito ? 'cancelar' : 'inscrever') : 'login'; ?>">
+                            <?php echo $isLoggedIn ? ($isInscrito ? 'Cancelar Inscrição' : 'Inscrever') : 'Inscrever'; ?>
                         </button>
                     <?php else: ?>
                         <button id="inscricao-btn" class="inscricao_button" disabled>Inscrição Encerrada</button>
@@ -250,34 +251,38 @@ if (isset($_SESSION['user_id'])) {
                 inscreverBtn.addEventListener("click", function () {
                     const eventoId = this.getAttribute("data-evento-id");
                     const action = this.getAttribute("data-action");
-                    fetch("inscrever.php", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/x-www-form-urlencoded"
-                        },
-                        body: `evento_id=${eventoId}&action=${action}`
-                    })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.success) {
-                                alert(data.message);
-                                if (action === 'inscrever') {
-                                    inscreverBtn.textContent = 'Cancelar Inscrição';
-                                    inscreverBtn.setAttribute('data-action', 'cancelar');
-                                    inscreverBtn.classList.add('cancelar');
-                                } else {
-                                    inscreverBtn.textContent = 'Inscrever';
-                                    inscreverBtn.setAttribute('data-action', 'inscrever');
-                                    inscreverBtn.classList.remove('cancelar');
-                                }
-                            } else {
-                                alert("Erro: " + data.message);
-                            }
+                    if (action === 'login') {
+                        window.location.href = "<?php echo PASTA_BASE; ?>pages/login.php";
+                    } else {
+                        fetch("inscrever.php", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/x-www-form-urlencoded"
+                            },
+                            body: `evento_id=${eventoId}&action=${action}`
                         })
-                        .catch(error => {
-                            console.error("Erro:", error);
-                            alert("Erro ao realizar a ação.");
-                        });
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    alert(data.message);
+                                    if (action === 'inscrever') {
+                                        inscreverBtn.textContent = 'Cancelar Inscrição';
+                                        inscreverBtn.setAttribute('data-action', 'cancelar');
+                                        inscreverBtn.classList.add('cancelar');
+                                    } else {
+                                        inscreverBtn.textContent = 'Inscrever';
+                                        inscreverBtn.setAttribute('data-action', 'inscrever');
+                                        inscreverBtn.classList.remove('cancelar');
+                                    }
+                                } else {
+                                    alert("Erro: " + data.message);
+                                }
+                            })
+                            .catch(error => {
+                                console.error("Erro:", error);
+                                alert("Erro ao realizar a ação.");
+                            });
+                    }
                 });
             }
         });
