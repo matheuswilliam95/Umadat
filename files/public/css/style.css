@@ -575,6 +575,7 @@ header {
 
     .link_instagram_participantes {
         color: #410055;
+        font-family: var(--font_family);
     }
 }
 
