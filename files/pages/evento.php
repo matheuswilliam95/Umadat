@@ -89,7 +89,9 @@ $relatedEvents = getRelatedEvents($eventId);
                     <p>
                         <strong>Data limite de inscrição:</strong>
                         <?php echo date('d/m/Y', strtotime($evento['data_limite_inscricao'])); ?>
-                        <button id="inscricao-btn" class="inscricao_button" data-evento-id="<?php echo $evento['id']; ?>">Inscrever</button>
+                        <br>
+                        <button id="inscricao-btn" class="inscricao_button"
+                            data-evento-id="<?php echo $evento['id']; ?>">Inscrever</button>
                     <?php endif; ?>
 
                 <div class="evento-links">
