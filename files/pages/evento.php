@@ -113,8 +113,9 @@ $relatedEvents = getRelatedEvents($eventId);
                     <a class="botoes_link_evento" target="_blank" href="<?php echo $googleCalendarUrl; ?>">
                         <img class="icon_evento" src="<?php echo PASTA_BASE; ?>public/img/calendar_icon.png"
                             alt="Adicionar ao Google Calendar">
-                        <br><small>Salvar data</small>
+                        <br>
                     </a>
+                    <small>Salvar data</small>
 
                     <!-- Botão para compartilhar link do evento -->
                     <button id="compartilhar-btn" class="botoes_link_evento" onclick="compartilharEvento()">
