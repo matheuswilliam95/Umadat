@@ -406,6 +406,7 @@ header {
         margin-top: 0;
         margin-right: 10px;
         flex: 1;
+        height: 8vh;
     }
 
     .quick-icons {
@@ -423,57 +424,7 @@ header {
         text-decoration: none;
         font-size: 20px;
     }
-}
 
-/*  -------------------------------- Evento ------------------------------------ */
-.capa_evento_single {
-    width: 90vw;
-    height: auto;
-    display: block;
-    margin: 10px 0;
-}
-
-.button_exportar_agenda {
-    background-color: #007585;
-    color: rgb(172, 255, 255);
-    padding: 10px;
-    border-radius: 5px;
-    text-decoration: none;
-}
-
-.button_exportar_agenda:hover {
-    background-color: #005f6b;
-    color: rgb(172, 255, 255);
-}
-
-.evento-links {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-.evento-links button {
-    flex: 1;
-    margin: 0 5px;
-    text-align: center;
-}
-
-.botoes_link_evento {
-    gap: 10px !important;
-    background-color: #ffffff00 !important;
-    border: none !important;
-    cursor: pointer !important;
-    color: #007585 !important;
-    font-size: 2.5em !important;
-    font-weight: bold !important;
-    text-decoration: none !important;
-    transition: color 0.3s ease !important;
-    width: auto !important;
-}
-
-/*  --------------------------------- Responsividade --------------------------- */
-@media screen and (max-width: 600px) {
     .container {
         width: 90%;
     }
@@ -576,5 +527,51 @@ header {
         box-sizing: border-box;
     }
 
+}
 
+/*  -------------------------------- Evento ------------------------------------ */
+.capa_evento_single {
+    width: 90vw;
+    height: auto;
+    display: block;
+    margin: 10px 0;
+}
+
+.button_exportar_agenda {
+    background-color: #007585;
+    color: rgb(172, 255, 255);
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.button_exportar_agenda:hover {
+    background-color: #005f6b;
+    color: rgb(172, 255, 255);
+}
+
+.evento-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.evento-links button {
+    flex: 1;
+    margin: 0 5px;
+    text-align: center;
+}
+
+.botoes_link_evento {
+    gap: 10px !important;
+    background-color: #ffffff00 !important;
+    border: none !important;
+    cursor: pointer !important;
+    color: #007585 !important;
+    font-size: 2.5em !important;
+    font-weight: bold !important;
+    text-decoration: none !important;
+    transition: color 0.3s ease !important;
+    width: auto !important;
 }
