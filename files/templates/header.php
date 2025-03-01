@@ -5,6 +5,7 @@ require_once __DIR__ . '/../includes/functions.php';
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <style>
         .mobile-nav {
@@ -12,11 +13,13 @@ require_once __DIR__ . '/../includes/functions.php';
             justify-content: space-between;
             align-items: center;
         }
+
         .menu_btn {
             margin-left: auto;
         }
     </style>
 </head>
+
 <body>
     <div class="logo">
         <a href="<?php echo BASE_URL; ?>">
@@ -26,7 +29,7 @@ require_once __DIR__ . '/../includes/functions.php';
     </div>
     <nav class="mobile-nav">
         <!-- Adicionamos a classe "menu-btn" para garantir que os estilos sejam aplicados -->
-        <button id="menu-toggle" class="menu_btn">☰</button>
+        <button id="menu-toggle" class="menu_btn button">☰</button>
         <ul id="menu" class="menu-list">
             <li><a href="<?php echo BASE_URL; ?>">Início</a></li>
             <li><a href="<?php echo PASTA_BASE; ?>pages/eventos.php">Eventos</a></li>
@@ -54,4 +57,5 @@ require_once __DIR__ . '/../includes/functions.php';
         });
     </script>
 </body>
+
 </html>
